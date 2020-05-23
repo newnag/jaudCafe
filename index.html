@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จ้วดคาเฟ่ JaudCafe</title>
+    <link rel="stylesheet" href="/css/jaudStyle.min.css">
+    <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.theme.default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="/plugin/fontawesome/all.min.js"></script>
+</head>
+<body>
+    <nav class="container">
+        <div class="head-nav">
+            <div class="left">
+                <div class="logo">
+                    <figure><img src="/img/logo/logo.jpg" alt=""></figure>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="menu">
+                    <ul>
+                        <li><a href="" class="selected">หน้าแรก</a></li>
+                        <li><a href="">แกลอรี่</a></li>
+                        <li><a href="">เกี่ยวกับเรา</a></li>
+                        <li><a href="">ติดต่อเรา</a></li>
+                        <li class="closemenu"><i class="fas fa-times"></i></li>
+
+                        <div class="contact-nav">
+                            <div class="tel"><span>โทร: 091-0634589</span></div>
+                            <div class="social-icon">
+                                <i class="fab fa-line"></i>
+                                <i class="fab fa-facebook-f"></i>
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </div>
+                    </ul>
+                    <div class="bottomline"></div>
+                </div>
+
+                <div class="searchq">
+                    <div class="box-search">
+                        <input type="tel" maxlength="10" id="searchq" name="searchq" placeholder="ค้นหาการจองด้วย เบอร์">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                </div>
+
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="slideHead owl-carousel owl-theme owl-loaded">
+            <img src="/img/pic1.jpg" alt="">
+            <img src="/img/pic1.jpg" alt="">
+            <img src="/img/pic1.jpg" alt="">
+        </div>
+    </header>
+
+    <div class="booking-zone container">
+        <div class="book-top">
+            <div class="selectType">
+                <div class="button-mobile">
+                    <label>จองซุ้ม</label>
+                    <span class="arch active">จองซุ้ม</span>
+                    <span class="table">จองโต๊ะ</span>
+                    <label>จองโต๊ะ</label>
+                    <div class="activeB"></div>
+                </div>
+
+                <div class="box-button">
+                    
+                    <div class="arch"></div>
+                    <div class="table"></div>
+                </div>
+            </div>
+
+            <div class="input-zone">
+                <div class="inputBox">
+                    <label>วัน/เดือน/ปี</label>
+                    <div class="input">
+                        <input type="date" class="dateSelect" placeholder="กรอกวันที่">
+                        <i class="far fa-calendar-alt"></i>
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <label>เวลา/รอบ</label>
+                    <div class="input">
+                        <select name="" id="" class="time">
+                            <option value="">เลือกรอบ/เวลา</option>
+                            <option value="">11.00-13.00</option>
+                            <option value="">13.00-15.00</option>
+                            <option value="">15.00-17.00</option>
+                            <option value="">17.00-19.00</option>
+                        </select>
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <label>หมายเลขซุ้ม</label>
+                    <div class="input">
+                        <select name="" id="">
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <label>จำนวนคน</label>
+                    <div class="input">
+                        <select name="" id="">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                            <option value="">6</option>
+                            <option value="">7</option>
+                        </select>
+                        <i class="fas fa-user-alt"></i>
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <label>*ชื่อที่จอง</label>
+                    <div class="input">
+                        <input type="text">
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <label>*เบอร์โทรศัพท์</label>
+                    <div class="input">
+                        <input type="tel">
+                    </div>
+                </div>
+            </div>
+            <div class="submit-button"></div>
+        </div>
+
+        <div class="book-display"></div>
+    </div>
+    
+    
+    <script src="/js/jquery/jquery-3.5.1.min.js"></script>
+    <script src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/js/jaudApp.js"></script>
+</body>
+</html>

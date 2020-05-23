@@ -1,0 +1,391 @@
+// ----------------- @variable ---------------- //
+$main_color:#000;
+$second_color:#fff;
+$holder_color: #757575;
+
+$mobile:480px;
+$tablet:768px;
+$ipad:810px;
+$ipadpro-1:1023px;
+$ipadpro:1024px;
+$ipadpro1:1025px;
+$laptop:1366px;
+$pc:1600px;
+
+// ------------------ @font --------------------- //
+@font-face{
+    font-family: prompt;
+    src: url(/css/font/Prompt-Regular.ttf);
+}
+@font-face{
+    font-family: promptLight;
+    src: url(/css/font/Prompt-Light.ttf);
+}
+@font-face{
+    font-family: promptSemiBold;
+    src: url(/css/font/Prompt-SemiBold.ttf);
+}
+
+// ----------------- @class used ---------------- //
+
+
+// --------------------- @style --------------------- //
+*,*:before,*:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+}
+html{
+    font-size: 20px;
+    font-family: prompt;
+    color: $main_color;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+input,select{
+    &:focus{
+        outline: none;
+    }
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.container{
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (min-width:$ipadpro) {
+        width: 85%;
+    }
+}
+
+.head-nav{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    position: absolute;
+    z-index: 2;
+    background: #00000047;
+    width: 100%;
+
+    @media screen and (min-width:$ipadpro) {
+        width: 85%;
+        height: 60px;
+        top: 0%;
+        margin-top: 30px;
+        border-radius: 50px;
+        grid-template-columns: 35% 65%;
+    }
+
+    .left{
+        .logo{
+            figure{
+                display: flex;
+
+                img{
+                    border-radius: 50%;
+                }
+            }
+
+            @media screen and (min-width:$ipadpro) {
+                position: fixed;
+                width: 100px;
+                top: 1%;
+                left: 7%;
+            }
+        }
+    }
+
+    .right{
+        display: grid;
+        grid-template-columns: 80% 20%;
+
+        @media screen and (min-width:$ipadpro) {
+            grid-template-columns: 60% 40%;
+            grid-template-areas: 'menuhead search';
+        }
+
+        .menu{
+            @media screen and (max-width:$ipad) {
+                display: none;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                z-index: 12;
+                background: #fff;
+                top: 0;
+                left: 0;
+            }
+
+            @media screen and (min-width:1025px) {
+                display: block;
+                grid-area: menuhead;
+                position: relative;
+            }
+
+            ul{
+                text-align: center;
+                margin-top: 10%;
+
+                @media screen and (min-width:$ipadpro) {
+                    display: flex;
+                    height: 100%;
+                    align-items: center;
+                    padding-top: 16px;
+                    text-align: unset;
+                    margin: unset;
+                } 
+
+                li{
+                    margin: 5% 0;
+
+                    @media screen and (min-width:$ipadpro) {
+                        width: calc(100%/4);
+                        text-align: center;
+                        margin: unset;
+
+                        a{
+                            color: $second_color;
+                            font-family: promptLight;
+
+                            &:hover{
+                                color: $main_color;
+                                background: $second_color;
+                                border-radius: 20px 20px 0 0;
+                                padding: 0% 10%;
+                                padding-top: 5%;
+                                transition: all .2s;
+                            }
+                        }
+                        .selected{
+                            color: $main_color;
+                            background: $second_color;
+                            border-radius: 20px 20px 0 0;
+                            padding: 0% 10%;
+                            padding-top: 5%;
+                        }
+                    }
+
+                    a{
+                        color: $main_color;
+                    }
+                }
+                .closemenu{
+                    svg{
+                        font-size: 1.5em;
+                    }
+                    @media screen and (min-width:$ipadpro) {
+                        display: none;
+                    }
+                }
+                .contact-nav{
+                    margin-top: 30%;
+
+                    .social-icon{
+                        display: flex;
+                        justify-content: space-evenly;
+                        width: 80%;
+                        margin: 0 auto;
+                        margin-top: 5%;
+
+                        svg{
+                            font-size: 2em;
+                        }
+                    }
+
+                    @media screen and (min-width:$ipadpro) {
+                        display: none;
+                    }
+                }
+            }
+            .bottomline{
+                @media screen and (min-width:$ipadpro) {
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    background: #fff;
+                    height: 7px;
+                    border-radius: 20px 20px 0 0;
+                }
+            }
+        }
+
+        .searchq{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @media screen and (min-width:$ipadpro) {
+                grid-area: search;
+            }
+
+            .box-search{
+                position: relative;
+                width: 75%;
+
+                input{
+                    width: 100%;
+                    height: 35px;
+                    border: 2px solid $second_color;
+                    border-radius: 10px;
+                    padding: 0 10% 0 3%;
+                    background: #0000;
+
+                    &::placeholder {
+                        color: #ffffffc7;
+                    }
+
+                    &:focus{
+                        background: #ffffff86;
+
+                        &::placeholder {
+                            color: #000;
+                        }
+                    }
+                }
+                svg{
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    margin-right: 5%;
+                    color: $second_color;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .hamburger{
+            display: none;
+
+            @media screen and (max-width:$ipadpro) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+header{
+    .slideHead{
+        @media screen and (min-width:$ipadpro) {
+            height: 650px;
+        }
+    }
+}
+
+.booking-zone{
+    position: relative;
+    top: -30px;
+    z-index: 1;
+    border-radius: 10px;
+
+    .book-top{
+        .selectType{
+            background-color: #c7c7c7;
+            height: 50px;
+            border-radius: 10px;
+
+            .button-mobile{
+                @media screen and (max-width:$ipadpro-1) {
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+    
+                    label{
+                        font-size: 0.7em;
+                    }
+                    span{
+                        width: 30%;
+                        text-align: center;
+                        z-index: 2;
+                    }
+                    .active{
+                        color: $second_color;
+                    }
+                    .activeB{
+                        background-color: #353535;
+                        border-radius: 5px;
+                        transform: translateX(-50%);
+                        transition: .5s;
+                        position: absolute;
+                        width: 30%;
+                        height: 80%;
+                        z-index: 1;
+                    }  
+                }
+            }
+            .box-button{
+
+            }
+        }
+
+        .input-zone{
+            display: grid;
+            grid-template-columns: repeat(2,49%);
+            grid-gap: 1%;
+            grid-row-gap: 5px;
+            padding: 0 2%;
+
+            .inputBox{
+                label{
+                    font-size: 0.8em;
+                }
+                .input{
+                    position: relative;
+                    height: 35px;
+
+                    input,select{
+                        width: 100%!important;
+                        height: 100%!important;
+                        padding-left: 15%!important;
+                    }
+                    svg{
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        margin-left: 3%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.owl-carousel{
+    .owl-stage-outer{
+        height: 100%;
+        .owl-stage{
+            height: 100%;
+            .owl-item{
+                height: 100%;
+
+                img{
+                    @media screen and (min-width:$ipadpro) {
+                        height: 100%;
+                        border-radius: 0 0 30px 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    .owl-dots{
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
