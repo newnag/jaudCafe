@@ -7,19 +7,24 @@
     <link rel="stylesheet" href="/css/jaudStyle.min.css">
     <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.theme.default.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/css/selectMulti.css">
+    <link rel="stylesheet" href="/css/cssDisplayTable.min.css">
     <script src="/plugin/fontawesome/all.min.js"></script>
+    <script src="/js/jquery/jquery-3.5.1.min.js"></script>
 </head>
 <body>
     <nav class="container">
+        <!-- เมนูNavหัวเว็บ -->
         <div class="head-nav">
+            <!-- เมนูด้านซ้ายเป็นโลโก้ -->
             <div class="left">
                 <div class="logo">
                     <figure><img src="/img/logo/logo.jpg" alt=""></figure>
                 </div>
             </div>
 
+            <!-- เมนูด้านขวาเป็นเมนูและช่องค้นหาด้วยเบอร์ -->
             <div class="right">
                 <div class="menu">
                     <ul>
@@ -54,6 +59,7 @@
     </nav>
 
     <header>
+        <!-- สไลด์หัวเว็บ -->
         <div class="slideHead owl-carousel owl-theme owl-loaded">
             <img src="/img/pic1.jpg" alt="">
             <img src="/img/pic1.jpg" alt="">
@@ -61,7 +67,9 @@
         </div>
     </header>
 
+    <!-- ส่วนของการจองโต๊ะและซุ้ม ด้านบนจะเป็นการกรอกข้อมูล ด้านล่างจะเป็นแผนผังโต๊ะ -->
     <div class="booking-zone container">
+        <!-- โซนกรอกข้อมูลการจอง หากเลือกโต๊ะบนโซนนี้รูปแผนผังจะมีการเปลี่ยนแปลง -->
         <div class="book-top">
             <div class="selectType">
                 <div class="button-mobile">
@@ -73,7 +81,6 @@
                 </div>
 
                 <div class="box-button">
-                    
                     <div class="arch"></div>
                     <div class="table"></div>
                 </div>
@@ -105,8 +112,15 @@
                 <div class="inputBox">
                     <label>หมายเลขซุ้ม</label>
                     <div class="input">
-                        <select name="" id="">
-
+                        <select name="" id="arch" class="" multiple>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
                         </select>
                     </div>
                 </div>
@@ -114,7 +128,7 @@
                 <div class="inputBox">
                     <label>จำนวนคน</label>
                     <div class="input">
-                        <select name="" id="">
+                        <select name="people" id="">
                             <option value="">1</option>
                             <option value="">2</option>
                             <option value="">3</option>
@@ -130,28 +144,110 @@
                 <div class="inputBox">
                     <label>*ชื่อที่จอง</label>
                     <div class="input">
-                        <input type="text">
+                        <input type="text" name="name">
                     </div>
                 </div>
 
                 <div class="inputBox">
                     <label>*เบอร์โทรศัพท์</label>
                     <div class="input">
-                        <input type="tel">
+                        <input type="tel" name="phone">
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <label>*ID : LINE</label>
+                    <div class="input">
+                        <input type="text">
+                    </div>
+                </div>
+
+                <div class="inputBox">
+                    <label>*จังหวัด</label>
+                    <div class="input">
+                        <select name="" id="">
+                            <option value="">กรุงเทพ</option>
+                            <option value="">ขอนแก่น</option>
+                            <option value="">เชียงใหม่</option>
+                            <option value="">หาดใหญ่</option>
+                            <option value="">ยะลา</option>
+                            <option value="">ชุมแพ</option>
+                        </select>
                     </div>
                 </div>
             </div>
-            <div class="submit-button"></div>
+
+            <div class="submit-button">
+                <button>กดจอง</button>
+            </div>
+
+            <div class="ps">
+                <p>***หมายเหตุ ลูกค้ามาช้าเกิน 15 นาที ขออนุญาตตัดสิทธิ์ ให้ลูกค้าท่านต่อไป</p>
+            </div>
         </div>
 
-        <div class="book-display"></div>
+        <!-- โซนกดจองโต๊ะและซุ้ม -->
+        <div class="book-display">
+            <div class="display-box">
+                <figure>
+                    <!-- รูปภาพแผนผัง -->
+                    <img src="/img/display/mapv2.png" alt="">
+
+                    <!-- ที่นั่งภายในรูป -->
+                    <!-- <div class="item" id="no1">
+                        <div class="num-table"><label>1</label></div>
+                        
+                        <div class="box-hover">
+                            <div class="slide-hover owl-carousel owl-theme owl-loaded">
+                                <img src="/img/display/slide/slide2.jpg" alt="">
+                                <img src="/img/display/slide/slide3.jpg" alt="">
+                                <img src="/img/display/slide/slide4.jpg" alt="">
+                            </div>
+                            <span>คำอธิบายซุ้มหมายเลข 1</span>
+                        </div>
+                    </div> -->
+                </figure>
+            </div>
+        </div>
     </div>
     
+
+    <!-- ฟังก์ชั่นโคลนนิ่ง -->
+    <script>
+        var ele = $('.book-display .display-box figure');
+        for(i=1;i<=16;i++){
+            ele.append(`<div class="item arch" id="noA${i}">
+                        <div class="num-table"><label>${i}</label></div>
+                        
+                        <div class="box-hover">
+                            <div class="slide-hover owl-carousel owl-theme owl-loaded">
+                                <img src="/img/display/slide/slide2.jpg" alt="">
+                                <img src="/img/display/slide/slide3.jpg" alt="">
+                                <img src="/img/display/slide/slide4.jpg" alt="">
+                            </div>
+                            <span>คำอธิบายซุ้มหมายเลข ${i}</span>
+                        </div>
+                    </div>`);
+        }
+        for(i=1;i<=23;i++){
+            ele.append(`<div class="item table" id="noT${i}">
+                        <div class="num-table"><label>${i}</label></div>
+                        
+                        <div class="box-hover">
+                            <div class="slide-hover owl-carousel owl-theme owl-loaded">
+                                <img src="/img/display/slide/slide2.jpg" alt="">
+                                <img src="/img/display/slide/slide3.jpg" alt="">
+                                <img src="/img/display/slide/slide4.jpg" alt="">
+                            </div>
+                            <span>คำอธิบายซุ้มหมายเลข ${i}</span>
+                        </div>
+                    </div>`);
+        }
+    </script>
     
-    <script src="/js/jquery/jquery-3.5.1.min.js"></script>
     <script src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/plugin/selectMulti/jquery.multi-select.min.js"></script>
     <script src="/js/jaudApp.js"></script>
 </body>
 </html>

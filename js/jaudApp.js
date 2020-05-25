@@ -40,3 +40,46 @@ $('.book-top .selectType .button-mobile span').on('click',function(){
         $('.selectType .button-mobile .activeB').css('transform','translateX(-50%)');
     }
 });
+
+
+// ---------------------------- ตัวเลือกซุ้มหลายcheckbox -------------------------- //
+$('#arch').multiSelect({
+    'noneText':'กรุณาเลือกซุ้ม',
+});
+
+// ----------------------------- สไลด์ตอนHoverเลือกซุ้ม ----------------------------- //
+$('.slide-hover').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:false,
+    dots:false,
+    autoplay:true,
+    responsiveClass:true,
+    items:1,
+});
+
+// ------------------------------- ฟังก์ชั่นกดจองโต๊ะ ------------------------------ //
+class bookingTable{
+    constructor(that){
+        this.ele = that;
+    }
+
+    doBook(){
+        if($(this.ele).hasClass('arch')){
+            $(this.ele).toggleClass('selectedA');
+            $(this.ele).find('.num-table').toggle();
+        }
+        else if($(this.ele).hasClass('table')){
+            $(this.ele).toggleClass('selectedT');
+            $(this.ele).find('.num-table').toggle(); 
+        }
+        
+    }
+}
+
+$('.book-display .display-box figure .item').on('click',function(){
+    if(screen.width > 1366){
+        let Book = new bookingTable(this);
+        Book.doBook();
+    }
+});
