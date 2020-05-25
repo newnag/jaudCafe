@@ -360,6 +360,12 @@ a {
   border-radius: 10px;
 }
 
+@media screen and (min-width: 1024px) {
+  .booking-zone .book-top .selectType {
+    height: 100px;
+  }
+}
+
 .booking-zone .book-top .selectType .button-mobile {
   display: none;
 }
@@ -403,7 +409,21 @@ a {
   }
 }
 
-.booking-zone .book-top .input-zone {
+.booking-zone .book-top .selectType .box-button {
+  display: -ms-grid;
+  display: grid;
+}
+
+@media screen and (min-width: 1024px) {
+  .booking-zone .book-top .formBook {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 80% 20%;
+        grid-template-columns: 80% 20%;
+  }
+}
+
+.booking-zone .book-top .formBook .input-zone {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (49%)[2];
@@ -413,22 +433,22 @@ a {
   padding: 0 2%;
 }
 
-.booking-zone .book-top .input-zone .inputBox label {
+.booking-zone .book-top .formBook .input-zone .inputBox label {
   font-size: 0.8em;
 }
 
-.booking-zone .book-top .input-zone .inputBox .input {
+.booking-zone .book-top .formBook .input-zone .inputBox .input {
   position: relative;
   height: 35px;
 }
 
-.booking-zone .book-top .input-zone .inputBox .input input, .booking-zone .book-top .input-zone .inputBox .input select {
+.booking-zone .book-top .formBook .input-zone .inputBox .input input, .booking-zone .book-top .formBook .input-zone .inputBox .input select {
   width: 100%;
   height: 100%;
   padding-left: 15%;
 }
 
-.booking-zone .book-top .input-zone .inputBox .input svg {
+.booking-zone .book-top .formBook .input-zone .inputBox .input svg {
   position: absolute;
   left: 0;
   top: 50%;
@@ -438,21 +458,42 @@ a {
 }
 
 @media screen and (max-width: 1023px) {
-  .booking-zone .book-top .submit-button {
+  .booking-zone .book-top .formBook .submit-button {
     text-align: center;
     padding: 3% 0;
   }
 }
 
-@media screen and (max-width: 1023px) {
-  .booking-zone .book-top .submit-button button {
-    border: unset;
-    background: #000;
-    color: #fff;
-    font-size: 1em;
-    border-radius: 40px;
-    width: 80px;
-    height: 80px;
+@media screen and (min-width: 1024px) {
+  .booking-zone .book-top .formBook .submit-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.booking-zone .book-top .formBook .submit-button button {
+  border: unset;
+  background: #000;
+  color: #fff;
+  font-size: 1em;
+  border-radius: 40px;
+  width: 80px;
+  height: 80px;
+}
+
+@media screen and (min-width: 1024px) {
+  .booking-zone .book-top .formBook .submit-button button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    cursor: pointer;
   }
 }
 
