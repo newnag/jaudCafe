@@ -61,9 +61,11 @@
     <header>
         <!-- สไลด์หัวเว็บ -->
         <div class="slideHead owl-carousel owl-theme owl-loaded">
-            <img src="/img/pic1.jpg" alt="">
-            <img src="/img/pic1.jpg" alt="">
-            <img src="/img/pic1.jpg" alt="">
+            <img src="/img/slide1.jpg" alt="">
+            <img src="/img/slide2.jpg" alt="">
+            <img src="/img/slide3.jpg" alt="">
+            <img src="/img/slide4.jpg" alt="">
+            <img src="/img/slide5.jpg" alt="">
         </div>
     </header>
 
@@ -73,25 +75,39 @@
         <div class="book-top">
             <div class="selectType">
                 <div class="button-mobile">
-                    <label>จองซุ้ม</label>
-                    <span class="arch active">จองซุ้ม</span>
-                    <span class="table">จองโต๊ะ</span>
-                    <label>จองโต๊ะ</label>
+                    <label>จองซุ้มริมน้ำ</label>
+                    <div class="arch active">
+                        <img src="/img/icon/icon4-02.svg" alt="">
+                    </div>
+                    <div class="table">
+                        <img src="/img/icon/icon-table3.svg" alt="">
+                    </div>
+                    <label>จองโต๊ะเทอเรส</label>
                     <div class="activeB"></div>
                 </div>
 
                 <div class="box-button">
                     <div class="arch">
-                        <span>จองซุ้มริมน้ำ</span>
+                        <div class="button buttonArch">
+                            <img src="/img/icon/icon4-02.svg" alt="">
+                            <button>จองซุ้มริมน้ำ</button>
+                        </div>
                     </div>
                     <div class="table">
-                        <span>จองโต๊ะเทเรส</span>
+                        <div class="button buttonTable">
+                            <img src="/img/icon/icon-table3.svg" alt="">
+                            <button>จองโต๊ะเทอเรส</button>
+                        </div>
                     </div>
+
+                    <div class="bgEffect"></div>
                 </div>
             </div>
 
+            <div class="head-text"><h2>การจองแบบ ซุ้ม</h2></div>
+
             <div class="formBook">
-                <div class="input-zone">
+                <div class="input-zone Arch">
                     <div class="inputBox">
                         <label>วัน/เดือน/ปี</label>
                         <div class="input">
@@ -103,7 +119,7 @@
                     <div class="inputBox">
                         <label>เวลา/รอบ</label>
                         <div class="input">
-                            <select name="" id="" class="time">
+                            <select name="" id="time" class="time" disabled>
                                 <option value="">เลือกรอบ/เวลา</option>
                                 <option value="">11.00-13.00</option>
                                 <option value="">13.00-15.00</option>
@@ -117,15 +133,23 @@
                     <div class="inputBox">
                         <label>หมายเลขซุ้ม</label>
                         <div class="input">
-                            <select name="" id="arch" class="" multiple>
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
+                            <select name="" id="arch" class="" disabled>
+                                <option value="1" disabled>1</option>
+                                <option value="2" disabled>2</option>
+                                <option value="3" disabled>3</option>
+                                <option value="4" disabled>4</option>
+                                <option value="5" disabled>5</option>
+                                <option value="6" disabled>6</option>
+                                <option value="7" disabled>7</option>
+                                <option value="8" disabled>8</option>
+                                <option value="9" disabled>9</option>
+                                <option value="10" disabled>10</option>
+                                <option value="11" disabled>11</option>
+                                <option value="12" disabled>12</option>
+                                <option value="13" disabled>13</option>
+                                <option value="14" disabled>14</option>
+                                <option value="15" disabled>15</option>
+                                <option value="16" disabled>16</option>
                             </select>
                         </div>
                     </div>
@@ -133,15 +157,7 @@
                     <div class="inputBox">
                         <label>จำนวนคน</label>
                         <div class="input">
-                            <select name="people" id="">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                                <option value="">4</option>
-                                <option value="">5</option>
-                                <option value="">6</option>
-                                <option value="">7</option>
-                            </select>
+                            <input type="number" id="numPeople" disabled>
                             <i class="fas fa-user-alt"></i>
                         </div>
                     </div>
@@ -149,28 +165,97 @@
                     <div class="inputBox">
                         <label>*ชื่อที่จอง</label>
                         <div class="input">
-                            <input type="text" name="name">
+                            <input type="text" name="name" disabled>
                         </div>
                     </div>
     
                     <div class="inputBox">
                         <label>*เบอร์โทรศัพท์</label>
                         <div class="input">
-                            <input type="tel" name="phone">
+                            <input type="tel" name="phone" disabled>
                         </div>
                     </div>
     
                     <div class="inputBox">
                         <label>*ID : LINE</label>
                         <div class="input">
-                            <input type="text">
+                            <input type="text" disabled>
                         </div>
                     </div>
     
                     <div class="inputBox">
                         <label>*จังหวัด</label>
                         <div class="input">
-                            <select name="" id="">
+                            <select name="" id="" disabled="disabled">
+                                <option value="">กรุงเทพ</option>
+                                <option value="">ขอนแก่น</option>
+                                <option value="">เชียงใหม่</option>
+                                <option value="">หาดใหญ่</option>
+                                <option value="">ยะลา</option>
+                                <option value="">ชุมแพ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-zone Table">
+                    <div class="inputBox">
+                        <label>วัน/เดือน/ปี</label>
+                        <div class="input">
+                            <input type="date" class="dateSelect" placeholder="กรอกวันที่">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label>หมายเลขซุ้ม</label>
+                        <div class="input">
+                            <select name="" id="arch" class="" disabled>
+                                <option value="" disabled>1</option>
+                                <option value="" disabled>2</option>
+                                <option value="" disabled>3</option>
+                                <option value="" disabled>4</option>
+                                <option value="" disabled>5</option>
+                                <option value="" disabled>6</option>
+                                <option value="" disabled>7</option>
+                                <option value="" disabled>8</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label>จำนวนคน</label>
+                        <div class="input">
+                            <input type="number" id="numPeople" disabled>
+                            <i class="fas fa-user-alt"></i>
+                        </div>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label>*ชื่อที่จอง</label>
+                        <div class="input">
+                            <input type="text" name="name" disabled>
+                        </div>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label>*เบอร์โทรศัพท์</label>
+                        <div class="input">
+                            <input type="tel" name="phone" disabled>
+                        </div>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label>*ID : LINE</label>
+                        <div class="input">
+                            <input type="text" disabled>
+                        </div>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label>*จังหวัด</label>
+                        <div class="input">
+                            <select name="" id="" disabled="disabled">
                                 <option value="">กรุงเทพ</option>
                                 <option value="">ขอนแก่น</option>
                                 <option value="">เชียงใหม่</option>
@@ -200,18 +285,7 @@
                     <img src="/img/display/mapv2.png" alt="">
 
                     <!-- ที่นั่งภายในรูป -->
-                    <!-- <div class="item" id="no1">
-                        <div class="num-table"><label>1</label></div>
-                        
-                        <div class="box-hover">
-                            <div class="slide-hover owl-carousel owl-theme owl-loaded">
-                                <img src="/img/display/slide/slide2.jpg" alt="">
-                                <img src="/img/display/slide/slide3.jpg" alt="">
-                                <img src="/img/display/slide/slide4.jpg" alt="">
-                            </div>
-                            <span>คำอธิบายซุ้มหมายเลข 1</span>
-                        </div>
-                    </div> -->
+
                 </figure>
             </div>
         </div>
@@ -222,7 +296,7 @@
     <script>
         var ele = $('.book-display .display-box figure');
         for(i=1;i<=16;i++){
-            ele.append(`<div class="item arch" id="noA${i}">
+            ele.append(`<div class="item arch" id="noA${i}" data-archID="${i}">
                         <div class="num-table"><label>${i}</label></div>
                         
                         <div class="box-hover">
@@ -236,7 +310,7 @@
                     </div>`);
         }
         for(i=1;i<=23;i++){
-            ele.append(`<div class="item table" id="noT${i}">
+            ele.append(`<div class="item table" id="noT${i}" data-tableID="${i}">
                         <div class="num-table"><label>${i}</label></div>
                         
                         <div class="box-hover">
