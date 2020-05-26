@@ -62,6 +62,9 @@ $('#time').change(function(){
 $('#arch').change(function(){
     $('#numPeople').prop('max',false);
 });
+$('#archT').change(function(){
+    $('#numPeopleT').prop('max',false);
+});
 
 $('#numPeople').on("input",function(){
     $('.inputBox .input input').prop('disabled',false);
@@ -72,6 +75,27 @@ $('#numPeople').on("input",function(){
     let counter = new countPeople(this,countpeople,archSize);
     counter.doCount();
 });
+
+$('.formBook .Table .input .dateSelect').change(function(){
+    $('#archT').attr('multiple','multiple');
+    $('#archT').prop('disabled',false);
+    $('#archT option').prop('disabled',false);
+    $('#archT').multiSelect({
+        'noneText':'กรุณาเลือกซุ้ม',
+    });
+    $('#numPeopleT').prop('disabled',false);
+});
+
+$('#numPeopleT').on("input",function(){
+    $('.inputBox .input input').prop('disabled',false);
+    $('.inputBox .input select').prop('disabled',false);
+
+    let countP = $(this).val();
+    let archSize = $('#archT').val();
+    let counter = new countPeopleT(this,countP,archSize);
+    counter.doCount();
+});
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 // ----------------------------- สไลด์ตอนHoverเลือกซุ้ม ----------------------------- //
@@ -136,11 +160,15 @@ class swicthTable{
                 $(this.ele1).css('transform','translateX(-100%)');
                 $('.book-top .formBook .Table').hide();
                 $('.book-top .formBook .Arch').css('display','grid');
+                $('.display-box figure .table').addClass('disableT')
+                $('.display-box figure .arch').removeClass('disableA')
             }
             else if(this.com === 'R'){
                 $(this.ele1).css('transform','translateX(0%)');
                 $('.book-top .formBook .Arch').hide();
                 $('.book-top .formBook .Table').css('display','grid');
+                $('.display-box figure .arch').addClass('disableA')
+                $('.display-box figure .table').removeClass('disableT')
             }
         }
         else if(mode === 'mobile'){
@@ -148,11 +176,15 @@ class swicthTable{
                 $(this.ele2).css('transform','translateX(-80%)');
                 $('.book-top .formBook .Table').hide();
                 $('.book-top .formBook .Arch').css('display','grid');
+                $('.display-box figure .table').addClass('disableT')
+                $('.display-box figure .arch').removeClass('disableA')
             }
             else if(this.com === 'R'){
                 $(this.ele2).css('transform','translateX(68%)');
                 $('.book-top .formBook .Arch').hide();
                 $('.book-top .formBook .Table').css('display','grid');
+                $('.display-box figure .arch').addClass('disableA')
+                $('.display-box figure .table').removeClass('disableT') 
             }
         }
     }
@@ -201,6 +233,16 @@ class countPeople{
 }
 /////////////////////////////////////////////////////////////////////////////////////
 
+// ---------------------------- ฟังก์ชั่นนับจำนวนคนต่อโต๊ะ ------------------------------ //
+class countPeopleT extends countPeople{
+    constructor(that,people,archSize){
+        super(that,people,archSize);
+        this.max = 5; 
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
 // --------------------------------- ฟังก์ชั่นกดจองโต๊ะแล้วแสดงทั้ง select และ display ----------------------------------- //
 // ด้าน select
 $('#arch').change(function(){
@@ -225,3 +267,7 @@ $('#arch').change(function(){
     });
 })
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ------------------------------------ disable ซุ้มและโต๊ะในครั้งแรก -------------------------------------- //
+$('.display-box figure .table').addClass('disableT')
