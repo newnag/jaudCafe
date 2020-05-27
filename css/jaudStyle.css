@@ -65,7 +65,7 @@ a {
       grid-template-columns: 20% 80%;
   position: absolute;
   z-index: 2;
-  background: #00000047;
+  background: #00000085;
   width: 100%;
 }
 
@@ -85,6 +85,8 @@ a {
   .head-nav {
     -ms-grid-columns: 25% 75%;
         grid-template-columns: 25% 75%;
+    left: 0;
+    top: 2%;
   }
 }
 
@@ -157,7 +159,7 @@ a {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding-top: 16px;
+    padding-top: 19px;
     text-align: unset;
     margin: unset;
     -webkit-box-pack: end;
@@ -261,7 +263,7 @@ a {
     bottom: 0;
     width: 100%;
     background: #fff;
-    height: 10px;
+    height: 7px;
     border-radius: 20px 20px 0 0;
   }
 }
@@ -399,7 +401,13 @@ a {
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .booking-zone .book-top .selectType {
+    height: 100px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
   .booking-zone .book-top .selectType {
     height: 150px;
   }
@@ -683,6 +691,17 @@ a {
   display: none;
 }
 
+@media screen and (min-width: 1024px) {
+  .booking-zone .book-top .formBook .Table .inputBox:nth-child(3) {
+    -ms-grid-column: 3;
+        grid-column-start: 3;
+    grid-column-end: 5;
+  }
+  .booking-zone .book-top .formBook .Table .inputBox:nth-child(3) .input select {
+    width: 49%;
+  }
+}
+
 @media screen and (max-width: 1023px) {
   .booking-zone .book-top .formBook .submit-button {
     text-align: center;
@@ -727,17 +746,20 @@ a {
   color: red;
   font-size: 0.5em;
   margin-bottom: 2%;
+  text-align: center;
 }
 
 @media screen and (min-width: 1024px) {
   .booking-zone .book-top .ps p {
     margin: 1% 0;
     font-size: .8em;
+    text-align: left;
   }
 }
 
 .booking-zone .book-display {
   background-color: #c7c7c7;
+  padding-bottom: 2%;
   border-radius: 15px;
 }
 
@@ -866,6 +888,436 @@ a {
 
 .booking-zone .book-display .display-box figure .disableT:hover .box-hover {
   display: none;
+}
+
+.booking-zone .book-display .display-box figure .confirmA {
+  background-image: url(/img/display/comfirmB-02.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: default;
+}
+
+.booking-zone .book-display .display-box figure .confirmA .num-table label {
+  cursor: default;
+}
+
+.booking-zone .book-display .display-box figure .confirmA:hover .box-hover {
+  display: none;
+}
+
+.booking-zone .book-display .display-box figure .confirmT {
+  background-image: url(/img/display/comfirmG-02.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: default;
+}
+
+.booking-zone .book-display .display-box figure .confirmT .num-table label {
+  cursor: default;
+}
+
+.booking-zone .book-display .display-box figure .confirmT:hover .box-hover {
+  display: none;
+}
+
+.booking-zone .book-display .description {
+  margin: 0 2%;
+  height: 60px;
+}
+
+.booking-zone .book-display .description .box-icon {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (10%)[5];
+      grid-template-columns: repeat(5, 10%);
+  background: #fff;
+  border-radius: 30px;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+  .booking-zone .book-display .description .box-icon {
+    -ms-grid-columns: (28%)[3];
+        grid-template-columns: repeat(3, 28%);
+  }
+}
+
+.booking-zone .book-display .description .box-icon .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.booking-zone .book-display .description .box-icon .box img {
+  width: 20%;
+}
+
+.booking-zone .book-display .description .box-icon .box span {
+  font-size: 0.8em;
+  font-family: promptLight;
+}
+
+@media screen and (max-width: 480px) {
+  .booking-zone .book-display .description .box-icon .box span {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  ._3column {
+    margin-top: 3%;
+  }
+}
+
+._3column .background {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  ._3column .background {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 120%;
+    opacity: .2;
+  }
+}
+
+._3column .grid-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  grid-row-gap: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  ._3column .grid-box {
+    -ms-grid-columns: (32%)[3];
+        grid-template-columns: repeat(3, 32%);
+    grid-gap: 2%;
+    grid-row-gap: unset;
+  }
+}
+
+._3column .grid-box .box {
+  background: #afaaaa38;
+  padding: 15% 10%;
+  text-align: center;
+  border-radius: 30px;
+}
+
+._3column .grid-box .box .icon svg {
+  font-size: 3em;
+}
+
+._3column .grid-box .box .head, ._3column .grid-box .box .text {
+  font-family: promptLight;
+}
+
+._3column .grid-box .box .head {
+  margin: 3% 0;
+}
+
+._3column .grid-box .box .text {
+  font-size: 1em;
+}
+
+.slide-gallary {
+  background-image: url(/img/BG3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 950px;
+  border-radius: 100px;
+  margin: 5% 0;
+}
+
+@media screen and (max-width: 480px) {
+  .slide-gallary {
+    border-radius: 20px;
+    height: 90%;
+    padding: 3% 5%;
+  }
+}
+
+.slide-gallary .content {
+  color: #fff;
+  padding-top: 1%;
+}
+
+.slide-gallary .content .head-text {
+  margin: 3% 0;
+}
+
+.slide-gallary .content .head-text h1 {
+  font-size: 5em;
+  font-family: promptSemiBold;
+}
+
+@media screen and (max-width: 480px) {
+  .slide-gallary .content .head-text h1 {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .slide-gallary .content .text {
+    padding-right: 65%;
+  }
+}
+
+.slide-gallary .content .text p {
+  font-size: .8em;
+}
+
+@media screen and (min-width: 1024px) {
+  .slide-gallary .content .text p {
+    font-size: 1em;
+  }
+}
+
+.slide-gallary .content .slider {
+  margin-top: 5%;
+}
+
+.slide-gallary .content .slider .owl-dots {
+  bottom: -25%;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-me {
+    margin-top: 10%;
+  }
+}
+
+.about-me .background {
+  display: none;
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 295%;
+  opacity: .2;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .about-me .background {
+    display: block;
+    top: 342%;
+  }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1599px) {
+  .about-me .background {
+    display: block;
+    top: 362%;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1899px) {
+  .about-me .background {
+    display: block;
+    top: 306%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .about-me .background {
+    display: block;
+  }
+}
+
+.about-me .grid-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+      grid-template-areas: 'txt' 'img';
+  padding: 0 3%;
+  grid-row-gap: 10px;
+}
+
+@media screen and (min-width: 1366px) {
+  .about-me .grid-content {
+    -ms-grid-columns: 60% 40%;
+        grid-template-columns: 60% 40%;
+        grid-template-areas: unset;
+    padding: unset;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .about-me .grid-content {
+    -ms-grid-columns: 60% 35%;
+        grid-template-columns: 60% 35%;
+        grid-template-areas: unset;
+    padding: unset;
+  }
+}
+
+.about-me .grid-content figure {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: img;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-me .grid-content figure {
+    grid-area: unset;
+  }
+}
+
+.about-me .grid-content figure img {
+  border-radius: 10px;
+}
+
+.about-me .grid-content .content {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: txt;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-me .grid-content .content {
+    grid-area: unset;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .about-me .grid-content .content .head {
+    text-align: right;
+  }
+}
+
+.about-me .grid-content .content .head h1 {
+  font-size: 1.5em;
+  font-family: promptSemiBold;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-me .grid-content .content .head h1 {
+    font-size: 5em;
+  }
+}
+
+.about-me .grid-content .content .text {
+  text-align: right;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-me .grid-content .content .text {
+    padding-left: 15%;
+  }
+}
+
+.about-me .grid-content .content .text p {
+  font-size: .8em;
+}
+
+@media screen and (min-width: 1024px) {
+  .about-me .grid-content .content .text p {
+    font-size: 1em;
+  }
+}
+
+.contact {
+  margin-top: 8%;
+  background-color: #000;
+  border-radius: 50px 50px 0 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .contact {
+    border-radius: 120px 120px 0 0;
+  }
+}
+
+.contact .box-contact {
+  color: #fff;
+  text-align: center;
+  padding: 3% 0;
+}
+
+.contact .box-contact figure img {
+  width: 8%;
+}
+
+.contact .box-contact .head h1 {
+  font-size: 1.5em;
+  font-family: promptSemiBold;
+}
+
+@media screen and (min-width: 1024px) {
+  .contact .box-contact .head h1 {
+    font-size: 5em;
+  }
+}
+
+.contact .box-contact .text p {
+  font-size: .8em;
+}
+
+@media screen and (min-width: 1024px) {
+  .contact .box-contact .text p {
+    font-size: 1em;
+  }
+}
+
+.contact .box-contact .tel {
+  margin-top: 5%;
+}
+
+.contact .box-contact .tel span {
+  font-size: 1.5em;
+}
+
+@media screen and (min-width: 1024px) {
+  .contact .box-contact .tel span {
+    font-size: 2em;
+  }
+}
+
+.contact .box-contact .social a {
+  margin: 0 1%;
+}
+
+.contact .box-contact .social a svg {
+  color: #fff;
+  font-size: 1.5em;
+}
+
+footer .footer {
+  text-align: center;
+  padding: 5px 0;
+  background-color: #fff;
+}
+
+footer .footer p {
+  font-size: 0.7em;
+  font-family: promptLight;
+}
+
+footer .footer p a {
+  color: #000;
 }
 
 .owl-carousel .owl-stage-outer {

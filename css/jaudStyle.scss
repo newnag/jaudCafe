@@ -73,7 +73,7 @@ a{
     grid-template-columns: 20% 80%;
     position: absolute;
     z-index: 2;
-    background: #00000047;
+    background: #00000085;
     width: 100%;
 
     @media screen and (min-width:$laptop){
@@ -86,6 +86,8 @@ a{
     }
     @media screen and (min-width:$ipadpro) and (max-width:1365px){
         grid-template-columns: 25% 75%;
+        left: 0;
+        top: 2%;
     }
 
     .left{
@@ -143,7 +145,7 @@ a{
                     display: flex;
                     height: 100%;
                     align-items: center;
-                    padding-top: 16px;
+                    padding-top: 19px;
                     text-align: unset;
                     margin: unset;
                     justify-content: flex-end;
@@ -224,7 +226,7 @@ a{
                     bottom: 0;
                     width: 100%;
                     background: #fff;
-                    height: 10px;
+                    height: 7px;
                     border-radius: 20px 20px 0 0;
                 }
             }
@@ -320,7 +322,10 @@ header{
             @media screen and (min-width:481px) and (max-width:$ipad) {
                 height: 100px;
             }
-            @media screen and (min-width:$ipadpro) {
+            @media screen and (min-width:$ipadpro) and (max-width:1365px) {
+                height: 100px;
+            }
+            @media screen and (min-width:$laptop) {
                 height: 150px;
             }
 
@@ -531,16 +536,23 @@ header{
                             transform: translateY(-50%);
                             margin-left: 3%;
                         }
-    
-                        
-                        
-                    }
-    
-                    
+                    } 
                 }
             }
             .Table{
                 display: none;
+
+                @media screen and (min-width:$ipadpro) {
+                    .inputBox:nth-child(3){
+                        grid-column-start: 3;
+                        grid-column-end: 5;
+                        .input{
+                            select{
+                                width: 49%;
+                            }
+                        }
+                    } 
+                }
             }
             .submit-button{
                 @media screen and (max-width:$ipadpro-1) {
@@ -577,10 +589,12 @@ header{
                 color: red;
                 font-size: 0.5em;
                 margin-bottom: 2%;
+                text-align: center;
 
                 @media screen and (min-width:$ipadpro) {
                     margin: 1% 0;
                     font-size: .8em;
+                    text-align: left;
                 }
             }
         }
@@ -588,7 +602,7 @@ header{
 
     .book-display{
         background-color: #c7c7c7;
-        //height: 500px;
+        padding-bottom: 2%;
         border-radius: 15px;
 
         .display-box{
@@ -707,7 +721,355 @@ header{
                   display: none;
                 }
               }
+
+              .confirmA{
+                background-image: url(/img/display/comfirmB-02.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                cursor: default;
+
+                .num-table{
+                    label{
+                      cursor: default;
+                    }
+                }
+                &:hover .box-hover{
+                    display: none;
+                }
+              }
+              .confirmT{
+                background-image: url(/img/display/comfirmG-02.jpg);
+                background-size: contain;
+                background-repeat: no-repeat;
+                cursor: default;
+
+                .num-table{
+                    label{
+                      cursor: default;
+                    }
+                }
+                &:hover .box-hover{
+                    display: none;
+                }
+              }
               
+            }
+        }
+
+        .description{
+            margin: 0 2%;
+            height: 60px;
+
+            .box-icon{
+                display: grid;
+                grid-template-columns: repeat(5,10%);
+                background: #fff;
+                border-radius: 30px;
+                height: 100%;
+                justify-content: center;
+
+                @media screen and (max-width:$mobile) {
+                    grid-template-columns: repeat(3,28%);
+                }
+
+                .box{
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+
+                    img{
+                        width: 20%;
+                    }
+                    span{
+                        font-size: 0.8em;
+                        font-family: promptLight;
+
+                        @media screen and (max-width:$mobile) {
+                            font-size: 0.6em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+._3column{
+    @media screen and (max-width:$mobile) {
+        margin-top: 3%;
+    }
+
+    .background{
+        display: none;
+        @media screen and (min-width:$ipadpro) {
+            display: block;
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            top: 120%;
+            opacity: .2;  
+        }
+    }
+
+    .grid-box{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-row-gap: 10px;
+
+        @media screen and (min-width:$ipadpro) {
+            grid-template-columns: repeat(3,32%);
+            grid-gap: 2%;
+            grid-row-gap: unset;
+        }
+
+        .box{
+            background: #afaaaa38;
+            padding: 15% 10%;
+            text-align: center;
+            border-radius: 30px;
+
+            .icon{
+                svg{
+                    font-size: 3em;
+                }
+            }
+            .head,.text{
+                font-family: promptLight;
+            }
+            .head{
+                margin: 3% 0;
+            }
+            .text{
+                font-size: 1em;
+            }
+        }
+    }
+}
+
+.slide-gallary{
+    background-image: url(/img/BG3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 950px;
+    border-radius: 100px;
+    margin: 5% 0;
+
+    @media screen and (max-width:$mobile) {
+        border-radius: 20px;
+        height: 90%;
+        padding: 3% 5%;
+    }
+
+    .content{
+        color: $second_color;
+        padding-top: 1%;
+
+        .head-text{
+            margin: 3% 0;
+            h1{
+                font-size: 5em;
+                font-family: promptSemiBold;
+                
+                @media screen and (max-width:$mobile) {
+                    font-size: 1.5em;
+                }
+            }
+        }
+        .text{
+            @media screen and (min-width:$ipadpro) {
+                padding-right: 65%;
+            }
+
+            p{
+                font-size: .8em;
+                @media screen and (min-width:$ipadpro) {
+                    font-size: 1em;
+                }
+            }
+        }
+
+        .slider{
+            margin-top: 5%;
+
+            .owl-dots{
+                bottom: -25%;
+            }
+        }
+    }
+}
+
+.about-me{
+    @media screen and (min-width:$ipadpro) {
+        margin-top: 10%;
+    }
+
+    .background{
+        display: none;
+        position: absolute;
+        z-index: -1;
+        right: 0;
+        top: 295%;
+        opacity: .2;  
+        @media screen and (min-width:$ipadpro) and (max-width:1365px) {
+            display: block;
+            top: 342%;
+        }
+        @media screen and (min-width:$laptop) and (max-width:1599px) {
+            display: block;
+            top: 362%;
+        }
+        @media screen and (min-width:1600px) and (max-width:1899px) {
+            display: block;
+            top: 306%;
+        }
+        @media screen and (min-width:$pc) {
+            display: block;
+        }
+    }
+
+    .grid-content{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-areas: 'txt' 'img';
+        padding: 0 3%;
+        grid-row-gap: 10px;
+
+        @media screen and (min-width:$ipadpro) {
+            
+        }
+        @media screen and (min-width:$laptop) {
+            grid-template-columns: 60% 40%;
+            grid-template-areas: unset;
+            padding: unset;
+        }
+        @media screen and (min-width:$pc) {
+            grid-template-columns: 60% 35%;
+            grid-template-areas: unset;
+            padding: unset;
+        }
+
+        figure{
+            grid-area: img;
+            @media screen and (min-width:$ipadpro) {
+                grid-area: unset;
+            }
+
+            img{
+                border-radius: 10px;
+            }
+        }
+        .content{
+            grid-area: txt;
+            @media screen and (min-width:$ipadpro) {
+                grid-area: unset;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .head{
+                @media screen and (min-width:$ipadpro) {
+                    text-align: right;  
+                }
+
+                h1{
+                    font-size: 1.5em;
+                    font-family: promptSemiBold;
+
+                    @media screen and (min-width:$ipadpro) {
+                        font-size: 5em;
+                    }
+                } 
+            }
+            .text{
+                text-align: right;   
+                
+                @media screen and (min-width:$ipadpro) {
+                    padding-left: 15%;
+                }
+
+                p{
+                    font-size: .8em;
+
+                    @media screen and (min-width:$ipadpro) {
+                        font-size: 1em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contact{
+    margin-top: 8%;
+    background-color: $main_color;
+    border-radius: 50px 50px 0 0;
+
+    @media screen and (min-width:$ipadpro) {
+        border-radius: 120px 120px 0 0;
+    }
+
+    .box-contact{
+        color: $second_color;
+        text-align: center;
+        padding: 3% 0;
+
+        figure{
+            img{
+                width: 8%;
+            }
+        }
+        .head{
+            h1{
+                font-size: 1.5em;
+                font-family: promptSemiBold;
+                @media screen and (min-width:$ipadpro) {
+                    font-size: 5em;
+                }
+            }
+        }
+        .text{
+            p{
+                font-size: .8em;
+
+                @media screen and (min-width:$ipadpro) {
+                    font-size: 1em;
+                }
+            }
+        }
+        .tel{
+            margin-top: 5%;
+
+            span{
+                font-size: 1.5em;
+                
+                @media screen and (min-width:$ipadpro) {
+                    font-size: 2em;
+                }
+            }
+        }
+        .social{
+            a{
+                margin: 0 1%;
+                svg{
+                    color: $second_color;
+                    font-size: 1.5em;
+                }
+            } 
+        }
+    }
+}
+
+footer{
+    .footer{
+        text-align: center;
+        padding: 5px 0;
+        background-color: $second_color;
+        p{
+            font-size: 0.7em;
+            font-family: promptLight;
+            a{
+                color: $main_color;
             }
         }
     }

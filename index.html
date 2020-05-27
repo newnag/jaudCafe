@@ -207,28 +207,26 @@
                             <i class="far fa-calendar-alt"></i>
                         </div>
                     </div>
-    
-                    <div class="inputBox">
-                        <label>หมายเลขโต๊ะ</label>
-                        <div class="input">
-                            <select name="" id="archT" class="" disabled>
-                                <option value="" disabled>1</option>
-                                <option value="" disabled>2</option>
-                                <option value="" disabled>3</option>
-                                <option value="" disabled>4</option>
-                                <option value="" disabled>5</option>
-                                <option value="" disabled>6</option>
-                                <option value="" disabled>7</option>
-                                <option value="" disabled>8</option>
-                            </select>
-                        </div>
-                    </div>
-    
+
                     <div class="inputBox">
                         <label>จำนวนคน</label>
                         <div class="input">
                             <input type="number" id="numPeopleT" disabled>
                             <i class="fas fa-user-alt"></i>
+                        </div>
+                    </div>
+    
+                    <div class="inputBox">
+                        <label>หมายเลขโต๊ะ</label>
+                        <div class="input">
+                            <select name="" id="archT" class="" disabled>
+                                <script>
+                                    let ele1 = $('#archT');
+                                    for(i=1;i<=23;i++){
+                                        ele1.append(`<option value="${i}" disabled>${i}</option>`)
+                                    }
+                                </script>
+                            </select>
                         </div>
                     </div>
     
@@ -289,9 +287,133 @@
 
                 </figure>
             </div>
+
+            <div class="description">
+                <div class="box-icon">
+                    <div class="box">
+                        <img src="/img/display/icon1-02.svg" alt="">
+                        <span>วอคอิน</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="/img/display/icon-table-1.svg" alt="">
+                        <span>โต๊ะว่าง</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="/img/display/icon-table2-02.svg" alt="">
+                        <span>จองแล้ว</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="/img/display/check-icon.svg" alt="">
+                        <span>ที่คุณเลือก</span>
+                    </div>
+
+                    <div class="box">
+                        <img src="/img/display/comfirm-02.svg" alt="">
+                        <span>รอคอนเฟิร์ม</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="_3column container">
+        <div class="background"><img src="/img/BG1.jpg" alt=""></div>
+        <div class="grid-box">
+            <div class="box">
+                <div class="icon"><i class="fas fa-music"></i></div>
+                <div class="head"><h2>เพลงเพราะ/ดนตรีสด</h2></div>
+                <div class="text">
+                    <p>
+                        ฟังเพลงเพราะตอนเย็นที่ร้าน จ้วดคาเฟ่ และดนตรีสดที่ไพเราะ 
+                        ศิลปินคุณภาพ ผลัดเปลี่ยนหมุนเวียนกันมาในแต่ละวัน
+                    </p> 
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="icon"><i class="fas fa-utensils"></i></div>
+                <div class="head"><h2>อาหารอร่อย</h2></div>
+                <div class="text">
+                    <p>
+                        อาหารอร่อย รสชาติเฉพาะที่ทางร้านจ้วดคาเฟ่เท่านั้น มีให้คุณได้เลือกสั่งกว่า 500 เมนู 
+                        ทั้งอาหาร อิสาน,อาหารไทย,อาหารต่างประเทศและของหวานรสชาติชื่นใจ
+                    </p> 
+                </div>
+            </div>  
+
+            <div class="box">
+                <div class="icon"><i class="fas fa-cloud-moon"></i></div>
+                <div class="head"><h2>บรรยากาศดี</h2></div>
+                <div class="text">
+                    <p>
+                        ดื่มด่ำกับบรรยากาศ ธรรมชาติ สระน้ำสีฟ้าสวย ทุ่งนาเขียวขจี 
+                        อากาศบริสุทธิ์พร้อมวิวถ่ายรูปสวยๆ ให้ทุกท่านได้เก็บความประทับใจ
+                    </p> 
+                </div>
+            </div>
         </div>
     </div>
     
+    <div class="slide-gallary">
+        <div class="content container">
+            <div class="head-text"><h1>บรรยากาศดี/อาหารอร่อย</h1></div>
+            <div class="text">
+                <p>
+                    ข้อความตัวอย่างข้อความตัวอย่างข้อความตัวอย่างข้อความตัวอย่างข้อความตัวอย่างข้อความตัวอย่างข้อความตัวอย่าง
+                    ข้อความตัวอย่างข้อความตัวอย่างข้อความตัวอย่างข้อความตัวอย่าง
+            </div>
+
+            <div class="slider owl-carousel owl-theme owl-loaded">
+                <img src="/img/slidemini1.jpg" alt="">
+                <img src="/img/slidemini2.jpg" alt="">
+                <img src="/img/slidemini3.jpg" alt="">
+                <img src="/img/slidemini1.jpg" alt="">
+                <img src="/img/slidemini2.jpg" alt="">
+                <img src="/img/slidemini3.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="about-me container">
+        <div class="background"><img src="/img/BG2.jpg" alt=""></div>
+
+        <div class="grid-content">
+            <figure><img src="/img/image-about.jpg" alt=""></figure>
+            <div class="content">
+                <div class="head"><h1>เกี่ยวกับเรา</h1></div>
+                <div class="text">
+                    <p>
+                        ร้านจ้วดคาเฟ่พร้อมเปิดบริการทุกวัน เวลา 11.00 - 22.00 น.
+                        อาหารอร่อย บรรยากาศดี มีดนตรีสด โซนใหม่ ซุ้มใหม่ เพียงพอต่อการรับบริการแล้ว
+                        ไม่ต้องรอนาน กว่า 50 ซุ้ม
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <div class="box-contact">
+            <figure><img src="/img/logo/logo-01.svg" alt=""></figure>
+            <div class="head"><h1>ติดต่อ จ้วดคาเฟ่</h1></div>
+            <div class="text"><p>สามารถติดต่อร้านจ้วดคาเฟ่ได้ตามเบอร์โทร Line, facebook, twitter ด้านล่างนี้</p></div>
+            <div class="tel"><span>โทร: 091-0634589</span></div>
+            <div class="social">
+                <a href=""><i class="fab fa-line"></i></a>
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <p>&copy; 2020 <a href="https://wynnsoft-solution.com">Wynnsoft Solution.com</a></p>
+        </div>
+    </footer>
 
     <!-- ฟังก์ชั่นโคลนนิ่ง -->
     <script>

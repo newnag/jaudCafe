@@ -4,8 +4,29 @@ $('.slideHead').owlCarousel({
     margin:10,
     nav:false,
     dots:true,
+    autoplay:true,
     responsiveClass:true,
     items:1,
+});
+$('.slider').owlCarousel({
+    loop:true,
+    margin:50,
+    nav:false,
+    dots:true,
+    autoplay:true,
+    responsiveClass:true,
+    items:3,
+    responsive:{
+        0:{
+            items:1,
+        },
+        768:{
+            items:2,
+        },
+        1024:{
+            items:3,
+        }
+    }
 });
 //////////////////////////////////////////////////////////////////
 
@@ -59,6 +80,7 @@ $('#time').change(function(){
     $('#numPeople').prop('disabled',false);
 });
 
+// คลายล็อกจำนวนคนใช้บริการ เมื่อมีการเพิ่มโต๊ะ
 $('#arch').change(function(){
     $('#numPeople').prop('max',false);
 });
@@ -121,7 +143,7 @@ class bookingTable{
         if($(this.ele).hasClass('arch')){
             $(this.ele).toggleClass('selectedA');
             $(this.ele).find('.num-table').toggle();
-            // ส่วนการกดDisplay แล้วแสดงที่Select
+            // ส่วนการกดDisplayซุ้ม แล้วแสดงที่Select
             let t =  $(this.ele).attr('data-archid');
             $(`#_${t-1}`).click();
 
@@ -129,6 +151,9 @@ class bookingTable{
         else if($(this.ele).hasClass('table')){
             $(this.ele).toggleClass('selectedT');
             $(this.ele).find('.num-table').toggle(); 
+            // ส่วนการกดDisplayโต๊ะ แล้วแสดงที่Select
+            let t =  $(this.ele).attr('data-tableid');
+            $(`#_${t-1}`).click();
         }
         
     }
@@ -137,7 +162,7 @@ class bookingTable{
 $('.book-display .display-box figure .item').on('click',function(){
     if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         if(screen.width >= 1366){
-            if(!$(this).hasClass('disableA') && !$(this).hasClass('disableT')){
+            if(!$(this).hasClass('disableA') && !$(this).hasClass('disableT') && !$(this).hasClass('confirmA') && !$(this).hasClass('confirmT')){
                 let Book = new bookingTable(this);
                 Book.doBook();
             }
@@ -244,30 +269,38 @@ class countPeopleT extends countPeople{
 ///////////////////////////////////////////////////////////////////////////////////////
 
 // --------------------------------- ฟังก์ชั่นกดจองโต๊ะแล้วแสดงทั้ง select และ display ----------------------------------- //
-// ด้าน select
+// ด้าน select ซุ้ม
 $('#arch').change(function(){
     let archNo = $(this).val();
-    //console.log(this);
-
-    if($('.multi-select-container .multi-select-menu .multi-select-menuitems label input').is(":checked")){
-        console.log("Add");
-    }
-    else{
-        console.log("Remove")
-    }
-
     $('.book-display .display-box figure .item').removeClass('selectedA');
     $('.book-display .display-box figure .item .num-table').show();
     
     archNo.forEach(element => {
-        //console.log(element);
-        Ele = $(`.book-display .display-box figure .item[data-archid=${element}]`);
+        let Ele = $(`.book-display .display-box figure .item[data-archid=${element}]`);
         Ele.addClass('selectedA');
         Ele.find('.num-table').hide()
     });
-})
+});
+
+//ด้าน select โต๊ะ
+$('#archT').change(function(){
+    let tableNo = $(this).val();
+    $('.book-display .display-box figure .item').removeClass('selectedT');
+    $('.book-display .display-box figure .item .num-table').show();
+
+    tableNo.forEach(element => {
+        let EleT = $(`.book-display .display-box figure .item[data-tableid=${element}]`);
+        EleT.addClass('selectedT');
+        EleT.find('.num-table').hide()
+    });
+});
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ------------------------------------ disable ซุ้มและโต๊ะในครั้งแรก -------------------------------------- //
 $('.display-box figure .table').addClass('disableT')
+// ------------------------- เมื่อรอconfirm ให้แสดงคลาส confirm และฟังก์ชั่นนี้ ----------------------- //
+if($('.display-box figure .item').hasClass('confirmA') || $('.display-box figure .item').hasClass('confirmT')){
+    $('.display-box figure .item.confirmA').find('.num-table').hide();
+    $('.display-box figure .item.confirmT').find('.num-table').hide();
+}
