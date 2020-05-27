@@ -69,15 +69,15 @@ a {
   width: 100%;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1366px) {
   .head-nav {
     width: 85%;
     height: 60px;
     top: 0%;
     margin-top: 30px;
     border-radius: 50px;
-    -ms-grid-columns: 35% 65%;
-        grid-template-columns: 35% 65%;
+    -ms-grid-columns: 30% 70%;
+        grid-template-columns: 30% 70%;
   }
 }
 
@@ -116,8 +116,8 @@ a {
 
 @media screen and (min-width: 1024px) {
   .head-nav .right {
-    -ms-grid-columns: 60% 40%;
-        grid-template-columns: 60% 40%;
+    -ms-grid-columns: 70% 30%;
+        grid-template-columns: 70% 30%;
         grid-template-areas: 'menuhead search';
   }
 }
@@ -160,6 +160,9 @@ a {
     padding-top: 16px;
     text-align: unset;
     margin: unset;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 }
 
@@ -169,9 +172,15 @@ a {
 
 @media screen and (min-width: 1024px) {
   .head-nav .right .menu ul li {
-    width: calc(100%/4);
+    width: 18%;
     text-align: center;
     margin: unset;
+  }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1599px) {
+  .head-nav .right .menu ul li {
+    width: 19%;
   }
 }
 
@@ -183,6 +192,7 @@ a {
   .head-nav .right .menu ul li a {
     color: #fff;
     font-family: promptLight;
+    font-size: .7em;
   }
   .head-nav .right .menu ul li a:hover {
     color: #000;
@@ -251,7 +261,7 @@ a {
     bottom: 0;
     width: 100%;
     background: #fff;
-    height: 8px;
+    height: 10px;
     border-radius: 20px 20px 0 0;
   }
 }

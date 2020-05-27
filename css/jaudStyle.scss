@@ -76,13 +76,13 @@ a{
     background: #00000047;
     width: 100%;
 
-    @media screen and (min-width:$ipadpro) {
+    @media screen and (min-width:$laptop){
         width: 85%;
         height: 60px;
         top: 0%;
         margin-top: 30px;
         border-radius: 50px;
-        grid-template-columns: 35% 65%;
+        grid-template-columns: 30% 70%;
     }
     @media screen and (min-width:$ipadpro) and (max-width:1365px){
         grid-template-columns: 25% 75%;
@@ -104,6 +104,7 @@ a{
                 top: -30%;
                 left: 0%;
             }
+            
         }
     }
 
@@ -112,7 +113,7 @@ a{
         grid-template-columns: 80% 20%;
 
         @media screen and (min-width:$ipadpro) {
-            grid-template-columns: 60% 40%;
+            grid-template-columns: 70% 30%;
             grid-template-areas: 'menuhead search';
         }
 
@@ -145,15 +146,19 @@ a{
                     padding-top: 16px;
                     text-align: unset;
                     margin: unset;
+                    justify-content: flex-end;
                 } 
 
                 li{
                     margin: 5% 0;
 
                     @media screen and (min-width:$ipadpro) {
-                        width: calc(100%/4);
+                        width: 18%;
                         text-align: center;
                         margin: unset;
+                    }
+                    @media screen and (min-width:$laptop) and (max-width:1599px) {
+                        width: 19%;
                     }
 
                     a{
@@ -162,6 +167,7 @@ a{
                         @media screen and (min-width:$ipadpro){
                             color: $second_color;
                             font-family: promptLight;
+                            font-size: .7em;
 
                             &:hover{
                                 color: $main_color;
@@ -218,7 +224,7 @@ a{
                     bottom: 0;
                     width: 100%;
                     background: #fff;
-                    height: 8px;
+                    height: 10px;
                     border-radius: 20px 20px 0 0;
                 }
             }
