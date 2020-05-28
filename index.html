@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>จ้วดคาเฟ่ JaudCafe</title>
-    <link rel="stylesheet" href="/css/jaudStyle.min.css">
+    <link rel="stylesheet" href="/css/jaudStyle.min.css?v=4.2.1">
     <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="/css/selectMulti.css">
-    <link rel="stylesheet" href="/css/cssDisplayTable.min.css">
+    <link rel="stylesheet" href="/css/cssDisplayTable.min.css?v=2">
     <script src="/plugin/fontawesome/all.min.js"></script>
     <script src="/js/jquery/jquery-3.5.1.min.js"></script>
 </head>
@@ -20,7 +20,7 @@
             <!-- เมนูด้านซ้ายเป็นโลโก้ -->
             <div class="left">
                 <div class="logo">
-                    <figure><img src="/img/logo/logo.jpg" alt=""></figure>
+                    <figure><img src="/img/logo/logo.png" alt=""></figure>
                 </div>
             </div>
 
@@ -55,6 +55,16 @@
                 </div>
 
                 <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+
+            <!-- เบอร์ติดต่อและโซเชียวด้านบนเมนู -->
+            <div class="tel-social">
+                <div class="tel"><span>โทร: 091-0634589</span></div>
+                <div class="social">
+                    <a href=""><i class="fab fa-line"></i></a>
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
         </div>
     </nav>
@@ -107,6 +117,7 @@
 
             <div class="head-text"><h2>การจองแบบ ซุ้ม</h2></div>
 
+            <!-- โซนกรอกข้อมูลจะแบ่งเป็นแบบซู้มและแบบโต๊ะ -->
             <div class="formBook">
                 <div class="input-zone Arch">
                     <div class="inputBox">
@@ -152,6 +163,7 @@
                                 <option value="15" disabled>15</option>
                                 <option value="16" disabled>16</option>
                             </select>
+                            <img src="/img/display/icon3-02.svg" alt="">
                         </div>
                     </div>
     
@@ -209,13 +221,20 @@
                     </div>
 
                     <div class="inputBox">
-                        <label>จำนวนคน</label>
+                        <label>เวลา/รอบ</label>
                         <div class="input">
-                            <input type="number" id="numPeopleT" disabled>
-                            <i class="fas fa-user-alt"></i>
+                            <select name="" id="timeT" class="time" disabled>
+                                <option value="">เลือกรอบ/เวลา</option>
+                                <option value="">17.00-19.00</option>
+                                <option value="">17.00-19.00</option>
+                                <option value="">17.00-19.00</option>
+                                <option value="">17.00-19.00</option>
+                                <option value="">17.00-19.00</option>
+                            </select>
+                            <i class="fas fa-clock"></i>
                         </div>
                     </div>
-    
+
                     <div class="inputBox">
                         <label>หมายเลขโต๊ะ</label>
                         <div class="input">
@@ -227,6 +246,15 @@
                                     }
                                 </script>
                             </select>
+                            <img src="/img/display/icon-table2-02.svg" alt="">
+                        </div>
+                    </div>
+
+                    <div class="inputBox">
+                        <label>จำนวนคน</label>
+                        <div class="input">
+                            <input type="number" id="numPeopleT" disabled>
+                            <i class="fas fa-user-alt"></i>
                         </div>
                     </div>
     
@@ -282,7 +310,7 @@
                 <figure>
                     <!-- รูปภาพแผนผัง -->
                     <img src="/img/display/mapv2.png" alt="">
-
+                    <div class="pre-select"></div>
                     <!-- ที่นั่งภายในรูป -->
 
                 </figure>
@@ -451,6 +479,6 @@
     <script src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/plugin/selectMulti/jquery.multi-select.min.js"></script>
-    <script src="/js/jaudApp.js"></script>
+    <script src="/js/jaudApp.js?=v1.1.1"></script>
 </body>
 </html>

@@ -1,3 +1,12 @@
+$mobile:480px;
+$tablet:768px;
+$ipad:810px;
+$ipadpro-1:1023px;
+$ipadpro:1024px;
+$ipadpro1:1025px;
+$laptop:1366px;
+$pc:1600px;
+
 @mixin position($y,$x) {
     bottom: $y;
     left: $x;
@@ -8,52 +17,100 @@
         .item{
             // หมายเลขซุ้มและโต๊ะ
             &#noA1{
-                @include position(17.4%, 33.5%)
+                @include position(17.4%, 33.5%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 33.5%);
+                }
             }
             &#noA2{
-                @include position(17.4%, 39.8%)
+                @include position(17.4%, 39.8%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 39.8%);
+                }
             }
             &#noA3{
-                @include position(17.4%, 49.3%)
+                @include position(17.4%, 49.3%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 49.3%);
+                }
             }
             &#noA4{
-                @include position(17.4%, 55.4%)
+                @include position(17.4%, 55.4%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 55.4%);
+                }
             }
             &#noA5{
-                @include position(17.4%, 61.8%)
+                @include position(17.4%, 61.8%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 61.8%);
+                }
             }
             &#noA6{
-                @include position(17.4%, 67.9%)
+                @include position(17.4%, 67.9%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 67.9%);
+                }
             }
             &#noA7{
-                @include position(17.4%, 74.1%)
+                @include position(17.4%, 74.1%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 74.1%);
+                }
             }
             &#noA8{
-                @include position(17.4%, 80.3%)
+                @include position(17.4%, 80.3%);
+                @media screen and (max-width:$mobile){
+                    @include position(18.4%, 80.3%);
+                }
             }
             &#noA9{
-                @include position(65.6%, 39.7%)
+                @include position(65.6%, 39.7%);
+                @media screen and (max-width:$mobile){
+                    @include position(66.6%, 39.7%);
+                }
             }
             &#noA10{
-                @include position(65.6%, 49.4%)
+                @include position(65.6%, 49.4%);
+                @media screen and (max-width:$mobile){
+                    @include position(66.6%, 49.4%);
+                }
             }
             &#noA11{
-                @include position(56.8%, 39.7%)
+                @include position(56.8%, 39.7%);
+                @media screen and (max-width:$mobile){
+                    @include position(57.8%, 39.7%);
+                }
             }
             &#noA12{
-                @include position(56.8%, 49.4%)
+                @include position(56.8%, 49.4%);
+                @media screen and (max-width:$mobile){
+                    @include position(57.8%, 49.4%);
+                }
             }
             &#noA13{
-                @include position(35.2%, 39.7%)
+                @include position(35.2%, 39.7%);
+                @media screen and (max-width:$mobile){
+                    @include position(36.2%, 39.7%);
+                }
             }
             &#noA14{
-                @include position(35.2%, 49.4%)
+                @include position(35.2%, 49.4%);
+                @media screen and (max-width:$mobile){
+                    @include position(36.2%, 49.4%);
+                }
             }
             &#noA15{
-                @include position(26.5%, 39.7%)
+                @include position(26.5%, 39.7%);
+                @media screen and (max-width:$mobile){
+                    @include position(27.5%, 39.7%);
+                }
             }
             &#noA16{
-                @include position(26.5%, 49.4%)
+                @include position(26.5%, 49.4%);
+                @media screen and (max-width:$mobile){
+                    @include position(27.5%, 49.4%);
+                }
             }
             &#noT1{
                 @include position(66%, 89%)

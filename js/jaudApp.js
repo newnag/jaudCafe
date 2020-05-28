@@ -34,7 +34,8 @@ $('.slider').owlCarousel({
 $('.booking-zone .book-top .input-zone .inputBox .dateSelect').flatpickr({
     enableTime: false,
     dateFormat: "d-m-Y",
-    disableMobile: "true"
+    disableMobile: "true",
+    minDate: "today",
 });
 
 // เมื่อกดเลือกวันที่แล้วlog
@@ -78,6 +79,7 @@ $('#time').change(function(){
         'noneText':'กรุณาเลือกซุ้ม',
     });
     $('#numPeople').prop('disabled',false);
+    $('.display-box figure .pre-select').hide();
 });
 
 // คลายล็อกจำนวนคนใช้บริการ เมื่อมีการเพิ่มโต๊ะ
@@ -99,6 +101,10 @@ $('#numPeople').on("input",function(){
 });
 
 $('.formBook .Table .input .dateSelect').change(function(){
+    $('#timeT').prop('disabled',false);
+});
+
+$('#timeT').change(function(){
     $('#archT').attr('multiple','multiple');
     $('#archT').prop('disabled',false);
     $('#archT option').prop('disabled',false);
@@ -182,34 +188,48 @@ class swicthTable{
     slideEffect(mode){
         if(mode === 'PC'){
             if(this.com === 'L'){
-                $(this.ele1).css('transform','translateX(-100%)');
                 $('.book-top .formBook .Table').hide();
                 $('.book-top .formBook .Arch').css('display','grid');
                 $('.display-box figure .table').addClass('disableT')
                 $('.display-box figure .arch').removeClass('disableA')
+                $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
+                if(screen.width >= 1366 && screen.width < 1600){
+                    $(this.ele1).css('transform','translateX(-103%)');
+                }
+                else{
+                    $(this.ele1).css('transform','translateX(-100%)');
+                }
             }
             else if(this.com === 'R'){
-                $(this.ele1).css('transform','translateX(0%)');
-                $('.book-top .formBook .Arch').hide();
-                $('.book-top .formBook .Table').css('display','grid');
-                $('.display-box figure .arch').addClass('disableA')
-                $('.display-box figure .table').removeClass('disableT')
+                    $('.book-top .formBook .Arch').hide();
+                    $('.book-top .formBook .Table').css('display','grid');
+                    $('.display-box figure .arch').addClass('disableA')
+                    $('.display-box figure .table').removeClass('disableT')
+                    $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
+                if(screen.width >= 1366 && screen.width < 1600){
+                    $(this.ele1).css('transform','translateX(19%)');
+                }
+                else{
+                    $(this.ele1).css('transform','translateX(0%)');
+                }
             }
         }
         else if(mode === 'mobile'){
             if(this.com === 'L'){
-                $(this.ele2).css('transform','translateX(-80%)');
+                $(this.ele2).css('transform','translateX(-53%)');
                 $('.book-top .formBook .Table').hide();
                 $('.book-top .formBook .Arch').css('display','grid');
-                $('.display-box figure .table').addClass('disableT')
-                $('.display-box figure .arch').removeClass('disableA')
+                $('.display-box figure .table').addClass('disableT');
+                $('.display-box figure .arch').removeClass('disableA');
+                $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
             }
             else if(this.com === 'R'){
-                $(this.ele2).css('transform','translateX(68%)');
+                $(this.ele2).css('transform','translateX(41%)');
                 $('.book-top .formBook .Arch').hide();
                 $('.book-top .formBook .Table').css('display','grid');
-                $('.display-box figure .arch').addClass('disableA')
-                $('.display-box figure .table').removeClass('disableT') 
+                $('.display-box figure .arch').addClass('disableA');
+                $('.display-box figure .table').removeClass('disableT') ;
+                $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
             }
         }
     }
@@ -300,7 +320,9 @@ $('#archT').change(function(){
 // ------------------------------------ disable ซุ้มและโต๊ะในครั้งแรก -------------------------------------- //
 $('.display-box figure .table').addClass('disableT')
 // ------------------------- เมื่อรอconfirm ให้แสดงคลาส confirm และฟังก์ชั่นนี้ ----------------------- //
+// กรณีรอคอนเฟิร์มจากหลังบ้าน class .item ซุ้มจะมีคลาส confirmA และโต๊ะ จะมีคลาส confirmT
 if($('.display-box figure .item').hasClass('confirmA') || $('.display-box figure .item').hasClass('confirmT')){
     $('.display-box figure .item.confirmA').find('.num-table').hide();
     $('.display-box figure .item.confirmT').find('.num-table').hide();
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
