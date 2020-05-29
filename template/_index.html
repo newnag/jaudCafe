@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>จ้วดคาเฟ่ JaudCafe</title>
-    <link rel="stylesheet" href="/css/jaudStyle.min.css?v=4.2.2">
+    <link rel="stylesheet" href="/css/jaudStyle.min.css?v=1">
     <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="/css/selectMulti.css">
-    <link rel="stylesheet" href="/css/cssDisplayTable.min.css?v=2">
+    <link rel="stylesheet" href="/css/cssDisplayTable.min.css">
     <script src="/plugin/fontawesome/all.min.js"></script>
     <script src="/js/jquery/jquery-3.5.1.min.js"></script>
 </head>
@@ -20,7 +20,7 @@
             <!-- เมนูด้านซ้ายเป็นโลโก้ -->
             <div class="left">
                 <div class="logo">
-                    <figure><img src="/img/logo/logo.png" alt=""></figure>
+                    <figure><img src="/img/logo/logo.jpg" alt=""></figure>
                 </div>
             </div>
 
@@ -117,7 +117,6 @@
 
             <div class="head-text"><h2>การจองแบบ ซุ้ม</h2></div>
 
-            <!-- โซนกรอกข้อมูลจะแบ่งเป็นแบบซู้มและแบบโต๊ะ -->
             <div class="formBook">
                 <div class="input-zone Arch">
                     <div class="inputBox">
@@ -163,7 +162,6 @@
                                 <option value="15" disabled>15</option>
                                 <option value="16" disabled>16</option>
                             </select>
-                            <img src="/img/display/icon3-02.svg" alt="">
                         </div>
                     </div>
     
@@ -221,20 +219,13 @@
                     </div>
 
                     <div class="inputBox">
-                        <label>เวลา/รอบ</label>
+                        <label>จำนวนคน</label>
                         <div class="input">
-                            <select name="" id="timeT" class="time" disabled>
-                                <option value="">เลือกรอบ/เวลา</option>
-                                <option value="">17.00-19.00</option>
-                                <option value="">17.00-19.00</option>
-                                <option value="">17.00-19.00</option>
-                                <option value="">17.00-19.00</option>
-                                <option value="">17.00-19.00</option>
-                            </select>
-                            <i class="fas fa-clock"></i>
+                            <input type="number" id="numPeopleT" disabled>
+                            <i class="fas fa-user-alt"></i>
                         </div>
                     </div>
-
+    
                     <div class="inputBox">
                         <label>หมายเลขโต๊ะ</label>
                         <div class="input">
@@ -246,15 +237,6 @@
                                     }
                                 </script>
                             </select>
-                            <img src="/img/display/icon-table2-02.svg" alt="">
-                        </div>
-                    </div>
-
-                    <div class="inputBox">
-                        <label>จำนวนคน</label>
-                        <div class="input">
-                            <input type="number" id="numPeopleT" disabled>
-                            <i class="fas fa-user-alt"></i>
                         </div>
                     </div>
     
@@ -310,7 +292,7 @@
                 <figure>
                     <!-- รูปภาพแผนผัง -->
                     <img src="/img/display/mapv2.png" alt="">
-                    <div class="pre-select"></div>
+
                     <!-- ที่นั่งภายในรูป -->
 
                 </figure>
@@ -351,7 +333,7 @@
         <div class="background"><img src="/img/BG1.jpg" alt=""></div>
         <div class="grid-box">
             <div class="box">
-                <div class="icon"><img src="/img/icon/music-solid.svg" alt=""></div>
+                <div class="icon"><i class="fas fa-music"></i></div>
                 <div class="head"><h2>เพลงเพราะ/ดนตรีสด</h2></div>
                 <div class="text">
                     <p>
@@ -362,7 +344,7 @@
             </div>
 
             <div class="box">
-                <div class="icon"><img src="/img/icon/utensils-solid.svg" alt=""></div>
+                <div class="icon"><i class="fas fa-utensils"></i></div>
                 <div class="head"><h2>อาหารอร่อย</h2></div>
                 <div class="text">
                     <p>
@@ -373,7 +355,7 @@
             </div>  
 
             <div class="box">
-                <div class="icon"><img src="/img/icon/cloud-moon-solid.svg" alt=""></div>
+                <div class="icon"><i class="fas fa-cloud-moon"></i></div>
                 <div class="head"><h2>บรรยากาศดี</h2></div>
                 <div class="text">
                     <p>
@@ -437,69 +419,6 @@
         </div>
     </div>
 
-    <!-- ส่วนแสดงกล่องคอนเฟิร์มการจองหลังจากกดจอง -->
-    <div class="dialog-confirm">
-        <div class="dialog">
-            <div class="title"><h2>ข้อมูลการจอง</h2></div>
-
-            <div class="info">
-                <div id="type" class="info-data">
-                    <label>จองแบบ :</label>
-                    <span>จองซุ้มน้ำ</span>
-                </div>
-                <div id="name-info" class="info-data">
-                    <label>ชื่อ-สกุล :</label>
-                    <span>น้องอีฟ คนสวย งามแท้ๆ</span>
-                </div>
-                <div id="tel-info" class="info-data">
-                    <label>เบอร์โทร :</label>
-                    <span>0123456789</span>
-                </div>
-                <div id="line-info" class="info-data">
-                    <label>Line ID :</label>
-                    <span>Efefefefef</span>
-                </div>
-                <div id="province-info" class="info-data">
-                    <label>จังหวัด :</label>
-                    <span>มหาสารคาม</span>
-                </div>
-                <div id="date-info" class="info-data">
-                    <label>วันที่ :</label>
-                    <span>16/6/2563</span>
-                </div>
-                <div id="time-info" class="info-data">
-                    <label>รอบที่จอง :</label>
-                    <span>11:00-13:00</span>
-                </div>
-                <div id="num-info" class="info-data">
-                    <label>หมายเลขซุ้ม :</label>
-                    <span>5</span>
-                </div>
-                <div id="people-info" class="info-data">
-                    <label>จำนวนคน :</label>
-                    <span>8</span>
-                </div>
-            </div>
-
-            <div class="button-box">
-                <button id="edit">แก้ไข</button>
-                <button id="confirm">คอนเฟิร์ม</button>
-            </div>
-
-            <div class="ps">
-                <div class="left"><span>หมายเหตุ</span></div>
-                <div class="right">
-                    <p>- ลูกค้ามาช้าเกิน 15 นาทีขออนุญาตตัดสิทธิ์ ให้ลูกค้าท่านต่อไป</p>
-                    <p>- ชำระการจอง 200 บาท ภายใน 6 ชั่วโมงหลังจากคอนเฟิร์ม</p>
-                </div>
-            </div>
-
-            <div class="close-button">
-                <i class="fas fa-times"></i>
-            </div>
-        </div>
-    </div>
-
     <footer>
         <div class="footer">
             <p>&copy; 2020 <a href="https://wynnsoft-solution.com">Wynnsoft Solution.com</a></p>
@@ -542,7 +461,6 @@
     <script src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/plugin/selectMulti/jquery.multi-select.min.js"></script>
-    <script defer async src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="/js/jaudApp.js?=v1.1.1"></script>
+    <script src="/js/jaudApp.js"></script>
 </body>
 </html>
