@@ -1487,9 +1487,11 @@ a {
 }
 
 .contact {
-  margin-top: 8%;
+  margin-top: 3%;
   background-color: #000;
   border-radius: 50px 50px 0 0;
+  position: relative;
+  z-index: 3;
 }
 
 @media screen and (min-width: 1024px) {
@@ -1644,11 +1646,64 @@ a {
   }
 }
 
+.content-about .head-text .menu {
+  background: #313131;
+  padding: 1% 3%;
+  border-radius: 0 0 20px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.content-about .head-text .menu li a {
+  color: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+@media screen and (max-width: 480px) {
+  .content-about .head-text .menu li a {
+    font-size: .8em;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .content-about .head-text .menu li a {
+    font-size: 1.2em;
+  }
+  .content-about .head-text .menu li a:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+    -webkit-transition: -webkit-transform .25s ease-out;
+    transition: -webkit-transform .25s ease-out;
+    transition: transform .25s ease-out;
+    transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+  }
+  .content-about .head-text .menu li a:hover:before {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: bottom left;
+            transform-origin: bottom left;
+  }
+}
+
 .content-about .background {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 29%;
+  top: 5%;
   left: -9%;
   z-index: -1;
   opacity: .2;
@@ -1786,11 +1841,64 @@ a {
   }
 }
 
+.contact-me .head-text .menu {
+  background: #313131;
+  padding: 1% 3%;
+  border-radius: 0 0 20px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.contact-me .head-text .menu li a {
+  color: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+@media screen and (max-width: 480px) {
+  .contact-me .head-text .menu li a {
+    font-size: .8em;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .contact-me .head-text .menu li a {
+    font-size: 1.2em;
+  }
+  .contact-me .head-text .menu li a:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+    -webkit-transition: -webkit-transform .25s ease-out;
+    transition: -webkit-transform .25s ease-out;
+    transition: transform .25s ease-out;
+    transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+  }
+  .contact-me .head-text .menu li a:hover:before {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: bottom left;
+            transform-origin: bottom left;
+  }
+}
+
 .contact-me .background {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 29%;
+  top: 5%;
   left: -9%;
   z-index: -1;
   opacity: .2;
@@ -2062,6 +2170,23 @@ a {
 @media screen and (max-width: 480px) {
   .gallary .head-text .title h1 {
     font-size: 1.5em;
+  }
+}
+
+.gallary .head-text .description {
+  background: #313131;
+  padding: 1% 0;
+  border-radius: 0 0 20px 20px;
+}
+
+.gallary .head-text .description p {
+  overflow: hidden;
+  font-size: 1.4em;
+}
+
+@media screen and (max-width: 480px) {
+  .gallary .head-text .description p {
+    font-size: .7em;
   }
 }
 
@@ -2444,6 +2569,652 @@ a {
 
 .dialog-confirm .dialog .close-button svg {
   cursor: pointer;
+}
+
+@media screen and (min-width: 1024px) {
+  .confirm-page {
+    position: relative;
+    top: -10%;
+    z-index: 3;
+  }
+}
+
+.confirm-page .head-text {
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.confirm-page .head-text .title {
+  background: #a5a5a5;
+  padding: 2% 0;
+  border-radius: 20px 20px 0 0;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .head-text .title {
+    border-radius: unset;
+  }
+}
+
+.confirm-page .head-text .title h1 {
+  font-size: 2em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .head-text .title h1 {
+    font-size: 1.5em;
+  }
+}
+
+.confirm-page .head-text .description {
+  background: #313131;
+  padding: 1% 0;
+  border-radius: 0 0 20px 20px;
+}
+
+.confirm-page .head-text .description p {
+  overflow: hidden;
+  font-size: 1.4em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .head-text .description p {
+    font-size: .7em;
+  }
+}
+
+.confirm-page .head-text .menu {
+  background: #313131;
+  padding: 1% 3%;
+  border-radius: 0 0 20px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.confirm-page .head-text .menu li a {
+  color: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .head-text .menu li a {
+    font-size: .8em;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .confirm-page .head-text .menu li a {
+    font-size: 1.2em;
+  }
+  .confirm-page .head-text .menu li a:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+    -webkit-transition: -webkit-transform .25s ease-out;
+    transition: -webkit-transform .25s ease-out;
+    transition: transform .25s ease-out;
+    transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+  }
+  .confirm-page .head-text .menu li a:hover:before {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: bottom left;
+            transform-origin: bottom left;
+  }
+}
+
+.confirm-page .background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 5%;
+  left: -9%;
+  z-index: -1;
+  opacity: .2;
+}
+
+.confirm-page .search-ber {
+  padding: 5%;
+  background: #ffffffcf;
+  -webkit-box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+          box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+  border-radius: 10px;
+  margin-top: -3%;
+}
+
+.confirm-page .search-ber .input-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.confirm-page .search-ber .input-box label {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .search-ber .input-box label {
+    font-size: .8em;
+  }
+}
+
+.confirm-page .search-ber .input-box input {
+  width: 35%;
+  height: 40px;
+  margin-left: 2%;
+  padding: 0 2%;
+  font-size: 1.2em;
+  border: 1px solid gray;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .search-ber .input-box input {
+    font-size: .8em;
+    height: 30px;
+  }
+}
+
+.confirm-page .search-ber .button {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.confirm-page .search-ber .button button {
+  width: 150px;
+  height: 50px;
+  border: unset;
+  border-radius: 30px;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2em;
+  -webkit-box-shadow: 2px 2px 10px grey;
+          box-shadow: 2px 2px 10px grey;
+  cursor: pointer;
+}
+
+.confirm-page .search-ber .button svg {
+  margin-right: 6%;
+}
+
+.confirm-page .info-book {
+  display: none;
+  padding: 2%;
+  margin-top: 5%;
+  background: #ffffffcf;
+  -webkit-box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+          box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+  border-radius: 10px;
+}
+
+.confirm-page .info-book .grid-head {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (20%)[5];
+      grid-template-columns: repeat(5, 20%);
+  text-align: center;
+  border-bottom: 2px solid gray;
+}
+
+.confirm-page .info-book .grid-head span {
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .info-book .grid-head span {
+    font-size: .5em;
+  }
+}
+
+.confirm-page .info-book .grid-data .grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (20%)[5];
+      grid-template-columns: repeat(5, 20%);
+  text-align: center;
+  margin: 2% 0;
+}
+
+.confirm-page .info-book .grid-data .grid span {
+  font-size: 1.2em;
+  margin: auto 0;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .info-book .grid-data .grid span {
+    font-size: .5em;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .info-book .grid-data .grid span {
+    font-size: 1em;
+  }
+}
+
+.confirm-page .info-book .grid-data .grid #name-conBook {
+  overflow: hidden;
+  height: 1.5em;
+}
+
+.confirm-page .info-book .grid-data .grid .button button {
+  width: 40%;
+  height: 40px;
+  border: unset;
+  border-radius: 20px;
+  background-color: #000;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .info-book .grid-data .grid .button button {
+    font-size: .5em;
+    height: 22px;
+    width: 44%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .info-book .grid-data .grid .button button {
+    font-size: .8em;
+  }
+}
+
+.confirm-page .confirm-payment {
+  display: none;
+  margin-top: 5%;
+  background: #ffffffcf;
+  -webkit-box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+          box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+  border-radius: 20px;
+}
+
+.confirm-page .confirm-payment .title {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+  margin: 2% 0;
+  padding-top: 2%;
+  text-align: center;
+}
+
+.confirm-page .confirm-payment .title .name {
+  overflow: hidden;
+  height: 2em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .confirm-payment .title .name {
+    height: 1.5em;
+  }
+}
+
+.confirm-page .confirm-payment .title div span {
+  font-size: 1.8em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .confirm-payment .title div span {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .confirm-payment .title div span {
+    font-size: 1.4em;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .confirm-page .confirm-payment .title div span {
+    font-size: 1.4em;
+  }
+}
+
+.confirm-page .confirm-payment .data {
+  width: 40%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .confirm-payment .data {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .confirm-payment .data {
+    width: 50%;
+  }
+}
+
+.confirm-page .confirm-payment .data .item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+  margin: 3% 0;
+}
+
+.confirm-page .confirm-payment .data .item label, .confirm-page .confirm-payment .data .item span {
+  font-size: 1.6em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .confirm-payment .data .item label, .confirm-page .confirm-payment .data .item span {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .confirm-payment .data .item label, .confirm-page .confirm-payment .data .item span {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .confirm-page .confirm-payment .data .item label, .confirm-page .confirm-payment .data .item span {
+    font-size: 1.1em;
+  }
+}
+
+.confirm-page .confirm-payment .data #line-payment span {
+  overflow: hidden;
+}
+
+.confirm-page .confirm-payment .total {
+  background-color: #979797;
+  height: 100px;
+  border-radius: 20px;
+}
+
+.confirm-page .confirm-payment .total .box {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0 10%;
+}
+
+.confirm-page .confirm-payment .total .box span {
+  color: #fff;
+  font-size: 2em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .confirm-payment .total .box span {
+    font-size: 1.2em;
+  }
+}
+
+.confirm-page .payment {
+  display: none;
+  margin-top: 5%;
+  padding: 3%;
+  background: #ffffffcf;
+  -webkit-box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+          box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+  border-radius: 20px;
+}
+
+.confirm-page .payment .title {
+  font-family: promptLight;
+  text-align: center;
+  margin: 2%;
+}
+
+.confirm-page .payment .title h2 {
+  font-size: 1.3em;
+}
+
+.confirm-page .payment .grid-bank {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (49%)[2];
+      grid-template-columns: repeat(2, 49%);
+  grid-gap: 1%;
+  grid-row-gap: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .grid-bank {
+    -ms-grid-columns: 100%;
+        grid-template-columns: 100%;
+    grid-row-gap: 10px;
+  }
+}
+
+.confirm-page .payment .grid-bank .bank {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+}
+
+.confirm-page .payment .grid-bank .bank figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.confirm-page .payment .grid-bank .bank .detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 3%;
+}
+
+.confirm-page .payment .grid-bank .bank .detail span {
+  font-size: 1.4em;
+  font-family: promptLight;
+  height: 1.5em;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .grid-bank .bank .detail span {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .payment .grid-bank .bank .detail span {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .confirm-page .payment .grid-bank .bank .detail span {
+    font-size: 1.1em;
+  }
+}
+
+.confirm-page .payment .input-data {
+  width: 50%;
+  margin: 3% auto;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .input-data {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .payment .input-data {
+    width: 80%;
+  }
+}
+
+.confirm-page .payment .input-data .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.confirm-page .payment .input-data .input label {
+  font-size: 1.6em;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .input-data .input label {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .payment .input-data .input label {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .confirm-page .payment .input-data .input label {
+    font-size: 1.4em;
+  }
+}
+
+.confirm-page .payment .input-data .input input, .confirm-page .payment .input-data .input select {
+  border: 1px solid gray;
+  border-radius: 30px;
+  height: 40px;
+  width: 50%;
+  padding: 0 3%;
+  font-size: 1.2em;
+  margin: 1% 0;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .input-data .input input, .confirm-page .payment .input-data .input select {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .confirm-page .payment .input-data .input input, .confirm-page .payment .input-data .input select {
+    font-size: 1em;
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .confirm-page .payment .input-data .input input, .confirm-page .payment .input-data .input select {
+    font-size: 1em;
+    width: 60%;
+  }
+}
+
+.confirm-page .payment .input-data .upload-slip {
+  margin-top: 3%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .input-data .upload-slip span {
+    font-size: .7em;
+  }
+}
+
+.confirm-page .payment .input-data .upload-slip label {
+  width: 70%;
+  height: 400px;
+  border: 1px solid gray;
+  border-radius: 20px;
+  cursor: pointer;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .input-data .upload-slip label {
+    height: 200px;
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .confirm-page .payment .input-data .upload-slip label {
+    height: 300px;
+  }
+}
+
+.confirm-page .payment .input-data .upload-slip input[type="file"] {
+  display: none;
+}
+
+.confirm-page .payment .button {
+  text-align: center;
+  margin: 2% 0;
+}
+
+.confirm-page .payment .button button {
+  width: 25%;
+  height: 50px;
+  font-size: 1em;
+  background-color: #000;
+  color: #fff;
+  border: unset;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+          box-shadow: 0 4px 8px 0 #00000033, 0 6px 40px 0 #00000030;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .payment .button button {
+    width: 55%;
+  }
 }
 
 footer .footer {

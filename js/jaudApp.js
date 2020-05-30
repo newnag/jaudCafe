@@ -38,10 +38,13 @@ $('.booking-zone .book-top .input-zone .inputBox .dateSelect').flatpickr({
   minDate: new Date().fp_incr(1)//"today",
 });
 
-// เมื่อกดเลือกวันที่แล้วlog
-$('.booking-zone .book-top .input-zone .inputBox .dateSelect').change(function () {
-  console.log($('.booking-zone .book-top .input-zone .inputBox .dateSelect').val());
+$('#date-payment').flatpickr({
+  enableTime: true,
+  dateFormat: "d-m-Y : H:i",
+  disableMobile: "true",
+  minDate: new Date().fp_incr(1)//"today",
 });
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 // ------------------------- @menuMobile ----------------------- //
@@ -425,4 +428,72 @@ class showGallary{
 //--------------------------------- ฟังก์ชั่นหน้าจอคอนเฟิร์มหลังจากการกดจอง ------------------------------ //
 $('.dialog-confirm .dialog .close-button').on('click',function(){
   $(this).closest('.dialog-confirm').hide();
+});
+
+// -------------------------------- ฟังก์ชั่นหน้ายืนยันคอนเฟิร์ม ---------------------------------- //
+// ฟังก์ชั่นการค้นหาคอนเฟิร์มด้วยเบอร์
+class searchConfirm{
+  constructor(that){
+    this.that = that;
+    this.val = $(this.that).closest('.search-ber').find('input').val();
+  }
+
+  // ทำการเช็คการกรอกเบอร์ เมื่อถูกต้องให้ไปสู่หน้าแสดงผลลัพท์
+  search(){
+    if(this.val !== '' && $.isNumeric(this.val) && this.val.length == 10){
+      $('.info-book').show();
+    }
+    else{
+      Swal.fire({
+        icon: 'error',
+        title: 'คุณกรอกไม่ถูกต้อง!',
+        text: 'คุณกรอกหมายเลขไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง'
+      })
+    }
+  }
+}
+
+// ฟังก์ชั่นจัดการรายการที่จะส่งใบสลีปการโอนหลังจากการค้นหาจากเบอร์
+class manageInfo_book{
+  constructor(that){
+    this.that = that;
+  }
+
+  confirm(){
+    $(this.that).closest('.info-book').hide('slow');
+    $(this.that).closest('.info-book').next().show('slow');
+    $(this.that).closest('.info-book').next().next().show('slow');
+  }
+
+  delete(){
+    $(this.that).closest('.grid').hide('slow');
+  }
+}
+
+//ส่วนปุ่มกดของการค้นหารายการคอนเฟิร์มจากเบอร์
+$('.confirm-page .search-ber .button button').on('click',function(){
+  let searchBer = new searchConfirm(this);
+  searchBer.search();
+});
+//ส่วนปุ่มกดของรายการคอนเฟิร์มส่งใบสลีปโอนเงิน
+$('.info-book .grid-data .grid .button button').on('click',function(){
+  let manageConf = new manageInfo_book(this);
+  let cl = $(this).attr('class');
+  switch (cl) {
+    case "confirm":
+      manageConf.confirm();
+      break;
+    case "delete":
+      manageConf.delete();
+      break;
+  }
+});
+
+// ---------------------------- ทดสอบฟังก์ชั่นแสดงผลการชำระเงิน ---------------------------- //
+$('#slip-upload').click(function(){
+  $('#slip-upload').change(function(){
+    let a = $('#slip-upload').val();
+    console.log(a);
+    $('#inputfile').text(a);
+  })
 });
