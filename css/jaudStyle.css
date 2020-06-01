@@ -1596,7 +1596,7 @@ a {
 @media screen and (min-width: 1024px) {
   .content-about {
     position: relative;
-    top: -10%;
+    top: -7%;
     z-index: 3;
   }
 }
@@ -1791,7 +1791,7 @@ a {
 @media screen and (min-width: 1024px) {
   .contact-me {
     position: relative;
-    top: -10%;
+    top: -7%;
     z-index: 3;
   }
 }
@@ -2140,7 +2140,7 @@ a {
 @media screen and (min-width: 1024px) {
   .gallary {
     position: relative;
-    top: -10%;
+    top: -7%;
     z-index: 3;
   }
 }
@@ -2574,7 +2574,7 @@ a {
 @media screen and (min-width: 1024px) {
   .confirm-page {
     position: relative;
-    top: -10%;
+    top: -7%;
     z-index: 3;
   }
 }
@@ -2862,7 +2862,7 @@ a {
 
 .confirm-page .confirm-payment .title .name {
   overflow: hidden;
-  height: 2em;
+  height: 2.5em;
 }
 
 @media screen and (max-width: 480px) {

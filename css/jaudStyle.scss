@@ -1390,7 +1390,7 @@ header{
 .content-about{
     @media screen and (min-width:$ipadpro) {
         position: relative;
-        top: -10%;
+        top: -7%;
         z-index: 3; 
     }
     
@@ -1439,7 +1439,7 @@ header{
 .contact-me{
     @media screen and (min-width:$ipadpro) {
         position: relative;
-        top: -10%;
+        top: -7%;
         z-index: 3; 
     }
     
@@ -1605,7 +1605,7 @@ header{
 .gallary{
     @media screen and (min-width:$ipadpro) {
         position: relative;
-        top: -10%;
+        top: -7%;
         z-index: 3; 
     }
 
@@ -1882,7 +1882,7 @@ header{
 .confirm-page{
     @media screen and (min-width:$ipadpro) {
         position: relative;
-        top: -10%;
+        top: -7%;
         z-index: 3; 
     }
 
@@ -2034,7 +2034,7 @@ header{
 
             .name{
                 overflow: hidden;
-                height: 2em;
+                height: 2.5em;
 
                 @media screen and (max-width:$mobile) {
                     height: 1.5em;
