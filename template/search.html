@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จ้วดคาเฟ่ JaudCafe</title>
+    <link rel="stylesheet" href="/css/jaudStyle.min.css?v=4.2.2">
+    <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/plugin/OwlCarousel/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/css/selectMulti.css">
+    <link rel="stylesheet" href="/css/cssDisplayTable.min.css?v=2">
+    <script src="/plugin/fontawesome/all.min.js"></script>
+    <script src="/js/jquery/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <nav class="container">
+        <!-- เมนูNavหัวเว็บ -->
+        <div class="head-nav">
+            <!-- เมนูด้านซ้ายเป็นโลโก้ -->
+            <div class="left">
+                <div class="logo">
+                    <figure><img src="/img/logo/logo.png" alt=""></figure>
+                </div>
+            </div>
+
+            <!-- เมนูด้านขวาเป็นเมนูและช่องค้นหาด้วยเบอร์ -->
+            <div class="right">
+                <div class="menu">
+                    <ul>
+                        <li><a href="" class="selected">หน้าแรก</a></li>
+                        <li><a href="">แกลอรี่</a></li>
+                        <li><a href="">ยืนยันการจอง</a></li>
+                        <li><a href="">เกี่ยวกับเรา</a></li>
+                        <li><a href="">ติดต่อเรา</a></li>
+                        <li class="closemenu"><i class="fas fa-times"></i></li>
+
+                        <div class="contact-nav">
+                            <div class="tel"><span>โทร: 091-0634589</span></div>
+                            <div class="social-icon">
+                                <i class="fab fa-line"></i>
+                                <i class="fab fa-facebook-f"></i>
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </div>
+                    </ul>
+                    <div class="bottomline"></div>
+                </div>
+
+                <div class="searchq">
+                    <div class="box-search">
+                        <input type="tel" maxlength="10" id="searchq" name="searchq" placeholder="ค้นหาการจองด้วย เบอร์">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                </div>
+
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+
+            <!-- เบอร์ติดต่อและโซเชียวด้านบนเมนู -->
+            <div class="tel-social">
+                <div class="tel"><span>โทร: 091-0634589</span></div>
+                <div class="social">
+                    <a href=""><i class="fab fa-line"></i></a>
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <!-- สไลด์หัวเว็บ -->
+        <div class="slideHead owl-carousel owl-theme owl-loaded">
+            <img src="/img/slide1.jpg" alt="">
+            <img src="/img/slide2.jpg" alt="">
+            <img src="/img/slide3.jpg" alt="">
+            <img src="/img/slide4.jpg" alt="">
+            <img src="/img/slide5.jpg" alt="">
+        </div>
+    </header>
+
+    <div class="confirm-page container">
+        <div class="head-text">
+            <div class="title"><h1>ยืนยันการจอง</h1></div>
+            <div class="description">
+                <p>
+                    มาแซ่บนัวร์กันที่ครัวจ้วดคาเฟ่ อาหารไทย อีสานบ้านเฮา
+                </p>
+            </div>
+        </div>
+
+        <div class="background"><img src="/img/BG1.jpg" alt=""></div>
+
+        <div class="search-ber">
+            <div class="input-box">
+                <label>กรอกเบอร์ที่จอง : </label>
+                <input type="tel" name="searchBer" id="searchBer" maxlength="10">
+            </div>
+            <div class="button">
+                <button><i class="fas fa-search"></i>ค้นหา</button>
+            </div>
+        </div>
+
+        <div class="info-book">
+            <div class="grid-head">
+                <span>ชื่อผู้จอง</span>
+                <span>วันที่</span>
+                <span>เวลา</span>
+                <span>ที่นั่ง</span>
+            </div>
+
+            <div class="grid-data">
+                <div class="grid" data-idConF="00001">
+                    <span id="name-conBook">น้องอีฟ คนสวยน่ารัก</span>
+                    <span>16/6/2563</span>
+                    <span>11.00-13.00 น.</span>
+                    <span>ซุ้ม 5</span>
+                    <div class="button">
+                        <button class="view">ดูการจอง</button>
+                    </div>
+                </div>
+
+                <div class="grid" data-idConF="00002">
+                    <span id="name-conBook">น้องอีฟ คนสวยน่ารัก</span>
+                    <span>25/11/2563</span>
+                    <span>20.00 น.</span>
+                    <span>เทอเรส 71</span>
+                    <div class="button">
+                        <button class="view">ดูการจอง</button>
+                    </div>
+                </div>
+
+                <div class="grid" data-idConF="00003">
+                    <span id="name-conBook">น้องอีฟ คนสวยน่ารัก</span>
+                    <span>16/6/2563</span>
+                    <span>11.00 น.</span>
+                    <span>เทอเรส 85</span>
+                    <div class="button">
+                        <button class="view">ดูการจอง</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="confirm-payment">
+            <div class="title">
+                <div class="ber"><span>เบอร์ 0123456789</span></div>
+                <div class="name"><span>น้องอีฟ คนสวยน่ารัก งามแท้ๆ</span></div>
+            </div>
+
+            <div class="data">
+                <div class="item">
+                    <label>จองแบบ :</label>
+                    <span>จองซุ้มริมน้ำ</span>
+                </div>
+
+                <div class="item" id="line-payment">
+                    <label>Line ID :</label>
+                    <span>Efefefefef</span>
+                </div>
+
+                <div class="item">
+                    <label>จังหวัด :</label>
+                    <span>มหาสารคาม</span>
+                </div>
+
+                <div class="item">
+                    <label>วันที่ :</label>
+                    <span>16/6/2563</span>
+                </div>
+
+                <div class="item">
+                    <label>รอบที่จอง :</label>
+                    <span>11.00 - 13.00 น.</span>
+                </div>
+
+                <div class="item">
+                    <label>หมายเลขซุ้ม/โต๊ะ :</label>
+                    <span>6</span>
+                </div>
+
+                <div class="item">
+                    <label>จำนวนคน :</label>
+                    <span>8</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contact">
+        <div class="box-contact">
+            <figure><img src="/img/logo/logo-01.svg" alt=""></figure>
+            <div class="head"><h1>ติดต่อ จ้วดคาเฟ่</h1></div>
+            <div class="text"><p>สามารถติดต่อร้านจ้วดคาเฟ่ได้ตามเบอร์โทร Line, facebook, twitter ด้านล่างนี้</p></div>
+            <div class="tel"><span>โทร: 091-0634589</span></div>
+            <div class="social">
+                <a href=""><i class="fab fa-line"></i></a>
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <p>&copy; 2020 <a href="https://wynnsoft-solution.com">Wynnsoft Solution.com</a></p>
+        </div>
+    </footer>
+    
+    <script src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/plugin/selectMulti/jquery.multi-select.min.js"></script>
+    <script defer async src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="/js/jaudApp.js?=v1.1.1"></script>
+</body>
+</html>

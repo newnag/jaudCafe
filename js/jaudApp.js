@@ -1,51 +1,51 @@
-// ------------------------- @slide ------------------------- //
-$('.slideHead').owlCarousel({
-  loop: true,
-  margin: 10,
-  nav: false,
-  dots: true,
-  autoplay: true,
-  responsiveClass: true,
-  items: 1,
-});
-$('.slider').owlCarousel({
-  loop: true,
-  margin: 50,
-  nav: false,
-  dots: true,
-  autoplay: true,
-  responsiveClass: true,
-  items: 3,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    768: {
-      items: 2,
-    },
-    1024: {
-      items: 3,
+$(function () {
+  // ------------------------- @slide ------------------------- //
+  $('.slideHead').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: false,
+    dots: true,
+    autoplay: true,
+    responsiveClass: true,
+    items: 1,
+  });
+  $('.slider').owlCarousel({
+    loop: true,
+    margin: 50,
+    nav: false,
+    dots: true,
+    autoplay: true,
+    responsiveClass: true,
+    items: 3,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      1024: {
+        items: 3,
+      }
     }
-  }
-});
-//////////////////////////////////////////////////////////////////
+  });
 
-// ------------------------- @datepick ----------------------- //
-$('.booking-zone .book-top .input-zone .inputBox .dateSelect').flatpickr({
-  enableTime: false,
-  dateFormat: "d-m-Y",
-  disableMobile: "true",
-  minDate: new Date().fp_incr(1)//"today",
-});
+  // ------------------------- @datepick ----------------------- //
+  $('.booking-zone .book-top .input-zone .inputBox .dateSelect').flatpickr({
+    enableTime: false,
+    dateFormat: "d-m-Y",
+    disableMobile: "true",
+    minDate: new Date().fp_incr(1)//"today",
+  });
 
-$('#date-payment').flatpickr({
-  enableTime: true,
-  dateFormat: "d-m-Y : H:i",
-  disableMobile: "true",
-  minDate: new Date().fp_incr(1)//"today",
-});
+  $('#date-payment').flatpickr({
+    enableTime: true,
+    dateFormat: "d-m-Y : H:i",
+    disableMobile: "true",
+    minDate: new Date().fp_incr(1)//"today",
+  });
+})
 
-/////////////////////////////////////////////////////////////////////////////////////////
 
 // ------------------------- @menuMobile ----------------------- //
 $('.head-nav .right .hamburger').on('click', function () {
@@ -69,7 +69,7 @@ $('.book-top .selectType .button-mobile span').on('click', function () {
     alert(2)
   }
 });
-//////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // ---------------------------- เปิดช่องกรอกข้อมูลเมื่อทำตามเงื่อนไขแล้ว -------------------------- //
 $('.inputBox .input .dateSelect').change(function () {
@@ -130,20 +130,6 @@ $('#numPeopleT').on("input", function () {
   counter.doCount();
 });
 
-/////////////////////////////////////////////////////////////////////////////////////////
-
-// ----------------------------- สไลด์ตอนHoverเลือกซุ้ม ----------------------------- //
-$('.slide-hover').owlCarousel({
-  loop: true,
-  margin: 10,
-  nav: false,
-  dots: false,
-  autoplay: true,
-  responsiveClass: true,
-  items: 1,
-});
-///////////////////////////////////////////////////////////////////////////////////
-
 // ------------------------------- ฟังก์ชั่นกดจองโต๊ะ ------------------------------ //
 var test = $('#arch').val()
 class bookingTable {
@@ -188,17 +174,17 @@ class bookingTable {
 // });
 
 // ของก๊อต เขียนมาใหม่
-function handleClickDoBook(e){
+function handleClickDoBook(e) {
   e.preventDefault();
   let _this = e.target.closest('.item')
   if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     if (screen.width >= 1366) {
       if (
-          !_this.classList.contains('disableA') && 
-          !_this.classList.contains('disableT') && 
-          !_this.classList.contains('confirmA') && 
-          !_this.classList.contains('confirmT')
-        ) {
+        !_this.classList.contains('disableA') &&
+        !_this.classList.contains('disableT') &&
+        !_this.classList.contains('confirmA') &&
+        !_this.classList.contains('confirmT')
+      ) {
         let Book = new bookingTable(_this);
         Book.doBook();
       }
@@ -206,8 +192,6 @@ function handleClickDoBook(e){
   }
 }
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // ------------------------------- กดเลือกประเภทโต๊ะในการจอง เพื่อเปลี่ยนinput ------------------------------ //
 class swicthTable {
@@ -226,7 +210,7 @@ class swicthTable {
         $('.display-box figure .arch').removeClass('disableA')
         $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
 
-        $('.book-top .formBook .Arch').attr('data-action','active')
+        $('.book-top .formBook .Arch').attr('data-action', 'active')
         $('.book-top .formBook .Table').attr('data-action', '');
 
 
@@ -244,7 +228,7 @@ class swicthTable {
         $('.display-box figure .table').removeClass('disableT')
         $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
 
-        $('.book-top .formBook .Arch').attr('data-action','')
+        $('.book-top .formBook .Arch').attr('data-action', '')
         $('.book-top .formBook .Table').attr('data-action', 'active');
 
         if (screen.width >= 1366 && screen.width < 1600) {
@@ -264,7 +248,7 @@ class swicthTable {
         $('.display-box figure .arch').removeClass('disableA');
         $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
 
-        $('.book-top .formBook .Arch').attr('data-action','active')
+        $('.book-top .formBook .Arch').attr('data-action', 'active')
         $('.book-top .formBook .Table').attr('data-action', '');
       }
       else if (this.com === 'R') {
@@ -275,12 +259,13 @@ class swicthTable {
         $('.display-box figure .table').removeClass('disableT');
         $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
 
-        $('.book-top .formBook .Arch').attr('data-action','')
+        $('.book-top .formBook .Arch').attr('data-action', '')
         $('.book-top .formBook .Table').attr('data-action', 'active');
       }
     }
   }
 }
+
 $('.selectType .box-button .button').on('click', function () {
   if ($(this).hasClass('buttonArch')) {
     let sw = new swicthTable("L");
@@ -303,7 +288,7 @@ $('.button-mobile div').on('click', function () {
     sw.slideEffect("mobile");
   }
 });
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 // -------------------------- ฟังก์ชั่นตรวจนับจำนวนคนต่อซุ้ม -------------------------- //
 class countPeople {
@@ -327,7 +312,6 @@ class countPeople {
     }
   }
 }
-/////////////////////////////////////////////////////////////////////////////////////
 
 // ---------------------------- ฟังก์ชั่นนับจำนวนคนต่อโต๊ะ ------------------------------ //
 class countPeopleT extends countPeople {
@@ -350,15 +334,13 @@ class countPeopleT extends countPeople {
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////////////
-
 // --------------------------------- ฟังก์ชั่นกดจองโต๊ะแล้วแสดงทั้ง select และ display ----------------------------------- //
 // ด้าน select ซุ้ม
 $('#arch').change(function () {
   let archNo = $(this).val();
   console.log(archNo)
   $('.book-display .display-box figure .item').removeClass('selectedA');
-  $('.book-display .display-box figure .item .num-table').show();
+  // $('.book-display .display-box figure .item .num-table').show();
 
   archNo.forEach(element => {
     let Ele = $(`.book-display .display-box figure .item[data-archid=${element}]`);
@@ -372,7 +354,7 @@ $('#arch').change(function () {
 $('#archT').change(function () {
   let tableNo = $(this).val();
   $('.book-display .display-box figure .item').removeClass('selectedT');
-  $('.book-display .display-box figure .item .num-table').show();
+  // $('.book-display .display-box figure .item .num-table').show();
 
   tableNo.forEach(element => {
     let EleT = $(`.book-display .display-box figure .item[data-tableid=${element}]`);
@@ -393,105 +375,109 @@ if ($('.display-box figure .item').hasClass('confirmA') || $('.display-box figur
 
 // --------------------------------- ฟังก์ชั่นในหน้าติดต่อเรา ---------------------------------- //
 // เคลียร์ข้อความ
-$('.contact-me .form-Contact .button-box #clear').on('click',function(){
+$('.contact-me .form-Contact .button-box #clear').on('click', function () {
   $(this).closest('.form-Contact').find('.input-box input').val("");
   $(this).closest('.form-Contact').find('.input-box textarea').val("");
 });
 
 // --------------------------------- ฟังก์ชั่นหน้าแกลอรี่ ---------------------------------- //
-$('.gallary .gallary-zone figure img').on('click',function(){
+$('.gallary .gallary-zone figure img').on('click', function () {
   let img = $(this).attr('src');
-  let showgal = new showGallary(img,this);
+  let showgal = new showGallary(img, this);
   showgal.showPic();
 });
 //ปุ่มปิด
-$('.showpic .bigpic .close').on('click',function(){
-  $('body').css('position','unset');
+$('.showpic .bigpic .close').on('click', function () {
+  $('body').css('position', 'unset');
   $(this).closest('.showpic').hide();
 });
 
-class showGallary{
-  constructor(img,that){
+class showGallary {
+  constructor(img, that) {
     this.img = img;
     this.that = that;
   }
 
-  showPic(){
-    $('body').css('position','fixed');
+  showPic() {
+    $('body').css('position', 'fixed');
     let ele = $(this.that).closest('.gallary-zone').next();
     ele.show();
     let linkImg = $(ele).find('img');
-    linkImg.attr('src',this.img);
+    linkImg.attr('src', this.img);
   }
 }
 
 //--------------------------------- ฟังก์ชั่นหน้าจอคอนเฟิร์มหลังจากการกดจอง ------------------------------ //
-$('.dialog-confirm .dialog .close-button').on('click',function(){
-  $(this).closest('.dialog-confirm').hide();
-});
+
+// $('.dialog-confirm .dialog .close-button').on('click', function () {
+//   $(this).closest('.dialog-confirm').hide();
+// });
 
 // -------------------------------- ฟังก์ชั่นหน้ายืนยันคอนเฟิร์ม ---------------------------------- //
 // ฟังก์ชั่นการค้นหาคอนเฟิร์มด้วยเบอร์
-class searchConfirm{
-  constructor(that){
-    this.that = that;
-    this.val = $(this.that).closest('.search-ber').find('input').val();
-  }
+// class searchConfirm {
+//   constructor(that) {
+//     this.that = that;
+//     this.val = $(this.that).closest('.search-ber').find('input').val();
+//   }
 
   // ทำการเช็คการกรอกเบอร์ เมื่อถูกต้องให้ไปสู่หน้าแสดงผลลัพท์
-  search(){
-    if(this.val !== '' && $.isNumeric(this.val) && this.val.length == 10){
-      $('.info-book').show();
-    }
-    else{
-      Swal.fire({
-        icon: 'error',
-        title: 'คุณกรอกไม่ถูกต้อง!',
-        text: 'คุณกรอกหมายเลขไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง'
-      })
-    }
-  }
-}
+  // search() {
+  //   if (this.val !== '' && $.isNumeric(this.val) && this.val.length == 10) {
+  //     $('.info-book').show();
+  //   }
+  //   else {
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: 'คุณกรอกไม่ถูกต้อง!',
+  //       text: 'คุณกรอกหมายเลขไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง'
+  //     })
+  //   }
+  // }
+// }
 
 // ฟังก์ชั่นจัดการรายการที่จะส่งใบสลีปการโอนหลังจากการค้นหาจากเบอร์
-class manageInfo_book{
-  constructor(that){
-    this.that = that;
-  }
+// class manageInfo_book {
+//   constructor(that) {
+//     this.that = that;
+//   }
 
-  confirm(){
-    $(this.that).closest('.info-book').hide('slow');
-    $(this.that).closest('.info-book').next().show('slow');
-    $(this.that).closest('.info-book').next().next().show('slow');
-  }
+//   confirm() {
+//     $(this.that).closest('.info-book').hide('slow');
+//     $(this.that).closest('.info-book').next().show('slow');
+//     $(this.that).closest('.info-book').next().next().show('slow');
+//   }
 
-  delete(){
-    $(this.that).closest('.grid').hide('slow');
-  }
-}
+//   delete() {
+//     $(this.that).closest('.grid').hide('slow');
+//   }
+// }
 
 //ส่วนปุ่มกดของการค้นหารายการคอนเฟิร์มจากเบอร์
-$('.confirm-page .search-ber .button button').on('click',function(){
-  let searchBer = new searchConfirm(this);
-  searchBer.search();
-});
+// $('.confirm-page .search-ber .button button').on('click', function () {
+//   let searchBer = new searchConfirm(this);
+//   searchBer.search();
+// });
+
 //ส่วนปุ่มกดของรายการคอนเฟิร์มส่งใบสลีปโอนเงิน
-$('.info-book .grid-data .grid .button button').on('click',function(){
-  let manageConf = new manageInfo_book(this);
-  let cl = $(this).attr('class');
-  switch (cl) {
-    case "confirm":
-      manageConf.confirm();
-      break;
-    case "delete":
-      manageConf.delete();
-      break;
-  }
-});
+// $('.info-book .grid-data .grid .button button').click(function(){
+//   let manageConf = new manageInfo_book(this);
+//   let cl = $(this).attr('class');
+//   switch (cl) {
+//     case "confirm":
+//       manageConf.confirm();
+//       break;
+//     case "delete":
+//       manageConf.delete();
+//       break;
+//   }
+// });
+
+
 
 // ---------------------------- ทดสอบฟังก์ชั่นแสดงผลการชำระเงิน ---------------------------- //
-$('#slip-upload').click(function(){
-  $('#slip-upload').change(function(){
+$('#slip-upload').click(function () {
+  $('#slip-upload').change(function () {
     let a = $('#slip-upload').val();
     console.log(a);
     $('#inputfile').text(a);

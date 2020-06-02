@@ -1987,7 +1987,7 @@ a {
       grid-template-columns: repeat(2, 50%);
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 767px) {
   .contact-me .box-border .form-Contact .input-box .info {
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
@@ -2076,11 +2076,13 @@ a {
 
 .contact-me .box-border .form-Contact .input-box .detail {
   margin: 2% 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .contact-me .box-border .form-Contact .input-box .detail label {
   font-size: 1.2em;
-  width: 18%;
 }
 
 .contact-me .box-border .form-Contact .input-box .detail textarea {
@@ -2378,64 +2380,39 @@ a {
 .dialog-confirm {
   display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 50%;
-  height: 90%;
-  background-color: #fff;
-  border-radius: 10px;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: #000000ab;
   z-index: 4;
   padding: 1%;
   overflow: hidden;
 }
 
-@media screen and (max-width: 480px) {
-  .dialog-confirm {
+.dialog-confirm .dialog {
+  width: 60%;
+  height: 90%;
+  border-radius: 10px;
+  border: 1px solid gray;
+  position: relative;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 767px) {
+  .dialog-confirm .dialog {
     width: 90%;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1365px) {
-  .dialog-confirm {
+  .dialog-confirm .dialog {
     width: 80%;
   }
-}
-
-.dialog-confirm:before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background-image: url(/img/BG1.jpg);
-  width: 100%;
-  height: 60%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: .2;
-  z-index: -1;
-}
-
-.dialog-confirm:after {
-  content: '';
-  position: absolute;
-  top: -17%;
-  right: 0;
-  background-image: url(/img/BG2.jpg);
-  width: 85%;
-  height: 61%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  opacity: .2;
-  z-index: -1;
-}
-
-.dialog-confirm .dialog {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  border: 1px solid gray;
 }
 
 .dialog-confirm .dialog .title {
@@ -2474,32 +2451,38 @@ a {
   margin: 3% 0;
 }
 
+.dialog-confirm .dialog .info .info-data label, .dialog-confirm .dialog .info .info-data span {
+  font-size: 1em;
+}
+
 @media screen and (max-width: 480px) {
-  .dialog-confirm .dialog .info .info-data {
+  .dialog-confirm .dialog .info .info-data label, .dialog-confirm .dialog .info .info-data span {
     font-size: .7em;
   }
 }
 
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .dialog-confirm .dialog .info .info-data label, .dialog-confirm .dialog .info .info-data span {
+    font-size: 1em;
+  }
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .dialog-confirm .dialog .info .info-data {
+  .dialog-confirm .dialog .info .info-data label, .dialog-confirm .dialog .info .info-data span {
     font-size: 1em;
   }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1365px) {
-  .dialog-confirm .dialog .info .info-data {
-    font-size: 1.2em;
+  .dialog-confirm .dialog .info .info-data label, .dialog-confirm .dialog .info .info-data span {
+    font-size: .9em;
   }
 }
 
 @media screen and (min-width: 1366px) and (max-width: 1599px) {
-  .dialog-confirm .dialog .info .info-data {
+  .dialog-confirm .dialog .info .info-data label, .dialog-confirm .dialog .info .info-data span {
     font-size: .8em;
   }
-}
-
-.dialog-confirm .dialog .info .info-data label, .dialog-confirm .dialog .info .info-data span {
-  font-size: 1.2em;
 }
 
 .dialog-confirm .dialog .info .info-data span {
@@ -2569,6 +2552,10 @@ a {
 
 .dialog-confirm .dialog .close-button svg {
   cursor: pointer;
+}
+
+.dialog-confirm.active {
+  display: block;
 }
 
 @media screen and (min-width: 1024px) {
