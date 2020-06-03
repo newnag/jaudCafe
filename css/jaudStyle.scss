@@ -512,12 +512,12 @@ header{
         border: unset;
     }
     @media screen and (min-width:$ipadpro) {
-        top: -30px;
+        top: -77px;
     }
 
     .book-top{
         .selectType{
-            background-color: #c7c7c7;
+            background: linear-gradient(360deg, #6b6b6b, #c7c7c759);
             height: 50px;
             border-radius: 10px;
 
@@ -621,6 +621,7 @@ header{
                     display: flex;
                     align-items: center;
                     z-index: 2;
+                    margin-top: 5%;
 
                     .button{
                         display: flex;
@@ -669,7 +670,7 @@ header{
                     z-index: 1;
                     position: absolute;
                     width: 24%;
-                    height: 90%;
+                    height: 86%;
                     bottom: 0;
                     left: 50%;
                     transform: translateX(-100%);
@@ -1959,7 +1960,7 @@ header{
         .grid-data{
             .grid{
                 display: grid;
-                grid-template-columns: repeat(5,20%);
+                grid-template-columns: 20% 20% 20% 17% 23%;
                 text-align: center;
                 margin: 2% 0;
 
@@ -1969,6 +1970,9 @@ header{
 
                     @media screen and (max-width:$mobile) {
                         font-size: .5em;
+                    }
+                    @media screen and (min-width:481px) and (max-width:767px) {
+                        font-size: .7em;
                     }
                     @media screen and (min-width:$tablet) and (max-width:$ipadpro-1) {
                         font-size: 1em;
@@ -1980,8 +1984,9 @@ header{
                 }
                 .button{
                     button{
-                        width: 40%;
+                        width: 47%;
                         height: 40px;
+                        margin: 0 1%;
                         border: unset;
                         border-radius: 20px;
                         background-color: $main_color;
@@ -1992,10 +1997,20 @@ header{
                         @media screen and (max-width:$mobile) {
                             font-size: .5em;
                             height: 22px;
-                            width: 44%;
+                            width: 100%;
+                        }
+                        @media screen and (min-width:481px) and (max-width:767px) {
+                            width: 100%;
+                            font-size: .6em;
+                            margin: 1% 0;
                         }
                         @media screen and (min-width:$tablet) and (max-width:$ipadpro-1) {
+                            font-size: .7em;
+                            width: 48%;
+                        }
+                        @media screen and (min-width:$ipadpro) and (max-width:1365px) {
                             font-size: .8em;
+                            width: 48%;
                         }
                     }
                 }

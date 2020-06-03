@@ -40,9 +40,10 @@ $(function () {
 
   $('#date-payment').flatpickr({
     enableTime: true,
-    dateFormat: "d-m-Y : H:i",
+    dateFormat: "d-m-Y H:i",
     disableMobile: "true",
-    minDate: new Date().fp_incr(1)//"today",
+    minDate:"today",
+    time_24hr: true
   });
 })
 
@@ -209,7 +210,7 @@ class swicthTable {
         $('.display-box figure .table').addClass('disableT')
         $('.display-box figure .arch').removeClass('disableA')
         $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
-
+        
         $('.book-top .formBook .Arch').attr('data-action', 'active')
         $('.book-top .formBook .Table').attr('data-action', '');
 
@@ -227,7 +228,7 @@ class swicthTable {
         $('.display-box figure .arch').addClass('disableA')
         $('.display-box figure .table').removeClass('disableT')
         $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
-
+        
         $('.book-top .formBook .Arch').attr('data-action', '')
         $('.book-top .formBook .Table').attr('data-action', 'active');
 
@@ -338,9 +339,13 @@ class countPeopleT extends countPeople {
 // ด้าน select ซุ้ม
 $('#arch').change(function () {
   let archNo = $(this).val();
-  console.log(archNo)
+  // console.log(archNo)
   $('.book-display .display-box figure .item').removeClass('selectedA');
-  // $('.book-display .display-box figure .item .num-table').show();
+
+  // $('.book-display .display-box figure .arch .num-table').show(); //***ไม่ได้ใช้โค้ดนี้แล้ว
+  document.querySelectorAll(`.book-display .display-box figure .arch`).forEach(x => 
+    !x.classList.contains('confirmA') && (x.querySelector('.num-table').style.display = '')
+  );
 
   archNo.forEach(element => {
     let Ele = $(`.book-display .display-box figure .item[data-archid=${element}]`);
@@ -354,8 +359,12 @@ $('#arch').change(function () {
 $('#archT').change(function () {
   let tableNo = $(this).val();
   $('.book-display .display-box figure .item').removeClass('selectedT');
-  // $('.book-display .display-box figure .item .num-table').show();
 
+  // $('.book-display .display-box figure .item .num-table').show();
+  document.querySelectorAll(`.book-display .display-box figure .table`).forEach(x => 
+    !x.classList.contains('confirmT') && (x.querySelector('.num-table').style.display = '')
+  );
+  
   tableNo.forEach(element => {
     let EleT = $(`.book-display .display-box figure .item[data-tableid=${element}]`);
     EleT.addClass('selectedT');
@@ -388,7 +397,7 @@ $('.gallary .gallary-zone figure img').on('click', function () {
 });
 //ปุ่มปิด
 $('.showpic .bigpic .close').on('click', function () {
-  $('body').css('position', 'unset');
+  //$('body').css('position', 'unset');
   $(this).closest('.showpic').hide();
 });
 
@@ -399,7 +408,6 @@ class showGallary {
   }
 
   showPic() {
-    $('body').css('position', 'fixed');
     let ele = $(this.that).closest('.gallary-zone').next();
     ele.show();
     let linkImg = $(ele).find('img');

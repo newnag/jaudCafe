@@ -498,12 +498,13 @@ a {
 
 @media screen and (min-width: 1024px) {
   .booking-zone {
-    top: -30px;
+    top: -77px;
   }
 }
 
 .booking-zone .book-top .selectType {
-  background-color: #c7c7c7;
+  background: -webkit-gradient(linear, left bottom, left top, from(#6b6b6b), to(#c7c7c759));
+  background: linear-gradient(360deg, #6b6b6b, #c7c7c759);
   height: 50px;
   border-radius: 10px;
 }
@@ -652,6 +653,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
   z-index: 2;
+  margin-top: 5%;
 }
 
 .booking-zone .book-top .selectType .box-button .arch .button, .booking-zone .book-top .selectType .box-button .table .button {
@@ -714,7 +716,7 @@ a {
   z-index: 1;
   position: absolute;
   width: 24%;
-  height: 90%;
+  height: 86%;
   bottom: 0;
   left: 50%;
   -webkit-transform: translateX(-100%);
@@ -2775,8 +2777,8 @@ a {
 .confirm-page .info-book .grid-data .grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (20%)[5];
-      grid-template-columns: repeat(5, 20%);
+  -ms-grid-columns: 20% 20% 20% 17% 23%;
+      grid-template-columns: 20% 20% 20% 17% 23%;
   text-align: center;
   margin: 2% 0;
 }
@@ -2792,6 +2794,12 @@ a {
   }
 }
 
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .confirm-page .info-book .grid-data .grid span {
+    font-size: .7em;
+  }
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .confirm-page .info-book .grid-data .grid span {
     font-size: 1em;
@@ -2804,8 +2812,9 @@ a {
 }
 
 .confirm-page .info-book .grid-data .grid .button button {
-  width: 40%;
+  width: 47%;
   height: 40px;
+  margin: 0 1%;
   border: unset;
   border-radius: 20px;
   background-color: #000;
@@ -2818,13 +2827,29 @@ a {
   .confirm-page .info-book .grid-data .grid .button button {
     font-size: .5em;
     height: 22px;
-    width: 44%;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .confirm-page .info-book .grid-data .grid .button button {
+    width: 100%;
+    font-size: .6em;
+    margin: 1% 0;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .confirm-page .info-book .grid-data .grid .button button {
+    font-size: .7em;
+    width: 48%;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .confirm-page .info-book .grid-data .grid .button button {
     font-size: .8em;
+    width: 48%;
   }
 }
 
