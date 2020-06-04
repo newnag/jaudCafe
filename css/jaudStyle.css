@@ -36,6 +36,10 @@ img {
   height: auto;
 }
 
+input, select, button {
+  font-family: prompt;
+}
+
 input:focus, select:focus, button:focus {
   outline: none;
 }
@@ -103,10 +107,17 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 100%;
 }
 
 .head-nav .left .logo figure img {
-  border-radius: 50%;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .head-nav .left .logo figure img {
+    height: 56px;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -473,6 +484,12 @@ a {
 @media screen and (min-width: 1024px) {
   header .slideHead {
     height: 650px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header .slideHead img {
+    height: 175px;
   }
 }
 
@@ -884,6 +901,18 @@ a {
   border-radius: 40px;
   width: 80px;
   height: 80px;
+  -webkit-box-shadow: 0px 0px 20px grey;
+          box-shadow: 0px 0px 20px grey;
+  border: 1px solid gray;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+@media screen and (min-width: 1366px) {
+  .booking-zone .book-top .formBook .submit-button button:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -1235,7 +1264,9 @@ a {
 @media screen and (max-width: 480px) {
   .slide-gallary {
     border-radius: 20px;
-    height: 560px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
     padding: 3% 5%;
   }
 }
@@ -1297,11 +1328,18 @@ a {
 }
 
 .slide-gallary .content .slider {
-  margin-top: 5%;
+  margin: 10% 0;
+}
+
+.slide-gallary .content .slider .owl-stage-outer .owl-stage .owl-item img {
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 20px;
 }
 
 .slide-gallary .content .slider .owl-dots {
-  bottom: -25%;
+  bottom: -15%;
 }
 
 .about-me {
@@ -1496,6 +1534,12 @@ a {
   z-index: 3;
 }
 
+@media screen and (max-width: 480px) {
+  .contact {
+    z-index: 1;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .contact {
     border-radius: 120px 120px 0 0;
@@ -1509,7 +1553,25 @@ a {
 }
 
 .contact .box-contact figure img {
-  width: 8%;
+  width: 10%;
+}
+
+@media screen and (max-width: 767px) {
+  .contact .box-contact figure img {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .contact .box-contact figure img {
+    width: 20%;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+  .contact .box-contact figure img {
+    width: 25%;
+  }
 }
 
 .contact .box-contact .head h1 {
@@ -2741,6 +2803,14 @@ a {
   cursor: pointer;
 }
 
+@media screen and (max-width: 480px) {
+  .confirm-page .search-ber .button button {
+    font-size: .8em;
+    height: 35px;
+    width: 110px;
+  }
+}
+
 .confirm-page .search-ber .button svg {
   margin-right: 6%;
 }
@@ -2764,23 +2834,39 @@ a {
   border-bottom: 2px solid gray;
 }
 
+@media screen and (max-width: 480px) {
+  .confirm-page .info-book .grid-head {
+    -ms-grid-columns: 25% 45% 30%;
+        grid-template-columns: 25% 45% 30%;
+  }
+}
+
 .confirm-page .info-book .grid-head span {
   font-size: 1.2em;
 }
 
 @media screen and (max-width: 480px) {
   .confirm-page .info-book .grid-head span {
-    font-size: .5em;
+    font-size: .6em;
   }
 }
 
 .confirm-page .info-book .grid-data .grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 20% 20% 20% 17% 23%;
-      grid-template-columns: 20% 20% 20% 17% 23%;
+  -ms-grid-columns: 18% 20% 20% 17% 25%;
+      grid-template-columns: 18% 20% 20% 17% 25%;
   text-align: center;
   margin: 2% 0;
+}
+
+@media screen and (max-width: 480px) {
+  .confirm-page .info-book .grid-data .grid {
+    -ms-grid-columns: 25% 45% 30%;
+        grid-template-columns: 25% 45% 30%;
+    border-bottom: 1px solid lightgray;
+    padding: 1% 0;
+  }
 }
 
 .confirm-page .info-book .grid-data .grid span {
@@ -2790,7 +2876,7 @@ a {
 
 @media screen and (max-width: 480px) {
   .confirm-page .info-book .grid-data .grid span {
-    font-size: .5em;
+    font-size: .7em;
   }
 }
 
@@ -2811,6 +2897,14 @@ a {
   height: 1.5em;
 }
 
+@media screen and (max-width: 480px) {
+  .confirm-page .info-book .grid-data .grid .button {
+    -ms-grid-column: 2;
+        grid-column-start: 2;
+    grid-column-end: 4;
+  }
+}
+
 .confirm-page .info-book .grid-data .grid .button button {
   width: 47%;
   height: 40px;
@@ -2827,7 +2921,7 @@ a {
   .confirm-page .info-book .grid-data .grid .button button {
     font-size: .5em;
     height: 22px;
-    width: 100%;
+    width: 30%;
   }
 }
 
@@ -2851,6 +2945,10 @@ a {
     font-size: .8em;
     width: 48%;
   }
+}
+
+.confirm-page .info-book .grid-data .grid .button .view {
+  width: 40px;
 }
 
 .confirm-page .confirm-payment {
@@ -3140,7 +3238,7 @@ a {
 
 @media screen and (max-width: 480px) {
   .confirm-page .payment .input-data .input input, .confirm-page .payment .input-data .input select {
-    font-size: 1em;
+    font-size: .7em;
   }
 }
 
