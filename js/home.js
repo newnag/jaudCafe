@@ -175,6 +175,7 @@ document.querySelector('.space-timeround-arch').addEventListener('change', funct
         nav: false,
         dots: false,
         autoplay: true,
+        autoplayTimeout: 3000,
         responsiveClass: true,
         items: 1,
       }), 50
@@ -282,7 +283,28 @@ function getDataBooking(type, date_, timeround) {
   }
 }
 
-//เมื่อลูกค้า กดจอง (click)
+// เมื่อลูกค้า (click) เลือกซุ้มหรือโต๊ะ 
+function handleClickDoBook(e) {
+  e.preventDefault();
+  let _this = e.target.closest('.item')
+  if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (screen.width >= 1366) {
+      if (
+        !_this.classList.contains('disableA') &&
+        !_this.classList.contains('disableT') &&
+        !_this.classList.contains('confirmA') &&
+        !_this.classList.contains('confirmT')
+      ) {
+        let Book = new bookingTable(_this);
+
+        Book.doBook();
+      }
+    }
+  }
+}
+
+
+// เมื่อลูกค้า กดจอง (click)
 document.querySelector('#booking-button-submit').addEventListener('click', async function () {
   let action = Array.from(document.querySelectorAll('.book-top .formBook .input-zone')).find(ex => ex.getAttribute('data-action') === "active");
   let type = action.getAttribute('data-type');
@@ -694,7 +716,7 @@ async function saveBooking({ ...data }) {
           });
         }
       } else {
-        
+
         clearLocalStorage()
 
         // success

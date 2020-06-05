@@ -1,58 +1,31 @@
-<?php 
-$footer_info = $App->getFooterInfoByID(1);
-
-?>
-<footer class="footer">
-  <div class="footer-wrapper-top">
-    <ul class="container ft-menu">
-      <?=$App->getNavbarFooterMenu()?>
-    </ul>
-  </div>
-  <div class="footer-wrapper-middle">
-    <ul class="fm-menu container">
-      <li class="fm-item">
-        <div class="left wm">
-          <p class="tt text-gray">ติดต่อ</p>
-          <p class="tb text-gray">คอลเซนเตอร์</p>
-        </div>
-        <div class="right">
-          <span class="text-blue-light ber"><?=$CONTACT_WEB->phone?></span>
-        </div>
-      </li>
-      <li class="fm-item">
-        <div class="left w ">
-          <p class="tt text-gray">ติดต่อผ่านไลน์</p>
-          <p class="tb text-gray">ID:<?=$CONTACT_WEB->line?></p>
-        </div>
-        <div class="right">
-          <a href="https://line.me/ti/p/~<?=$CONTACT_WEB->line?>"><img src="/icon/line-icon-45x44px.png" alt=""></a>
-        </div>
-      </li>
-      <li class="fm-item">
-        <div class="left w">
-          <p class="tt text-gray">กรอกแบบฟอร์มติดต่อ</p>
-          <p class="tb text-gray">ทีมงานทีเด็ดไก่ชน</p>
-        </div>
-        <div class="right">
-          <a href="<?=SITE_URL.$App->getURLByCateID(12)?>" ><img src="/icon/icon-from-42x42px.png" alt=""></a>
-        </div>
-      </li>
-      <li class="fm-item">
-        <div class="social-w">
-          <a href="<?=$CONTACT_WEB->facebook?>" class="circle"><i class="fab fa-facebook-f"></i></a>
-          <a href="<?=$CONTACT_WEB->twitter?>" class="circle"><i class="fab fa-twitter"></i></a>
-          <a href="<?=$CONTACT_WEB->ig?>" class="circle"><i class="fab fa-instagram"></i></a>
-          <a href="<?=$CONTACT_WEB->youtube?>" class="circle"><i class="fab fa-youtube"></i></a>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="footer-wrapper-bottom">
-    <div class="container fm-w">
-      <p class="fm-desc text-gray"><strong class="text-blue-light fm-title"><?=$footer_info->title?></strong> <?=$footer_info->description?> </p>
+<? /** OK */ ?>
+<div class="contact">
+  <div class="box-contact">
+    <figure><img src="<?= SITE_URL . $CONTACT_WEB->image_footer ?>" alt="<?= $CONTACT_WEB->name ?>"></figure>
+    <div class="head">
+      <h1>ติดต่อ <?= $CONTACT_WEB->name ?></h1>
+    </div>
+    <div class="text">
+      <p>สามารถติดต่อร้านจ้วดคาเฟ่ได้ตามเบอร์โทร Line, facebook, twitter ด้านล่างนี้</p>
+    </div>
+    <div class="tel"><span>โทร: <?= $CONTACT_WEB->phone; ?></span></div>
+    <div class="social">
+      <a href="https://line.me/ti/p/~<?= $CONTACT_WEB->ig ?>"><i class="fab fa-line"></i></a>
+      <a href="<?= $CONTACT_WEB->facebook ?>"><i class="fab fa-facebook-f"></i></a>
+      <a href="<?= $CONTACT_WEB->twitter ?>"><i class="fab fa-twitter"></i></a>
     </div>
   </div>
-  <div class="ft-copyright">
-    <a href="#" class="text-white">&copy; 2020 ALL RIGHT RESERVED BY TEEDEDKAICHON.COM</a>
+</div>
+
+<footer>
+  <div class="footer">
+    <p>&copy; 2020 <a href="https://wynnsoft-solution.com">Wynnsoft Solution.com</a></p>
   </div>
 </footer>
+
+
+
+<script src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="/plugin/selectMulti/jquery.multi-select.min.js"></script>
+<script src="/js/jaudApp.js?v=<?= time() ?>"></script>

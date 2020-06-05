@@ -32,4 +32,5 @@
   <script src="/js/jquery/jquery-3.5.1.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer async src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>

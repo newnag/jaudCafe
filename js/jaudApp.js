@@ -158,11 +158,10 @@ class bookingTable {
       // $(`#_${t - 1}`).click();
       $(`.multi-select-menuitem input[value=${t}]`).click()
     }
-
   }
 }
 
-// ของพี่นิว
+
 // $('.book-display .display-box figure .item').on('click', function () {
 //   if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 //     if (screen.width >= 1366) {
@@ -173,25 +172,6 @@ class bookingTable {
 //     }
 //   }
 // });
-
-// ของก๊อต เขียนมาใหม่
-function handleClickDoBook(e) {
-  e.preventDefault();
-  let _this = e.target.closest('.item')
-  if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    if (screen.width >= 1366) {
-      if (
-        !_this.classList.contains('disableA') &&
-        !_this.classList.contains('disableT') &&
-        !_this.classList.contains('confirmA') &&
-        !_this.classList.contains('confirmT')
-      ) {
-        let Book = new bookingTable(_this);
-        Book.doBook();
-      }
-    }
-  }
-}
 
 
 // ------------------------------- กดเลือกประเภทโต๊ะในการจอง เพื่อเปลี่ยนinput ------------------------------ //
@@ -302,8 +282,9 @@ class countPeople {
 
   doCount() {
     for (let i = 1; i <= 10; i++) {
-      if (this.people >= this.max * i && this.aSize.length <= i) {
+      if (this.people > this.max * i && this.aSize.length <= i) {
         $(this.ele).attr('max', this.max * i);
+        $('#numPeople').val(this.max * i);
         Swal.fire(
           'จำนวนคนถึงขีดจำกัด!',
           'ซุ้มจำกัด 15 คนต่อซุ้ม กรุณาเลือกซุ้มเพิ่ม',
@@ -323,8 +304,9 @@ class countPeopleT extends countPeople {
 
   doCount() {
     for (let i = 1; i <= 10; i++) {
-      if (this.people >= this.max * i && this.aSize.length <= i) {
+      if (this.people > this.max * i && this.aSize.length <= i) {
         $(this.ele).attr('max', this.max * i);
+        $('#numPeopleT').val(this.max * i);
         Swal.fire(
           'จำนวนคนถึงขีดจำกัด!',
           'โต๊ะจำกัด 5 คนต่อโต๊ะ กรุณาเลือกโต๊ะเพิ่ม',
@@ -337,7 +319,9 @@ class countPeopleT extends countPeople {
 
 // --------------------------------- ฟังก์ชั่นกดจองโต๊ะแล้วแสดงทั้ง select และ display ----------------------------------- //
 // ด้าน select ซุ้ม
-$('#arch').change(function () {
+$('#arch').change(function (e) {
+  e.preventDefault();
+  console.log('select arch')
   let archNo = $(this).val();
   // console.log(archNo)
   $('.book-display .display-box figure .item').removeClass('selectedA');
@@ -356,7 +340,9 @@ $('#arch').change(function () {
 });
 
 //ด้าน select โต๊ะ
-$('#archT').change(function () {
+$('#archT').change(function (e) {
+  e.preventDefault();
+  console.log('select table')
   let tableNo = $(this).val();
   $('.book-display .display-box figure .item').removeClass('selectedT');
 

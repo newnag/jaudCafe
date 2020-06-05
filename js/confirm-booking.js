@@ -90,6 +90,8 @@ function handleClickConfirm(e) {
 
   // โชว์เงิน
   document.querySelector(`#booking-info-price-show`).innerHTML = `${self.getAttribute('data-price')} บาท`
+  // ยอดที่ชำระ
+  document.querySelector(`.confirm-payment-price`).value = `${self.getAttribute('data-price')}`
 
   // เก็บหมายเลขซุ้มหรือโต๊ะ ไว้ใน localstore
   localStorage.setItem('confirm-payment-position', self.getAttribute('data-position'))
@@ -99,7 +101,46 @@ function handleClickConfirm(e) {
 // เมื่อกดปุ่ม ลบ (click)
 function handleClickDelete(e) {
   e.preventDefault();
-
+  Swal.fire({
+    title:"ยืนยันการลบ",
+    text:"คุณต้องการลบการจองนี้ใช่หรือไม่",
+    icon:"warning",
+    confirmButtonText:"OK",
+    showCancelButton:true,
+    cancelButtonText:"Cancel"
+  }).then(x => {
+    if(x.value){
+      let csrf = document.querySelector('#token-csrf-booking-delete').value
+      axios.delete(`/api/v1.0/Booking`,{
+        data:{
+          booking_id:e.target.closest('.grid').getAttribute(`data-id`),
+        },
+        headers:{
+          'token-csrf':`csrf ${csrf}`
+        }
+      }).then(res => {
+        if(res.data.message == "success"){
+          Swal.fire({
+            title:"ลบข้อมูลสำเร็จ",
+            text:"ลบข้อมูลการจองสำเร็จ",
+            icon:"success",
+            confirmButtonText:"OK",
+          }).then(() => {
+            e.target.closest('.grid').remove()
+          })
+        }else{
+          Swal.fire({
+            title:"ลบข้อมูลไม่สำเร็จ",
+            text:"ลบข้อมูลการจองไม่สำเร็จ",
+            icon:"error",
+            confirmButtonText:"OK",
+          }).then(() => {
+            
+          })
+        }
+      })
+    }
+  });
 }
 
 
