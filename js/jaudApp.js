@@ -6,6 +6,7 @@ $(function () {
     nav: false,
     dots: true,
     autoplay: true,
+    smartSpeed: 2000,
     responsiveClass: true,
     items: 1,
   });
