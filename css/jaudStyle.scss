@@ -61,6 +61,13 @@ $pc:1600px;
             }
         }
     }
+    .facebook{
+        p{
+            @media screen and (max-width:$mobile) {
+                width: 60%;
+            }
+        }
+    }
 }
 
 @mixin headname {
@@ -134,6 +141,10 @@ $pc:1600px;
                         transform-origin: bottom left;
                     }
                 } 
+
+                &.active{
+                    border-bottom: 1px solid $second_color;
+                }
             }
         }
     }
@@ -206,7 +217,7 @@ a{
         top: 0%;
         margin-top: 40px;
         border-radius: 50px;
-        grid-template-columns: 30% 70%;
+        grid-template-columns: 25% 75%;
     }
     @media screen and (min-width:$ipadpro) and (max-width:1365px){
         grid-template-columns: 15% 85%;
@@ -251,7 +262,7 @@ a{
         grid-template-columns: 80% 20%;
 
         @media screen and (min-width:$ipadpro) {
-            grid-template-columns: 70% 30%;
+            grid-template-columns: 75% 25%;
             grid-template-areas: 'menuhead search';
         }
 
@@ -281,7 +292,7 @@ a{
                     display: flex;
                     height: 100%;
                     align-items: center;
-                    padding-top: 19px;
+                    padding-top: 21px;
                     text-align: unset;
                     margin: unset;
                     justify-content: flex-end;
@@ -394,6 +405,7 @@ a{
                     border-radius: 10px;
                     padding: 0 10% 0 3%;
                     background: #0000;
+                    font-size: 0.6em;
 
                     &::placeholder {
                         color: #ffffffc7;
@@ -771,6 +783,14 @@ header{
                             border: 1px solid $main_color;
                             border-radius: 20px;
                             background-color: $second_color;
+                            
+                            
+                        }
+                        input{
+                            @supports (-webkit-touch-callout: none) {
+                                text-align: center;
+                                padding: 0;
+                            }
                         }
                         svg,img{
                             position: absolute;
@@ -784,7 +804,7 @@ header{
                             width: 10%;
 
                             @media screen and (max-width:$mobile) {
-                                width: 15%;
+                                width: 12%;
                             }
                         }
                     } 
@@ -1148,7 +1168,7 @@ header{
         padding: 3% 5%;
     }
     @media screen and (min-width:$tablet) and (max-width:$ipadpro-1) {
-        height: 560px;
+        height: fit-content;
         border-radius: 20px;
         margin: 3% 1%;
     }
@@ -1461,7 +1481,7 @@ header{
 
         .ck{
             p{
-                margin: 5% 0;
+                margin: 20px 0;
                 font-size: 1.4em;
                 font-family: promptLight;
                 line-height: 1.8;
@@ -1625,7 +1645,6 @@ header{
                 }
 
                 button{
-                    background: #000;
                     color: #fff;
                     width: 150px;
                     height: 50px;
@@ -1641,6 +1660,13 @@ header{
                     span{
                         margin-left: 8%;
                         font-size: 1.5em;
+                    }
+
+                    &#clear{
+                        background-color: #BB1E28;
+                    }
+                    &#confirm{
+                        background-color: #3D7A32;
                     }
                 }
             }

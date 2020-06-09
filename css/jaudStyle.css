@@ -85,8 +85,8 @@ a {
     top: 0%;
     margin-top: 40px;
     border-radius: 50px;
-    -ms-grid-columns: 30% 70%;
-        grid-template-columns: 30% 70%;
+    -ms-grid-columns: 25% 75%;
+        grid-template-columns: 25% 75%;
   }
 }
 
@@ -145,8 +145,8 @@ a {
 
 @media screen and (min-width: 1024px) {
   .head-nav .right {
-    -ms-grid-columns: 70% 30%;
-        grid-template-columns: 70% 30%;
+    -ms-grid-columns: 75% 25%;
+        grid-template-columns: 75% 25%;
         grid-template-areas: 'menuhead search';
   }
 }
@@ -186,7 +186,7 @@ a {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    padding-top: 19px;
+    padding-top: 21px;
     text-align: unset;
     margin: unset;
     -webkit-box-pack: end;
@@ -335,6 +335,7 @@ a {
   border-radius: 10px;
   padding: 0 10% 0 3%;
   background: #0000;
+  font-size: 0.6em;
 }
 
 .head-nav .right .searchq .box-search input::-webkit-input-placeholder {
@@ -848,6 +849,13 @@ a {
   background-color: #fff;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .booking-zone .book-top .formBook .input-zone .inputBox .input input {
+    text-align: center;
+    padding: 0;
+  }
+}
+
 .booking-zone .book-top .formBook .input-zone .inputBox .input svg, .booking-zone .book-top .formBook .input-zone .inputBox .input img {
   position: absolute;
   left: 0;
@@ -864,7 +872,7 @@ a {
 
 @media screen and (max-width: 480px) {
   .booking-zone .book-top .formBook .input-zone .inputBox .input img {
-    width: 15%;
+    width: 12%;
   }
 }
 
@@ -1273,7 +1281,9 @@ a {
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .slide-gallary {
-    height: 560px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
     border-radius: 20px;
     margin: 3% 1%;
   }
@@ -1763,6 +1773,10 @@ a {
   }
 }
 
+.content-about .head-text .menu li a.active {
+  border-bottom: 1px solid #fff;
+}
+
 .content-about .background {
   position: absolute;
   width: 100%;
@@ -1789,7 +1803,7 @@ a {
 }
 
 .content-about .content .ck p {
-  margin: 5% 0;
+  margin: 20px 0;
   font-size: 1.4em;
   font-family: promptLight;
   line-height: 1.8;
@@ -1849,6 +1863,12 @@ a {
 @media screen and (max-width: 480px) {
   .content-about .infomation .address p {
     width: 65%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content-about .infomation .facebook p {
+    width: 60%;
   }
 }
 
@@ -1958,6 +1978,10 @@ a {
   }
 }
 
+.contact-me .head-text .menu li a.active {
+  border-bottom: 1px solid #fff;
+}
+
 .contact-me .background {
   position: absolute;
   width: 100%;
@@ -2026,6 +2050,12 @@ a {
 @media screen and (max-width: 480px) {
   .contact-me .box-border .infomation .address p {
     width: 65%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-me .box-border .infomation .facebook p {
+    width: 60%;
   }
 }
 
@@ -2183,7 +2213,6 @@ a {
 }
 
 .contact-me .box-border .form-Contact .button-box button {
-  background: #000;
   color: #fff;
   width: 150px;
   height: 50px;
@@ -2201,6 +2230,14 @@ a {
 .contact-me .box-border .form-Contact .button-box button span {
   margin-left: 8%;
   font-size: 1.5em;
+}
+
+.contact-me .box-border .form-Contact .button-box button#clear {
+  background-color: #BB1E28;
+}
+
+.contact-me .box-border .form-Contact .button-box button#confirm {
+  background-color: #3D7A32;
 }
 
 @media screen and (min-width: 1024px) {
@@ -2307,6 +2344,10 @@ a {
     -webkit-transform-origin: bottom left;
             transform-origin: bottom left;
   }
+}
+
+.gallary .head-text .menu li a.active {
+  border-bottom: 1px solid #fff;
 }
 
 .gallary .background {
@@ -2726,6 +2767,10 @@ a {
     -webkit-transform-origin: bottom left;
             transform-origin: bottom left;
   }
+}
+
+.confirm-page .head-text .menu li a.active {
+  border-bottom: 1px solid #fff;
 }
 
 .confirm-page .background {
@@ -3433,6 +3478,10 @@ a {
   }
 }
 
+.howto .head-text .menu li a.active {
+  border-bottom: 1px solid #fff;
+}
+
 .howto .background {
   position: absolute;
   width: 100%;
@@ -3519,6 +3568,12 @@ a {
 @media screen and (max-width: 480px) {
   .howto .infomation .address p {
     width: 65%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .howto .infomation .facebook p {
+    width: 60%;
   }
 }
 

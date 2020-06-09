@@ -282,16 +282,14 @@ class countPeople {
   }
 
   doCount() {
-    for (let i = 1; i <= 10; i++) {
-      if (this.people > this.max * i && this.aSize.length <= i) {
-        $(this.ele).attr('max', this.max * i);
-        $('#numPeople').val(this.max * i);
-        Swal.fire(
-          'จำนวนคนถึงขีดจำกัด!',
-          'ซุ้มจำกัด 15 คนต่อซุ้ม กรุณาเลือกซุ้มเพิ่ม',
-          'warning'
-        )
-      }
+    if (this.people > (this.max * this.aSize.length)) {
+      $(this.ele).attr('max', this.max * this.aSize.length);
+      $('#numPeople').val(this.max * this.aSize.length);
+      Swal.fire(
+        'จำนวนคนถึงขีดจำกัด!',
+        'ซุ้มจำกัด 15 คนต่อซุ้ม กรุณาเลือกซุ้มเพิ่ม',
+        'warning'
+      )
     }
   }
 }
@@ -304,17 +302,15 @@ class countPeopleT extends countPeople {
   }
 
   doCount() {
-    for (let i = 1; i <= 10; i++) {
-      if (this.people > this.max * i && this.aSize.length <= i) {
-        $(this.ele).attr('max', this.max * i);
-        $('#numPeopleT').val(this.max * i);
-        Swal.fire(
-          'จำนวนคนถึงขีดจำกัด!',
-          'โต๊ะจำกัด 5 คนต่อโต๊ะ กรุณาเลือกโต๊ะเพิ่ม',
-          'warning'
-        )
-      }
-    }
+    if (this.people > (this.max * this.aSize.length)) {
+      $(this.ele).attr('max', this.max * this.aSize.length);
+      $('#numPeopleT').val(this.max * this.aSize.length);
+      Swal.fire(
+        'จำนวนคนถึงขีดจำกัด!',
+        'โต๊ะจำกัด 5 คนต่อโต๊ะ กรุณาเลือกโต๊ะเพิ่ม',
+        'warning'
+      )
+    } 
   }
 }
 
@@ -402,6 +398,23 @@ class showGallary {
   }
 }
 
+$('.gallary .menu li a').on('click',function(){
+  let LineBottom = new activeLineBottom(this);
+  LineBottom.doBottom();
+});
+
+class activeLineBottom {
+  constructor(that){
+    this.ele = that
+    this.that = $('.gallary .menu li a');
+  }
+
+  doBottom(){
+    $(this.that).removeClass("active");
+    $(this.ele).addClass("active")
+  }
+}
+
 //--------------------------------- ฟังก์ชั่นหน้าจอคอนเฟิร์มหลังจากการกดจอง ------------------------------ //
 
 // $('.dialog-confirm .dialog .close-button').on('click', function () {
@@ -468,13 +481,50 @@ class showGallary {
 //   }
 // });
 
+// -------------------- ดันภายใน select iphone ให้เป็นตรงกลาง ------------------ //
 
+  if (navigator.userAgent.match(/(iPod|iPhone|iPad|iPhone Simulator)/)) {
+    function getTextWidth(txt) {
+        var $elm = $('<span class="tempforSize">'+txt+'</span>').prependTo("body");
+        var elmWidth = $elm.width();
+        $elm.remove();
+        return elmWidth;
+    }
+    function centerSelect($elm) {
+        var optionWidth = getTextWidth($elm.children(":selected").html())
+        var emptySpace =   $elm.width()- optionWidth;
+        $elm.css("text-indent", (emptySpace/2) - 10);// -10 for some browers to remove the right toggle control width
+    }
+    function leftSelect($elm) {
+        var optionWidth = getTextWidth($elm.children(":selected").html())
+        var emptySpace =   $elm.width()- optionWidth;
+        $elm.css("text-indent", (emptySpace/2) - 10);// -10 for some browers to remove the right toggle control width
+    }
 
-// ---------------------------- ทดสอบฟังก์ชั่นแสดงผลการชำระเงิน ---------------------------- //
-$('#slip-upload').click(function () {
-  $('#slip-upload').change(function () {
-    let a = $('#slip-upload').val();
-    console.log(a);
-    $('#inputfile').text(a);
-  })
-});
+    if(window.screen.width <=1024){
+      // on start 
+      $('#time').each(function(){
+        centerSelect($(this));
+      });
+      // on change
+      $('#time').on('change', function(){
+        centerSelect($(this));
+      });
+      // on start 
+      $('#arch').each(function(){
+        centerSelect($(this));
+      });
+      // on change
+      $('#arch').on('change', function(){
+          centerSelect($(this));
+      });
+      // on start 
+      $('.space-province-arch').each(function(){
+        centerSelect($(this));
+      });
+      // on change
+      $('.space-province-arch').on('change', function(){
+          centerSelect($(this));
+      });
+    }
+  }

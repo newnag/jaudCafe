@@ -287,19 +287,15 @@ function getDataBooking(type, date_, timeround) {
 function handleClickDoBook(e) {
   e.preventDefault();
   let _this = e.target.closest('.item')
-  if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    if (screen.width >= 1366) {
-      if (
-        !_this.classList.contains('disableA') &&
-        !_this.classList.contains('disableT') &&
-        !_this.classList.contains('confirmA') &&
-        !_this.classList.contains('confirmT')
-      ) {
-        let Book = new bookingTable(_this);
+  if (
+    !_this.classList.contains('disableA') &&
+    !_this.classList.contains('disableT') &&
+    !_this.classList.contains('confirmA') &&
+    !_this.classList.contains('confirmT')
+  ) {
+    let Book = new bookingTable(_this);
 
-        Book.doBook();
-      }
-    }
+    Book.doBook();
   }
 }
 

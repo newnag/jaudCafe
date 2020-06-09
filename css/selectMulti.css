@@ -56,7 +56,13 @@
     cursor: pointer;
     padding-left: 15%;
     display: flex;
-    align-items: center;
+    align-items: center; 
+}
+@supports (-webkit-touch-callout: none) {
+    .multi-select-button {
+        padding: 0;
+        justify-content: center;
+    }
 }
 
 .multi-select-button:after {
