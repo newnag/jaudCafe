@@ -17,13 +17,14 @@ $(function () {
     dots: true,
     autoplay: true,
     responsiveClass: true,
-    items: 3,
     responsive: {
       0: {
         items: 1,
+        dots: false,
       },
       768: {
         items: 2,
+        dots: false,
       },
       1024: {
         items: 3,
