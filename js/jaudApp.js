@@ -44,7 +44,9 @@ $(function () {
     enableTime: true,
     dateFormat: "d-m-Y H:i",
     disableMobile: "true",
-    minDate:"today",
+    // minDate:"today",
+    maxDate:"today",
+
     time_24hr: true
   });
 })
@@ -117,7 +119,7 @@ $('#timeT').change(function () {
   $('#archT').prop('disabled', false);
   $('#archT option').prop('disabled', false);
   $('#archT').multiSelect({
-    'noneText': 'กรุณาเลือกซุ้มหรือโต๊ะ',
+    'noneText': 'กรุณาเลือกโต๊ะ',
   });
   $('#numPeopleT').prop('disabled', false);
   $('.display-box figure .pre-select').hide();
@@ -143,13 +145,13 @@ class bookingTable {
 
   doBook() {
     if ($(this.ele).hasClass('arch')) {
-      $(this.ele).toggleClass('selectedA');
+      $(this.ele).toggleClass('selectedA'); 
       $(this.ele).find('.num-table').toggle();
+
       // ส่วนการกดDisplayซุ้ม แล้วแสดงที่Select
       let t = $(this.ele).attr('data-archid');
-      // console.log(t)
-      // $(`#_${t - 1}`).click();
-      $(`.multi-select-menuitem input[value=${t}]`).click()
+      $(`.multi-select-menuitem input[value=${t}]`)[0].click()
+
     }
     else if ($(this.ele).hasClass('table')) {
       $(this.ele).toggleClass('selectedT');
@@ -320,6 +322,15 @@ class countPeopleT extends countPeople {
 $('#arch').change(function (e) {
   e.preventDefault();
   console.log('select arch')
+  
+  // [fix iphone] ลบ option ตัวแรก
+  try{
+    document.querySelector('.space-position-arch .fix').remove()
+  }catch{
+
+  }
+  
+
   let archNo = $(this).val();
   // console.log(archNo)
   $('.book-display .display-box figure .item').removeClass('selectedA');
@@ -340,7 +351,15 @@ $('#arch').change(function (e) {
 //ด้าน select โต๊ะ
 $('#archT').change(function (e) {
   e.preventDefault();
-  console.log('select table')
+  // console.log('select table')
+
+  // [fix iphone] ลบ option ตัวแรก
+  try{
+    document.querySelector('.space-position-table .fix').remove()
+  }catch{
+    // error
+  }
+
   let tableNo = $(this).val();
   $('.book-display .display-box figure .item').removeClass('selectedT');
 
@@ -484,48 +503,62 @@ class activeLineBottom {
 
 // -------------------- ดันภายใน select iphone ให้เป็นตรงกลาง ------------------ //
 
-  if (navigator.userAgent.match(/(iPod|iPhone|iPad|iPhone Simulator)/)) {
-    function getTextWidth(txt) {
-        var $elm = $('<span class="tempforSize">'+txt+'</span>').prependTo("body");
-        var elmWidth = $elm.width();
-        $elm.remove();
-        return elmWidth;
-    }
-    function centerSelect($elm) {
-        var optionWidth = getTextWidth($elm.children(":selected").html())
-        var emptySpace =   $elm.width()- optionWidth;
-        $elm.css("text-indent", (emptySpace/2) - 10);// -10 for some browers to remove the right toggle control width
-    }
-    function leftSelect($elm) {
-        var optionWidth = getTextWidth($elm.children(":selected").html())
-        var emptySpace =   $elm.width()- optionWidth;
-        $elm.css("text-indent", (emptySpace/2) - 10);// -10 for some browers to remove the right toggle control width
-    }
+  // if (navigator.userAgent.match(/(iPod|iPhone|iPad|iPhone Simulator)/)) {
+  //   function getTextWidth(txt) {
+  //       var $elm = $('<span class="tempforSize">'+txt+'</span>').prependTo("body");
+  //       var elmWidth = $elm.width();
+  //       $elm.remove();
+  //       return elmWidth;
+  //   }
+  //   function centerSelect($elm) {
+  //       var optionWidth = getTextWidth($elm.children(":selected").html())
+  //       var emptySpace =   $elm.width()- optionWidth;
+  //       $elm.css("text-indent", (emptySpace/2) + 10);// -10 for some browers to remove the right toggle control width
+  //   }
+  //   function leftSelect($elm) {
+  //       var optionWidth = getTextWidth($elm.children(":selected").html())
+  //       var emptySpace =   $elm.width()- optionWidth;
+  //       $elm.css("text-indent", (emptySpace/2) - 10);// -10 for some browers to remove the right toggle control width
+  //   }
 
-    if(window.screen.width <=1024){
-      // on start 
-      $('#time').each(function(){
-        centerSelect($(this));
-      });
-      // on change
-      $('#time').on('change', function(){
-        centerSelect($(this));
-      });
-      // on start 
-      $('#arch').each(function(){
-        centerSelect($(this));
-      });
-      // on change
-      $('#arch').on('change', function(){
-          centerSelect($(this));
-      });
-      // on start 
-      $('.space-province-arch').each(function(){
-        centerSelect($(this));
-      });
-      // on change
-      $('.space-province-arch').on('change', function(){
-          centerSelect($(this));
-      });
-    }
-  }
+  //   if(window.screen.width <=1024){
+  //     // on start 
+  //     $('#time').each(function(){
+  //       centerSelect($(this));
+  //     });
+  //     // on change
+  //     $('#time').on('change', function(){
+  //       centerSelect($(this));
+  //     });
+  //     $('#timeT').each(function(){
+  //       centerSelect($(this));
+  //     });
+  //     // on change
+  //     $('#timeT').on('change', function(){
+  //       centerSelect($(this));
+  //     });
+  //     // on start 
+  //     $('#arch').each(function(){
+  //       centerSelect($(this));
+  //     });
+  //     // on change
+  //     $('#arch').on('change', function(){
+  //         centerSelect($(this));
+  //     });
+  //     $('#archT').each(function(){
+  //       centerSelect($(this));
+  //     });
+  //     // on change
+  //     $('#archT').on('change', function(){
+  //         centerSelect($(this));
+  //     });
+  //     // on start 
+  //     $('.space-province-arch').each(function(){
+  //       centerSelect($(this));
+  //     });
+  //     // on change
+  //     $('.space-province-arch').on('change', function(){
+  //         centerSelect($(this));
+  //     });
+  //   }
+  // }

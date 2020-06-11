@@ -277,6 +277,9 @@ a{
                 top: 0;
                 left: 0;
             }
+            @media screen and (max-height:414px) {
+                overflow-y: scroll;
+            }
 
             @media screen and (min-width:$ipadpro) {
                 display: block;
@@ -782,14 +785,17 @@ header{
                             padding-left: 15%;
                             border: 1px solid $main_color;
                             border-radius: 20px;
-                            background-color: $second_color;
-                            
-                            
+                            background-color: $second_color;  
                         }
                         input{
                             @supports (-webkit-touch-callout: none) {
-                                text-align: center;
-                                padding: 0;
+                                //text-align: center;
+                                //padding: 0;
+                            }
+                        }
+                        select{
+                            @supports (-webkit-touch-callout: none) {
+                                text-indent: 15%;
                             }
                         }
                         svg,img{
@@ -1076,6 +1082,9 @@ header{
 
                 @media screen and (max-width:$mobile) {
                     grid-template-columns: repeat(3,28%);
+                }
+                @media screen and (min-width:481px) and (max-width:$ipadpro) {
+                    grid-template-columns: repeat(5,18%);
                 }
 
                 .box{
@@ -1494,6 +1503,14 @@ header{
                 width:100%;
                 height: auto!important;
             }
+            iframe{
+                width:100%;
+                
+
+                @media screen and (max-width:$mobile) {
+                    height: auto;
+                }
+            }
         }
     }
 
@@ -1626,6 +1643,7 @@ header{
                         padding: 0 2%;
                         font-size: 1.2em;
                         resize: none;
+                        font-family: prompt;
 
                         @media screen and (max-width:$mobile){
                             width: 100%;
@@ -1824,6 +1842,10 @@ header{
             width: 80%;
         }
 
+        @media screen and (max-height:414px) {
+            overflow-y: scroll;
+        }
+
         .title{
             text-align: center;
             margin: 3% 0;
@@ -1872,6 +1894,16 @@ header{
                     color: #4e4e4e;
                     overflow: hidden;
                     height: 1.5em;
+                }
+
+                &#num-info{
+                    margin: 6% 0;
+                    span{
+                        overflow: unset;
+                        height: unset;
+                        word-break: break-word;
+                    }
+                    
                 }
             }
         }
@@ -2065,11 +2097,18 @@ header{
                         font-size: 1em;
                     }
                 }
+                span:nth-child(4){
+                    word-break: break-word;
+                }
                 #name-conBook{
                     overflow: hidden;
                     height: 1.5em;
                 }
                 .button{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
                     @media screen and (max-width:$mobile) {
                         grid-column-start: 2;
                         grid-column-end: 4;
@@ -2181,6 +2220,11 @@ header{
                         font-size: 1.1em;
                     }
                 }
+                #booking-info-position{
+                    @media screen and (max-width:$ipadpro-1) {
+                        word-break: break-all;
+                    }
+                }
             }
             #line-payment{
                 span{
@@ -2248,6 +2292,13 @@ header{
 
                 figure{
                     display: flex;
+
+                    img{
+                        @media screen and (max-width:1365px) {
+                            width: 78px;
+                            height: 78px;
+                        }
+                    }
                 }
                 .detail{
                     display: flex;

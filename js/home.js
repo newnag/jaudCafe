@@ -21,8 +21,19 @@ window.addEventListener("load", async function () {
     localStorage.setItem('numberhdlclickPositionArch', res.data.hdlClickpositionArch);
     localStorage.setItem('numberhdlclickPositionTable', res.data.hdlClickpositionTable);
   }
-  document.querySelector('.space-position-arch').innerHTML = localStorage.getItem('numberPositionArch')
-  document.querySelector('.space-position-table').innerHTML = localStorage.getItem('numberPositionTable')
+
+  // old
+  // document.querySelector('.space-position-arch').innerHTML = `${localStorage.getItem('numberPositionArch')}`
+  // fix
+  document.querySelector('.space-position-arch').innerHTML = `<option value="" disabled>กรุณาเลือกซุ้ม</option>`;
+  document.querySelector('.space-position-arch').insertAdjacentHTML('beforeend',localStorage.getItem('numberPositionArch'))
+  
+  // old
+  // document.querySelector('.space-position-table').innerHTML = localStorage.getItem('numberPositionTable')
+  // fix
+  document.querySelector('.space-position-table').innerHTML = `<option value="" disabled>กรุณาเลือกซุ้ม</option>`;
+  document.querySelector('.space-position-table').insertAdjacentHTML('beforeend',localStorage.getItem('numberPositionTable'))
+
   document.querySelector('#space-position-handleclick').insertAdjacentHTML('beforeend', localStorage.getItem('numberhdlclickPositionArch'))
   document.querySelector('#space-position-handleclick').insertAdjacentHTML('beforeend', localStorage.getItem('numberhdlclickPositionTable'))
 
@@ -78,7 +89,24 @@ let requestAPI_PositionArchAndTable = async () => {
   }
 }
 
-
+// fix phone number only
+document.querySelector('.phone-arch').addEventListener('keypress',e =>{
+  if((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)){
+    return true;
+  }else{
+    e.preventDefault();
+    return false;
+  }
+});
+// fix phone number only
+document.querySelector('.phone-table').addEventListener('keypress',e =>{
+  if((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)){
+    return true;
+  }else{
+    e.preventDefault();
+    return false;
+  }
+});
 
 // clear position arch
 function clearPositionArch() {
@@ -542,6 +570,15 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
       Swal.fire({
         title: "แจ้งเตือน!!!",
         text: "กรุณากรอกเบอร์โทรศัพท์ด้วยครับ",
+        icon: "warning",
+        confirmButtonText: "OK"
+      });
+      return false;
+    }
+    else if (phone_table.length < 10) {
+      Swal.fire({
+        title: "แจ้งเตือน!!!",
+        text: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ10หลักด้วยครับ",
         icon: "warning",
         confirmButtonText: "OK"
       });

@@ -26,6 +26,9 @@
     display: flex;
     flex-direction: column;
 }
+.multi-select-menu>.multi-select-menuitems>label:first-child{
+    display: none;
+}
 .multi-select-menuitems>label{
     margin-left: 5%;
 }

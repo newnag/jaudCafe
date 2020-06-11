@@ -164,6 +164,12 @@ a {
   }
 }
 
+@media screen and (max-height: 414px) {
+  .head-nav .right .menu {
+    overflow-y: scroll;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .head-nav .right .menu {
     display: block;
@@ -850,9 +856,8 @@ a {
 }
 
 @supports (-webkit-touch-callout: none) {
-  .booking-zone .book-top .formBook .input-zone .inputBox .input input {
-    text-align: center;
-    padding: 0;
+  .booking-zone .book-top .formBook .input-zone .inputBox .input select {
+    text-indent: 15%;
   }
 }
 
@@ -1167,6 +1172,13 @@ a {
   .booking-zone .book-display .description .box-icon {
     -ms-grid-columns: (28%)[3];
         grid-template-columns: repeat(3, 28%);
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .booking-zone .book-display .description .box-icon {
+    -ms-grid-columns: (18%)[5];
+        grid-template-columns: repeat(5, 18%);
   }
 }
 
@@ -1820,6 +1832,16 @@ a {
   height: auto !important;
 }
 
+.content-about .content .ck iframe {
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .content-about .content .ck iframe {
+    height: auto;
+  }
+}
+
 .content-about .infomation {
   margin: 5% 0;
   text-align: center;
@@ -2186,6 +2208,7 @@ a {
   padding: 0 2%;
   font-size: 1.2em;
   resize: none;
+  font-family: prompt;
 }
 
 @media screen and (max-width: 480px) {
@@ -2520,6 +2543,12 @@ a {
   }
 }
 
+@media screen and (max-height: 414px) {
+  .dialog-confirm .dialog {
+    overflow-y: scroll;
+  }
+}
+
 .dialog-confirm .dialog .title {
   text-align: center;
   margin: 3% 0;
@@ -2594,6 +2623,16 @@ a {
   color: #4e4e4e;
   overflow: hidden;
   height: 1.5em;
+}
+
+.dialog-confirm .dialog .info .info-data#num-info {
+  margin: 6% 0;
+}
+
+.dialog-confirm .dialog .info .info-data#num-info span {
+  overflow: unset;
+  height: unset;
+  word-break: break-word;
 }
 
 .dialog-confirm .dialog .button-box {
@@ -2937,9 +2976,25 @@ a {
   }
 }
 
+.confirm-page .info-book .grid-data .grid span:nth-child(4) {
+  word-break: break-word;
+}
+
 .confirm-page .info-book .grid-data .grid #name-conBook {
   overflow: hidden;
   height: 1.5em;
+}
+
+.confirm-page .info-book .grid-data .grid .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 @media screen and (max-width: 480px) {
@@ -3095,6 +3150,12 @@ a {
   }
 }
 
+@media screen and (max-width: 1023px) {
+  .confirm-page .confirm-payment .data .item #booking-info-position {
+    word-break: break-all;
+  }
+}
+
 .confirm-page .confirm-payment .data #line-payment span {
   overflow: hidden;
 }
@@ -3178,6 +3239,13 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media screen and (max-width: 1365px) {
+  .confirm-page .payment .grid-bank .bank figure img {
+    width: 78px;
+    height: 78px;
+  }
 }
 
 .confirm-page .payment .grid-bank .bank .detail {
