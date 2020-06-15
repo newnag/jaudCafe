@@ -1,7 +1,7 @@
 <? /** OK */ ?>
 <div class="contact">
   <div class="box-contact">
-    <figure><img src="<?= SITE_URL . $CONTACT_WEB->image_footer ?>" alt="<?= $CONTACT_WEB->name ?>"></figure>
+    <figure><img class="lazy" data-src="<?= SITE_URL . $CONTACT_WEB->image_footer ?>" alt="<?= $CONTACT_WEB->name ?>"></figure>
     <div class="head">
       <h1>ติดต่อ <?= $CONTACT_WEB->name ?></h1>
     </div>
@@ -17,6 +17,10 @@
   </div>
 </div>
 
+<div class="warpUp">
+  <img src="<?= SITE_URL ?>img/icon/upload.svg" alt="">
+</div>
+
 <footer>
   <div class="footer">
     <p>&copy; 2020 <a href="https://wynnsoft-solution.com">Wynnsoft Solution.com</a></p>
@@ -24,8 +28,13 @@
 </footer>
 
 
-
-<script src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="/plugin/selectMulti/jquery.multi-select.min.js"></script>
-<script src="/js/jaudApp.js?v=<?= time() ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@16.1.0/dist/lazyload.min.js"></script>
+<script>
+  var lazyLoadInstance = new LazyLoad({
+  elements_selector: ".lazy"
+});
+</script>
+<script async defer src="/plugin/OwlCarousel/dist/owl.carousel.min.js"></script>
+<script async defer src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script async defer src="/plugin/selectMulti/jquery.multi-select.min.js"></script>
+<script async defer src="/js/jaudApp.js?v=1.0.0.33"></script>

@@ -183,15 +183,29 @@ input,select,button{
     &:focus{
         outline: none;
     }
+    
 }
 select{
     cursor: pointer;
+
+    @supports (-webkit-touch-callout: none) {
+        -webkit-appearance: none;
+        background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' fill='%238C98F2'><polygon points='0,0 100,0 50,50'/></svg>") no-repeat; 
+        background-size: 12px;
+        background-position: calc(100% - 20px) center;
+        background-repeat: no-repeat;
+    }
+    
 }
 li{
     list-style: none;
 }
 a{
     text-decoration: none;
+}
+a[href^=tel]{
+    text-decoration:inherit;
+    color: inherit;
 }
 
 .container{
@@ -1019,7 +1033,7 @@ header{
                 }
               }
               .disableT{
-                background-image: url(/img/display/icon-table-disable.jpg);
+                background-image: url(/img/display/icon-table-disable.jpg?v=1);
                 background-size: contain;
                 background-repeat: no-repeat;
                 cursor: default;
@@ -1164,7 +1178,7 @@ header{
 }
 
 .slide-gallary{
-    background-image: url(/img/BG3.jpg);
+    background-image: url(/img/BG3.jpg?v=1.0.0);
     background-repeat: no-repeat;
     background-size: cover;
     height: 950px;
@@ -1692,6 +1706,13 @@ header{
     }
 }
 
+iframe{
+    @media screen and (max-width:$mobile) {
+        height: 300px;
+        margin-top: 20px;
+    }
+}
+
 .gallary{
     @media screen and (min-width:$ipadpro) {
         position: relative;
@@ -1787,6 +1808,7 @@ header{
                 background-color: $main_color;
                 border-radius: 30px;
                 width: 40px;
+                height: 40px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -2221,9 +2243,7 @@ header{
                     }
                 }
                 #booking-info-position{
-                    @media screen and (max-width:$ipadpro-1) {
-                        word-break: break-all;
-                    }
+                    word-break: break-all;
                 }
             }
             #line-payment{
@@ -2484,6 +2504,27 @@ header{
     }
 }
 
+.warpUp{
+    position: fixed;
+    z-index: 5;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 30px;
+    padding: 5px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img{
+        width: 20px;
+    }
+}
+
 footer{
     .footer{
         text-align: center;
@@ -2506,6 +2547,13 @@ footer{
             height: 100%;
             .owl-item{
                 height: 100%;
+
+                @supports (-webkit-touch-callout: none) {
+                    @media screen and (min-width:$ipad) and (max-width:$ipadpro-1) {
+                        height: 280px;
+                    }
+                    
+                }
 
                 img{
                     @media screen and (min-width:$ipadpro) {
