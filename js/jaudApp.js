@@ -566,13 +566,17 @@ class activeLineBottom {
 
   // เช็คหน้าจอมือถือผลิกตะแคง
   if(window.innerWidth > window.innerHeight){
-    $('.dialog-confirm .dialog').css('overflow-y','scroll')
+    //$('.dialog-confirm .dialog').css('overflow-y','scroll')
     let el = document.querySelectorAll('.confirm-page .payment .grid-bank .detail span')
     for(i = 0;i< el.length;i++){
       el[i].style.fontSize = '1em'
     }
-    document.querySelector('.confirm-page .payment .input-data').style.width = '90%'
-    document.querySelector('.confirm-page .confirm-payment .data').style.width = '80%'
+    try{
+      document.querySelector('.confirm-page .payment .input-data').style.width = '90%'
+      document.querySelector('.confirm-page .confirm-payment .data').style.width = '80%'
+    }catch{
+
+    }
   }
 
   // ปุ่มเลื่อนขึ้นหน้าบนอย่างรวดเร็วฉับไว

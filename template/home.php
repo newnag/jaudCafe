@@ -1,3 +1,4 @@
+
 <body>
 
   <!-- Header Web Navbar -->
@@ -5,7 +6,6 @@
 
   <!-- Slide Banner -->
   <?php require_once "mains/slide.php"; ?>
-
 
 
   <!-- MAIN -->
@@ -55,7 +55,8 @@
           <div class="inputBox">
             <label>วัน/เดือน/ปี</label>
             <div class="input">
-              <input type="date" class="dateSelect date-booking-arch" placeholder="กรอกวันที่">
+              <input type="date" class="dateSelect date-booking-arch" 
+                placeholder="กรอกวันที่">
               <i class="far fa-calendar-alt"></i>
             </div>
           </div>
@@ -83,7 +84,7 @@
           <div class="inputBox">
             <label>จำนวนคน</label>
             <div class="input">
-              <input type="number" id="numPeople" disabled>
+              <input type="number" pattern="[0-9]*" id="numPeople" disabled placeholder="กรอกจำนวนคน">
               <i class="fas fa-user-alt"></i>
             </div>
           </div>
@@ -91,21 +92,21 @@
           <div class="inputBox">
             <label>*ชื่อที่จอง</label>
             <div class="input">
-              <input type="text" name="name" class="name-arch" disabled>
+              <input type="text" name="name" class="name-arch" disabled placeholder="กรอกชื่อผู้ที่จอง">
             </div>
           </div>
 
           <div class="inputBox">
             <label>*เบอร์โทรศัพท์</label>
             <div class="input">
-              <input type="tel" name="phone" class="phone-arch" disabled>
+              <input type="tel" name="phone" class="phone-arch" disabled placeholder="กรอกเบอร์โทรศัพท์" maxlength="10">
             </div>
           </div>
 
           <div class="inputBox">
             <label>*ID : LINE</label>
             <div class="input">
-              <input type="text" class="line-arch" disabled>
+              <input type="text" class="line-arch" disabled placeholder="กรอกไลน์ไอดี">
             </div>
           </div>
 
@@ -152,7 +153,7 @@
           <div class="inputBox">
             <label>จำนวนคน</label>
             <div class="input">
-              <input type="number" id="numPeopleT" disabled>
+              <input type="number" pattern="[0-9]*" id="numPeopleT" disabled placeholder="กรอกจำนวนคน">
               <i class="fas fa-user-alt"></i>
             </div>
           </div>
@@ -160,21 +161,21 @@
           <div class="inputBox">
             <label>*ชื่อที่จอง</label>
             <div class="input">
-              <input type="text" name="name" class="name-table" disabled>
+              <input type="text" name="name" class="name-table" disabled placeholder="กรอกชื่อผู้ที่จอง">
             </div>
           </div>
 
           <div class="inputBox">
             <label>*เบอร์โทรศัพท์</label>
             <div class="input">
-              <input type="tel" name="phone" class="phone-table" disabled>
+              <input type="tel" name="phone" class="phone-table" disabled placeholder="กรอกเบอร์โทรศัพท์" maxlength="10">
             </div>
           </div>
 
           <div class="inputBox">
             <label>*ID : LINE</label>
             <div class="input">
-              <input type="text" class="line-table" disabled>
+              <input type="text" class="line-table" disabled placeholder="กรอกไลน์ไอดี">
             </div>
           </div>
 
@@ -203,7 +204,7 @@
       <div class="display-box">
         <figure id="space-position-handleclick">
           <!-- รูปภาพแผนผัง -->
-          <img src="/img/display/mapv2.png" alt="">
+          <img src="/img/display/mapv2.png?v=1.1" alt="">
           <div class="pre-select"></div>
           <!-- ที่นั่งภายในรูป -->
           <? /** fetch data here!!! */ ?>
@@ -240,14 +241,15 @@
       </div>
     </div>
   </div>
+  
 
-  <? /** OK */ ?>
   <div class="_3column container">
-    <div class="background"><img src="/img/BG1.jpg" alt=""></div>
+    <div class="background"><img class="lazy" data-src="/img/BG1.jpg?v=1.0" alt=""></div>
     <div class="grid-box">
-      <?= $App->getJuadProperty() ?>
+      <?php  echo $App->getJuadProperty(); ?>
     </div>
   </div>
+
 
   <div class="slide-gallary">
     <div class="content container">
@@ -259,17 +261,21 @@
       </div>
 
       <div class="slider owl-carousel owl-theme owl-loaded">
-        <?=$App->getPostImagesWithCateID()?>
+        <!-- Gallery -->
+        <?php echo $App->getPostImagesWithCateID(); ?>
       </div>
     </div>
   </div>
 
-  <? /** OK */ ?>
+
+
   <div class="about-me container">
-    <div class="background"><img src="/img/BG2.jpg" alt=""></div>
+    <div class="background"><img class="lazy" data-src="/img/BG2.jpg" alt=""></div>
 
     <div class="grid-content">
-      <figure><img src="<?= SITE_URL . $aboutus->thumbnail ?>" alt="<?= $aboutus->title ?>"></figure>
+      <figure>
+        <img class="lazy" data-src="<?= SITE_URL . $aboutus->thumbnail ?>" alt="<?= $aboutus->title ?>">
+      </figure>
       <div class="content">
         <div class="head">
           <h1><?= $aboutus->title ?></h1>
@@ -280,9 +286,7 @@
       </div>
     </div>
   </div>
-
   <!-- MAIN -->
-
 
   <!-- dialog confirm -->
   <div class="dialog-confirm">
@@ -328,6 +332,11 @@
           <label>จำนวนคน :</label>
           <span id="booking-people"></span>
         </div>
+
+        <div class="lineAdd">
+          <label>กรุณาเพิ่มเพื่อนไลน์ ร้านจ้วด เพื่อรับข่าวสารและการแจ้งเตือนในการใช้บริการของคุณ</label>
+          <a href="https://lin.ee/zI9aiGa"><img src="https://qr-official.line.me/sid/M/895mojav.png"></a>
+        </div>
       </div>
 
       <div class="button-box">
@@ -349,10 +358,8 @@
     </div>
   </div>
 
-
   <!-- Footer -->
   <?php require_once "mains/footer.php"; ?>
-
 
 
   <div class="csrf-space-timeround"><?= $CSRF_TIMERROUND ?></div>
@@ -364,5 +371,5 @@
   <div class="csrf-space-booking-table"><?= $CSRF_BOOKING_TABLE ?></div>
 
 
-  <script src="/js/home.js?v=<?= time() ?>"></script>
+  <script async defer src="/js/home.js?v=1.0.0.8"></script>
 </body>

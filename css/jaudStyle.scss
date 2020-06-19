@@ -1856,16 +1856,29 @@ iframe{
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px $holder_color; 
+            border-radius: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $holder_color; 
+            border-radius: 10px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: #919191; 
+            transition: .2s;
+        }
 
         @media screen and (max-width:767px) {
             width: 90%;
         }
         @media screen and (min-width:$tablet) and (max-width:1365px) {
             width: 80%;
-        }
-
-        @media screen and (max-height:414px) {
-            overflow-y: scroll;
         }
 
         .title{
@@ -1926,6 +1939,22 @@ iframe{
                         word-break: break-word;
                     }
                     
+                }
+            }
+        }
+
+        .lineAdd{
+            margin: 6% 0;
+            text-align: center;
+
+            label{
+                font-size: 1em;
+                color: red;
+                display: block;
+            }
+            a{
+                img{
+                    width: 40%;
                 }
             }
         }
