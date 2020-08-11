@@ -1,6 +1,36 @@
 
 <body>
 
+  <script>
+    window.addEventListener('DOMContentLoaded',function(){
+      document.body.insertAdjacentHTML('beforeend',`
+        <div  class="preloadDerr" 
+              style="
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height:100vh;
+                position:absolute;
+                top:0px;
+                left:0px;
+                z-index:9999999;
+                width:100%;
+                background-color: white;
+              "
+        >
+          <div style="display:flex;flex-direction:column;align-items:center;">
+            <img src="<?=SITE_URL.'img/loading.gif'?>">
+           </div>
+        </div>
+      `)
+    })
+    window.addEventListener('load',function(){
+      setTimeout(()=>{
+        document.querySelector('.preloadDerr').remove();
+      },300)
+    })
+  </script>
+
   <!-- Header Web Navbar -->
   <?php require_once "mains/navbar.php"; ?>
 
@@ -104,9 +134,9 @@
           </div>
 
           <div class="inputBox">
-            <label>*ID : LINE</label>
+            <label>*อีเมล์</label>
             <div class="input">
-              <input type="text" class="line-arch" disabled placeholder="กรอกไลน์ไอดี">
+              <input type="text" class="line-arch" disabled placeholder="กรอกอีเมล์">
             </div>
           </div>
 
@@ -335,7 +365,7 @@
 
         <div class="lineAdd">
           <label>กรุณาเพิ่มเพื่อนไลน์ ร้านจ้วด เพื่อรับข่าวสารและการแจ้งเตือนในการใช้บริการของคุณ</label>
-          <a href="https://lin.ee/zI9aiGa"><img src="https://qr-official.line.me/sid/M/895mojav.png"></a>
+          <a href="https://lin.ee/zI9aiGa" target="_blank"><img src="https://qr-official.line.me/sid/M/895mojav.png"></a>
         </div>
       </div>
 
@@ -371,5 +401,5 @@
   <div class="csrf-space-booking-table"><?= $CSRF_BOOKING_TABLE ?></div>
 
 
-  <script async defer src="/js/home.js?v=1.0.0.8"></script>
+  <script src="/js/home.js?v=1.0.2"></script>
 </body>

@@ -1,4 +1,4 @@
-$(function () {
+window.addEventListener('load',e => {
   // ------------------------- @slide ------------------------- //
   $('.slideHead').owlCarousel({
     loop: true,
@@ -12,7 +12,7 @@ $(function () {
   });
 
   $('.slider').owlCarousel({
-    loop: true,
+    loop: false,
     margin: 50,
     nav: false,
     dots: true,
@@ -38,20 +38,25 @@ $(function () {
     enableTime: false,
     dateFormat: "d-m-Y",
     disableMobile: "true",
-    minDate: new Date().fp_incr(1)//"today",
+    minDate: new Date().fp_incr(1),//"today"
+    onChange: function(selectedDates, dateStr, instance) {
+        // console.log( document.querySelector('.space-timeround-arch') )
+        document.querySelector('.space-timeround-arch').removeAttribute('disabled')
+    } 
   });
 
   $('#date-payment').flatpickr({
     enableTime: true,
     dateFormat: "d-m-Y H:i",
     disableMobile: "true",
-    // minDate:"today",
+    minDate:"today",
     maxDate:"today",
 
     time_24hr: true
   });
+  
+  
 })
-
 
 // ------------------------- @menuMobile ----------------------- //
 $('.head-nav .right .hamburger').on('click', function () {
@@ -90,7 +95,7 @@ $('#time').change(function () {
     'noneText': 'กรุณาเลือกซุ้ม',
   });
   $('#numPeople').prop('disabled', false);
-  $('.display-box figure .pre-select').hide();
+//   $('.display-box figure .pre-select').hide();
 });
 
 // คลายล็อกจำนวนคนใช้บริการ เมื่อมีการเพิ่มโต๊ะ
@@ -180,101 +185,104 @@ class bookingTable {
 
 
 // ------------------------------- กดเลือกประเภทโต๊ะในการจอง เพื่อเปลี่ยนinput ------------------------------ //
-class swicthTable {
-  constructor(compass) {
-    this.ele1 = $('.selectType .box-button .bgEffect');
-    this.ele2 = $('.selectType .button-mobile .activeB');
-    this.com = compass;
-  }
-
-  slideEffect(mode) {
-    if (mode === 'PC') {
-      if (this.com === 'L') {
-        $('.book-top .formBook .Table').hide();
-        $('.book-top .formBook .Arch').css('display', 'grid');
-        $('.display-box figure .table').addClass('disableT')
-        $('.display-box figure .arch').removeClass('disableA')
-        $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
-        
-        $('.book-top .formBook .Arch').attr('data-action', 'active')
-        $('.book-top .formBook .Table').attr('data-action', '');
-
-
-        if (screen.width >= 1366 && screen.width < 1600) {
-          $(this.ele1).css('transform', 'translateX(-103%)');
-        }
-        else {
-          $(this.ele1).css('transform', 'translateX(-100%)');
-        }
+window.onload = function(){
+    // console.log('onload swicthTable')
+    class swicthTable {
+      constructor(compass) {
+        this.ele1 = $('.selectType .box-button .bgEffect');
+        this.ele2 = $('.selectType .button-mobile .activeB');
+        this.com = compass;
       }
-      else if (this.com === 'R') {
-        $('.book-top .formBook .Arch').hide();
-        $('.book-top .formBook .Table').css('display', 'grid');
-        $('.display-box figure .arch').addClass('disableA')
-        $('.display-box figure .table').removeClass('disableT')
-        $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
-        
-        $('.book-top .formBook .Arch').attr('data-action', '')
-        $('.book-top .formBook .Table').attr('data-action', 'active');
-
-        if (screen.width >= 1366 && screen.width < 1600) {
-          $(this.ele1).css('transform', 'translateX(19%)');
+    
+      slideEffect(mode) {
+        //   console.log('slideEffect')
+        if (mode === 'PC') {
+          if (this.com === 'L') {
+            $('.book-top .formBook .Table').hide();
+            $('.book-top .formBook .Arch').css('display', 'grid');
+            // $('.display-box figure .table').addClass('disableT')
+            // $('.display-box figure .arch').removeClass('disableA')
+            $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
+            
+            $('.book-top .formBook .Arch').attr('data-action', 'active')
+            $('.book-top .formBook .Table').attr('data-action', '');
+    
+    
+            if (screen.width >= 1366 && screen.width < 1600) {
+              $(this.ele1).css('transform', 'translateX(-103%)');
+            }
+            else {
+              $(this.ele1).css('transform', 'translateX(-100%)');
+            }
+          }
+          else if (this.com === 'R') {
+            $('.book-top .formBook .Arch').hide();
+            $('.book-top .formBook .Table').css('display', 'grid');
+            // $('.display-box figure .arch').addClass('disableA')
+            // $('.display-box figure .table').removeClass('disableT')
+            $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
+            
+            $('.book-top .formBook .Arch').attr('data-action', '')
+            $('.book-top .formBook .Table').attr('data-action', 'active');
+    
+            if (screen.width >= 1366 && screen.width < 1600) {
+              $(this.ele1).css('transform', 'translateX(19%)');
+            }
+            else {
+              $(this.ele1).css('transform', 'translateX(0%)');
+            }
+          }
         }
-        else {
-          $(this.ele1).css('transform', 'translateX(0%)');
+        else if (mode === 'mobile') {
+          if (this.com === 'L') {
+            $(this.ele2).css('transform', 'translateX(-53%)');
+            $('.book-top .formBook .Table').hide();
+            $('.book-top .formBook .Arch').css('display', 'grid');
+            // $('.display-box figure .table').addClass('disableT');
+            // $('.display-box figure .arch').removeClass('disableA');
+            $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
+    
+            $('.book-top .formBook .Arch').attr('data-action', 'active')
+            $('.book-top .formBook .Table').attr('data-action', '');
+          }
+          else if (this.com === 'R') {
+            $(this.ele2).css('transform', 'translateX(41%)');
+            $('.book-top .formBook .Arch').hide();
+            $('.book-top .formBook .Table').css('display', 'grid');
+            // $('.display-box figure .arch').addClass('disableA');
+            // $('.display-box figure .table').removeClass('disableT');
+            $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
+    
+            $('.book-top .formBook .Arch').attr('data-action', '')
+            $('.book-top .formBook .Table').attr('data-action', 'active');
+          }
         }
       }
     }
-    else if (mode === 'mobile') {
-      if (this.com === 'L') {
-        $(this.ele2).css('transform', 'translateX(-53%)');
-        $('.book-top .formBook .Table').hide();
-        $('.book-top .formBook .Arch').css('display', 'grid');
-        $('.display-box figure .table').addClass('disableT');
-        $('.display-box figure .arch').removeClass('disableA');
-        $('.book-top .head-text h2').text("การจองแบบ ซุ้ม");
-
-        $('.book-top .formBook .Arch').attr('data-action', 'active')
-        $('.book-top .formBook .Table').attr('data-action', '');
+    
+    $('.selectType .box-button .button').on('click', function () {
+      if ($(this).hasClass('buttonArch')) {
+        let sw = new swicthTable("L");
+        sw.slideEffect("PC");
       }
-      else if (this.com === 'R') {
-        $(this.ele2).css('transform', 'translateX(41%)');
-        $('.book-top .formBook .Arch').hide();
-        $('.book-top .formBook .Table').css('display', 'grid');
-        $('.display-box figure .arch').addClass('disableA');
-        $('.display-box figure .table').removeClass('disableT');
-        $('.book-top .head-text h2').text("การจองแบบ โต๊ะ");
-
-        $('.book-top .formBook .Arch').attr('data-action', '')
-        $('.book-top .formBook .Table').attr('data-action', 'active');
+      else {
+        let sw = new swicthTable("R");
+        sw.slideEffect("PC");
       }
-    }
-  }
+    });
+    
+    // แบบมือถือ
+    $('.button-mobile div').on('click', function () {
+      if ($(this).hasClass('arch')) {
+        let sw = new swicthTable("L")
+        sw.slideEffect("mobile");
+      }
+      else {
+        let sw = new swicthTable("R")
+        sw.slideEffect("mobile");
+      }
+    });
 }
-
-$('.selectType .box-button .button').on('click', function () {
-  if ($(this).hasClass('buttonArch')) {
-    let sw = new swicthTable("L");
-    sw.slideEffect("PC");
-  }
-  else {
-    let sw = new swicthTable("R");
-    sw.slideEffect("PC");
-  }
-});
-
-// แบบมือถือ
-$('.button-mobile div').on('click', function () {
-  if ($(this).hasClass('arch')) {
-    let sw = new swicthTable("L")
-    sw.slideEffect("mobile");
-  }
-  else {
-    let sw = new swicthTable("R")
-    sw.slideEffect("mobile");
-  }
-});
-
 
 // -------------------------- ฟังก์ชั่นตรวจนับจำนวนคนต่อซุ้ม -------------------------- //
 class countPeople {
@@ -322,7 +330,7 @@ class countPeopleT extends countPeople {
 // ด้าน select ซุ้ม
 $('#arch').change(function (e) {
   e.preventDefault();
-  console.log('select arch')
+//   console.log('select arch')
   
   // [fix iphone] ลบ option ตัวแรก
   try{
@@ -337,9 +345,11 @@ $('#arch').change(function (e) {
   $('.book-display .display-box figure .item').removeClass('selectedA');
 
   // $('.book-display .display-box figure .arch .num-table').show(); //***ไม่ได้ใช้โค้ดนี้แล้ว
-  document.querySelectorAll(`.book-display .display-box figure .arch`).forEach(x => 
-    !x.classList.contains('confirmA') && (x.querySelector('.num-table').style.display = '')
-  );
+  document.querySelectorAll(`.book-display .display-box figure .arch`).forEach(x => {
+      if(!x.classList.contains('confirmA') && !x.classList.contains('closeA')){
+          x.querySelector('.num-table').style.display = ''
+      }
+  });
 
   archNo.forEach(element => {
     let Ele = $(`.book-display .display-box figure .item[data-archid=${element}]`);
@@ -365,9 +375,11 @@ $('#archT').change(function (e) {
   $('.book-display .display-box figure .item').removeClass('selectedT');
 
   // $('.book-display .display-box figure .item .num-table').show();
-  document.querySelectorAll(`.book-display .display-box figure .table`).forEach(x => 
-    !x.classList.contains('confirmT') && (x.querySelector('.num-table').style.display = '')
-  );
+  document.querySelectorAll(`.book-display .display-box figure .table`).forEach(x => {
+    if(!x.classList.contains('confirmT') && !x.classList.contains('closeT')){
+        x.querySelector('.num-table').style.display = ''
+    }
+  });
   
   tableNo.forEach(element => {
     let EleT = $(`.book-display .display-box figure .item[data-tableid=${element}]`);
@@ -564,23 +576,15 @@ class activeLineBottom {
   //   }
   // }
 
-  // เช็คหน้าจอมือถือผลิกตะแคง
-  if(window.innerWidth > window.innerHeight){
-    //$('.dialog-confirm .dialog').css('overflow-y','scroll')
-    let el = document.querySelectorAll('.confirm-page .payment .grid-bank .detail span')
-    for(i = 0;i< el.length;i++){
-      el[i].style.fontSize = '1em'
-    }
-    try{
-      document.querySelector('.confirm-page .payment .input-data').style.width = '90%'
-      document.querySelector('.confirm-page .confirm-payment .data').style.width = '80%'
-    }catch{
-
-    }
-  }
-
   // ปุ่มเลื่อนขึ้นหน้าบนอย่างรวดเร็วฉับไว
-  document.querySelector('.warpUp').addEventListener('click',warpTop)
+  window.addEventListener('load',function(){
+   try{
+        document.querySelector('.warpUp').addEventListener('click',warpTop)    
+    }catch{
+        
+    }
+  })
+  
   window.onscroll = function() {scrollFunction()};
 
   function scrollFunction(){

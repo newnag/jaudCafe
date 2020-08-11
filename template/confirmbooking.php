@@ -1,4 +1,4 @@
-<body>
+<body style="opacity:0">
   <!-- Header Web Navbar -->
   <?php require_once "mains/navbar.php"; ?>
 
@@ -9,19 +9,19 @@
   <div class="confirm-page container">
     <div class="head-text">
       <div class="title">
-        <h1><?=$CATEGORY->title?></h1>
+        <h1><?= $CATEGORY->title ?></h1>
       </div>
       <div class="description">
-        <p><?=$CONTACT_WEB->desc_2?></p>
+        <p><?= $CONTACT_WEB->desc_2 ?></p>
       </div>
     </div>
 
-    <div class="background"><img src="/img/BG1.jpg" alt=""></div>
+    <div class="background"><img src="/img/BG1.jpg?v=1.0" alt=""></div>
 
     <div class="search-ber">
       <div class="input-box">
         <label>กรอกเบอร์ที่จอง : </label>
-        <input type="tel" name="searchBer" id="searchBer" maxlength="10" value="">
+        <input type="tel" pattern="[0-9]*" name="searchBer" id="searchBer" maxlength="10" value="<?=$_GET['phone']?>">
       </div>
       <div class="button">
         <button><i class="fas fa-search"></i>ค้นหา</button>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="item" id="line-payment">
-          <label>Line ID :</label>
+          <label>อีเมล :</label>
           <span id="booking-info-line">Efefefefef</span>
         </div>
 
@@ -129,19 +129,19 @@
           <select name="bank" id="bank" class="confirm-payment-bank">
             <option value="" data-name="">กรุณาเลือก ธนาคาร</option>
             <?php foreach ($App->getBanks() as $key => $res) { ?>
-              <option value="<?= $res['id'] ?>" data-name="<?= $res['name'] ?>"><?= $res['bank_name'] ?></option>
+              <option value="<?= $res['id'] ?>" data-name="<?= $res['name'] ?>"><?= $res['bank_name'] .' '. $res['name'] . ' ' .$res['number']  ?></option>
             <?php } ?>
           </select>
         </div>
 
         <div class="input">
-          <label>ชื่อบัญชี :</label>
+          <label>ชื่อบัญชีลูกค้า :</label>
           <input type="text" class="confirm-payment-name">
         </div>
 
         <div class="input">
           <label>ยอดที่ชำระ :</label>
-          <input type="number" pattern="/^-?\d+\.?\d*$/" class="confirm-payment-price" value="" onKeyPress="if(this.value.length==6) return false;" />
+          <input type="text" class="confirm-payment-price" value="" disabled />
         </div>
 
         <div class="input">
@@ -150,7 +150,7 @@
         </div>
 
         <div class="upload-slip">
-          <span>อัพโหลดรูปภาพสลิป (ไฟล์ jpg,jpeg,png เท่านั้น)</span>
+          <span>อัพโหลดรูปภาพสลิป (ไฟล์ .webp, .jpg, .jpeg, .png เท่านั้น)</span>
           <label for="slip-upload" id="inputfile" style="display:flex;justify-content:center;align-items:center;">
             <figure data-id="5" class="cursor-pointer">
               <input type="file" accept="image/*" class="inputFileImg" name="inputFileImg" onchange="imgOnChange(event,'.img-handle-upload-image')" style="display:none;">
@@ -159,6 +159,13 @@
           </label>
 
         </div>
+      </div>
+
+      <div class="ps">
+        <p>
+          *หมายเหตุ หากเกิน 1 ชั่วโมง แล้วท่านไม่ได้รับข้อความยืนยันการชำระเงิน
+          กรุณาตรวจสอบสถานะการชำระเงินใหม่อีกครั้ง
+        </p>
       </div>
 
       <div class="button"><button>ยืนยันการจอง</button></div>
@@ -175,6 +182,6 @@
   <div class="token-csrf-booking-delete-space"><?= $CSRF_BOOKING_DELETE ?></div>
 
 
-  <script src="/js/confirm-booking.js?v=<?= time() ?>"></script>
-  <script src="/js/upload.js?v=<?= time() ?>"></script>
+  <script src="/js/confirm-booking.js?v=1.0.7<?=time()?>"></script>
+  <script src="/js/upload.js?v=1.0.2.<?=time()?>"></script>
 </body>

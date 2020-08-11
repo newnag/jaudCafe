@@ -4,7 +4,14 @@
     <!-- เมนูด้านซ้ายเป็นโลโก้ -->
     <div class="left">
       <div class="logo">
-        <figure><img src="<?= SITE_URL . $App->getImageWebHeader(11)->ad_image ?>" alt="<?= $App->getImageWebHeader(11)->ad_title ?>"></figure>
+        <?php 
+          global  $MOBILE_DETECT;
+          if( $MOBILE_DETECT->isMobile()){
+        ?>    
+            <a href='/'><figure><img src="<?= SITE_THUMBGEN.'?src='. SITE_URL . $App->getImageWebHeader(11)->ad_image ?>&size=x100" alt="<?= $App->getImageWebHeader(11)->ad_title ?>"></figure></a>
+        <?php }else{ ?>
+            <a href='/'><figure><img src="<?= SITE_URL . $App->getImageWebHeader(11)->ad_image ?>" alt="<?= $App->getImageWebHeader(11)->ad_title ?>"></figure></a>
+        <?php } ?>
       </div>
     </div>
 
@@ -60,6 +67,17 @@
 
 
 <script>
+
+  // fix input searchq number only
+  document.querySelector('#searchq').addEventListener('keypress', e => {
+    if((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)){
+      return true;
+    }else{
+      e.preventDefault();
+      return false;
+    }
+  });
+
   // ค้นหาการจองด้วยเบอร์ 
   document.querySelector('#searchq').addEventListener('keyup', function(e) {
     e.preventDefault();
@@ -99,10 +117,8 @@
       return false;
     }
 
-    axios.get(`/api/v1.0/searchq/phone/${phone}`, {
-      headers: {
-        'token-csrf-searchq': `csrf ${document.querySelector('#token-csrf-searchq').value}`
-      }
+    axios.post(`/api/v1.0/searchq/phone/${phone}`, {
+      'token_csrf_searchq': `csrf ${document.querySelector('#token-csrf-searchq').value}`
     }).then(res => {
       if (res.data.status_) {
         localStorage.setItem('phone', res.data.phone)

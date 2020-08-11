@@ -1,7 +1,6 @@
 // fetch load data
 window.addEventListener("load", async function () {
   localStorage.clear();
-
   // รอบเวลา
   if (!localStorage.getItem('timeRoundArch') || localStorage.getItem('timeRoundArch') == "null" || localStorage.getItem('timeRoundArch') == "undefined") {
     // ถ้าไม่มีข้อมูลในเครื่อง ให้ load ข้อมูลจาก server
@@ -18,21 +17,24 @@ window.addEventListener("load", async function () {
     let res = await requestAPI_PositionArchAndTable();
     localStorage.setItem('numberPositionArch', res.data.positionArch);
     localStorage.setItem('numberPositionTable', res.data.positionTable);
-    localStorage.setItem('numberhdlclickPositionArch', res.data.hdlClickpositionArch);
-    localStorage.setItem('numberhdlclickPositionTable', res.data.hdlClickpositionTable);
+
+    // setTimeout(() => {
+      localStorage.setItem('numberhdlclickPositionArch', res.data.hdlClickpositionArch);
+      localStorage.setItem('numberhdlclickPositionTable', res.data.hdlClickpositionTable);
+    // },3000)
   }
 
   // old
   // document.querySelector('.space-position-arch').innerHTML = `${localStorage.getItem('numberPositionArch')}`
   // fix
-  document.querySelector('.space-position-arch').innerHTML = `<option value="" disabled>กรุณาเลือกซุ้ม</option>`;
-  document.querySelector('.space-position-arch').insertAdjacentHTML('beforeend',localStorage.getItem('numberPositionArch'))
-  
+  document.querySelector('.space-position-arch').innerHTML = `<option value="" class="fix" disabled>กรุณาเลือกซุ้ม</option>`;
+  document.querySelector('.space-position-arch').insertAdjacentHTML('beforeend', localStorage.getItem('numberPositionArch'))
+
   // old
   // document.querySelector('.space-position-table').innerHTML = localStorage.getItem('numberPositionTable')
   // fix
-  document.querySelector('.space-position-table').innerHTML = `<option value="" disabled>กรุณาเลือกซุ้ม</option>`;
-  document.querySelector('.space-position-table').insertAdjacentHTML('beforeend',localStorage.getItem('numberPositionTable'))
+  document.querySelector('.space-position-table').innerHTML = `<option value="" class="fix" disabled>กรุณาเลือกโต๊ะ</option>`;
+  document.querySelector('.space-position-table').insertAdjacentHTML('beforeend', localStorage.getItem('numberPositionTable'))
 
   document.querySelector('#space-position-handleclick').insertAdjacentHTML('beforeend', localStorage.getItem('numberhdlclickPositionArch'))
   document.querySelector('#space-position-handleclick').insertAdjacentHTML('beforeend', localStorage.getItem('numberhdlclickPositionTable'))
@@ -49,27 +51,25 @@ window.addEventListener("load", async function () {
 
 });
 
+
 // request รอบเวลา
 let requestAPI_Timeround = async () => {
   try {
     let csrf = document.querySelector('#token-csrf-timeround').value
-    return await axios.get(`/api/v1.0/timeround`, {
-      headers: {
-        'token-csrf-timeround': `csrf ${csrf}`
-      }
+    return await axios.post(`/api/v1.0/timeround`, {
+      'token_csrf_timeround': `csrf ${csrf}`
     });
   } catch (error) {
     console.error('Error')
   }
 }
+
 // request จังหวัด
 let requestAPI_Province = async () => {
   try {
     let csrf = document.querySelector('#token-csrf-province').value
-    return await axios.get('/api/v1.0/province', {
-      headers: {
-        'token-csrf-province': `csrf ${csrf}`
-      }
+    return await axios.post('/api/v1.0/province', {
+      'token_csrf_province': `csrf ${csrf}`
     })
   } catch (err) {
     console.error('Error')
@@ -79,10 +79,8 @@ let requestAPI_Province = async () => {
 let requestAPI_PositionArchAndTable = async () => {
   try {
     let csrf = document.querySelector('#token-csrf-position-arch-table').value
-    return await axios.get('/api/v1.0/positionArchAndTable', {
-      headers: {
-        'token-csrf-position-arch-table': `csrf ${csrf}`
-      }
+    return await axios.post('/api/v1.0/positionArchAndTable', {
+      'token_csrf_position_arch_table': `csrf ${csrf}`
     });
   } catch (err) {
     console.error('Error')
@@ -90,19 +88,38 @@ let requestAPI_PositionArchAndTable = async () => {
 }
 
 // fix phone number only
-document.querySelector('.phone-arch').addEventListener('keypress',e =>{
-  if((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)){
+document.querySelector('.phone-arch').addEventListener('keypress', e => {
+  if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)) {
     return true;
-  }else{
+  } else {
     e.preventDefault();
     return false;
   }
 });
 // fix phone number only
-document.querySelector('.phone-table').addEventListener('keypress',e =>{
-  if((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)){
+document.querySelector('.phone-table').addEventListener('keypress', e => {
+  if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)) {
     return true;
-  }else{
+  } else {
+    e.preventDefault();
+    return false;
+  }
+});
+
+// fix people number only
+document.querySelector('#numPeople').addEventListener('keypress', e => {
+  if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)) {
+    return true;
+  } else {
+    e.preventDefault();
+    return false;
+  }
+});
+// fix peopleT number only
+document.querySelector('#numPeopleT').addEventListener('keypress', e => {
+  if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.which >= 48 && e.which <= 57)) {
+    return true;
+  } else {
     e.preventDefault();
     return false;
   }
@@ -118,6 +135,11 @@ function clearPositionArch() {
   })
   // วนลูปทำให้ทุกซุ้มเป็นค่าว่าง
   document.querySelector(`.space-position-arch`).closest('.input').querySelectorAll('.multi-select-menuitem').forEach(x => x.style.display = "")
+  
+  // เคลียร์ค่าใน หมายเลขซุ้ม multi select option
+    Array.from(document.querySelectorAll(`.formBook .Arch .inputBox .input 
+          .multi-select-container .multi-select-menu .multi-select-menuitems .multi-select-menuitem input[type=checkbox]`)
+    ).filter(el => el.checked == true && el.click())
 }
 // disable position arch
 function disablePositionArch() {
@@ -140,6 +162,12 @@ function clearPositionTable() {
   })
   // วนลูปทำให้โต๊ะเป็นค่าว่าง
   document.querySelector(`.space-position-table`).closest('.input').querySelectorAll('.multi-select-menuitem').forEach(x => x.style.display = "")
+  
+    // เคลียร์ค่าใน หมายเลขซุ้ม multi select option
+    Array.from(document.querySelectorAll(`.formBook .Table .inputBox .input 
+          .multi-select-container .multi-select-menu .multi-select-menuitems .multi-select-menuitem input[type=checkbox]`)
+    ).filter(el => el.checked == true && el.click())
+  
 }
 // disable position arch
 function disablePositionTable() {
@@ -152,37 +180,146 @@ function disablePositionTable() {
   })
 }
 
+function clearForm(){
+    
+    console.log('clearform')
+    document.querySelector('.pre-select').style.display = 'block';
+    
+    try{
+        let arch = document.querySelectorAll('.display-box figure .arch');
+        [...arch].forEach(e => e.classList.add('disableA'))
+        
+        let table = document.querySelectorAll('.display-box figure .table');
+        [...table].forEach(e => e.classList.add('disableT'))
+    }catch{}
+    
+    try{
+        // Arch
+        document.querySelector('.date-booking-arch').value = '';
+        document.querySelector('.space-timeround-arch').value  = '';
+        document.querySelector('.space-timeround-arch').setAttribute('disabled',true)
+        Array.from(document.querySelectorAll(`.formBook .Arch .inputBox .input .multi-select-container .multi-select-menu .multi-select-menuitems .multi-select-menuitem input[type=checkbox]`)).filter(el => el.checked == true).map(x => x.click() )
+        document.querySelector('.space-position-arch').setAttribute('disabled',true);
+        if(!document.querySelector('.space-position-arch').closest('.input').contains(document.querySelector('.prevent-arch-box'))){
+            document.querySelector('.space-position-arch').closest('.input').insertAdjacentHTML('beforeend',`<div class="prevent-arch-box" style="position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:100;opacity:0;"></div>`);    
+        }
+        document.querySelector('#numPeople').value = '';
+        document.querySelector('#numPeople').setAttribute('disabled',true)
+        document.querySelector('.name-arch').value = '';
+        document.querySelector('.name-arch').setAttribute('disabled',true)
+        document.querySelector('.phone-arch').value = '';
+        document.querySelector('.phone-arch').setAttribute('disabled',true)
+        document.querySelector('.line-arch').value = '';
+        document.querySelector('.line-arch').setAttribute('disabled',true)
+    }catch{}
+        
+    try{    
+        // Table
+        document.querySelector('.date-booking-table').value = '';
+        document.querySelector('.space-timeround-table').value = '';
+        document.querySelector('.space-timeround-table').setAttribute('disabled',true)
+        Array.from(document.querySelectorAll(`.formBook .Table .inputBox .input .multi-select-container .multi-select-menu .multi-select-menuitems .multi-select-menuitem input[type=checkbox]`)).filter(el => el.checked == true).map(x => x.click() )
+        document.querySelector('.space-position-table').setAttribute('disabled',true)
+        if(!document.querySelector('.space-position-table').closest('.input').contains(document.querySelector('.prevent-table-box'))){
+            document.querySelector('.space-position-table').closest('.input').insertAdjacentHTML('beforeend',`<div class="prevent-table-box" style="position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:100;opacity:0;"></div>`);    
+        }
+        document.querySelector('#numPeopleT').value = '';
+        document.querySelector('#numPeopleT').setAttribute('disabled',true)
+        document.querySelector('.name-table').value = '';
+        document.querySelector('.name-table').setAttribute('disabled',true)
+        document.querySelector('.phone-table').value = '';
+        document.querySelector('.phone-table').setAttribute('disabled',true)
+        document.querySelector('.line-table').value = '';
+        document.querySelector('.line-table').setAttribute('disabled',true)
+        
+    }catch{}
 
-// เมื่อคลิก (tab) จองซุ้มริมน้ำ
-document.querySelector('.buttonArch').addEventListener('click', function () {
+}
 
+// เมื่อคลิก (tab) จองซุ้มริมน้ำ mobile
+document.querySelector('.button-mobile > .arch').addEventListener('click', function () {
   let timeround = document.querySelector('.space-timeround-arch').value;
   let date_arch = document.querySelector('.date-booking-arch').value.trim()
-
   clearPositionArch()
   disablePositionTable()
-
+  clearForm();
   if (timeround && date_arch) {
     // ดึงข้อมูลซุ้มที่จองไปแล้ว
     getDataBooking("arch", date_arch, timeround);
   }
-
+});
+// เมื่อคลิก (tab) จองซุ้มริมน้ำ desktop
+document.querySelector('.buttonArch').addEventListener('click', function () {
+  let timeround = document.querySelector('.space-timeround-arch').value;
+  let date_arch = document.querySelector('.date-booking-arch').value.trim()
+  clearPositionArch()
+  disablePositionTable()
+  clearForm();
+  if (timeround && date_arch) {
+    // ดึงข้อมูลซุ้มที่จองไปแล้ว
+    getDataBooking("arch", date_arch, timeround);
+  }
 });
 
-// เมื่อคลิก (tab) จองโต๊ะเทอเรส
+// เมื่อคลิก (tab) จองโต๊ะเทอเรส mobile
+document.querySelector('.button-mobile > .table').addEventListener('click', function () {
+  let timeround = document.querySelector('.space-timeround-table').value;
+  let date_table = document.querySelector('.date-booking-table').value.trim()
+  // clearPositionTable()
+  // disablePositionArch()
+    clearForm();
+  if (timeround && date_table) {
+    // ดึงข้อมูลซุ้มที่จองไปแล้ว
+    getDataBooking("table", date_table, timeround);
+  }
+})
+// เมื่อคลิก (tab) จองโต๊ะเทอเรส desktop
 document.querySelector('.buttonTable').addEventListener('click', function () {
   let timeround = document.querySelector('.space-timeround-table').value;
   let date_table = document.querySelector('.date-booking-table').value.trim()
-
   // clearPositionTable()
   // disablePositionArch()
-
+    clearForm();
   if (timeround && date_table) {
     // ดึงข้อมูลซุ้มที่จองไปแล้ว
     getDataBooking("table", date_table, timeround);
   }
 })
 
+
+// เมื่อลูกค้าคลิกเลือกวันที่ arch
+document.querySelector('.date-booking-arch').addEventListener('change',function(e){
+    let date_arch = e.target.value
+    let timeround = document.querySelector('.space-timeround-arch').value
+    
+    
+    if(timeround != ''){
+        // clear position arch
+    clearPositionArch()
+
+    // ดึงข้อมูลซุ้มที่จองไปแล้ว
+    getDataBooking("arch", date_arch, timeround);
+
+    setTimeout(() => {
+        $('.slide-hover').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsiveClass: true,
+            items: 1,
+        });
+          
+        var lazyLoadInstance = new LazyLoad({
+            elements_selector: ".lazy"
+        });
+    
+        }, 50
+        )
+    }
+    });
 
 // เมื่อลูกค้าทำการเลือก รอบเวลา (ซุ้ม) (time round)
 document.querySelector('.space-timeround-arch').addEventListener('change', function (e) {
@@ -196,7 +333,12 @@ document.querySelector('.space-timeround-arch').addEventListener('change', funct
     // ดึงข้อมูลซุ้มที่จองไปแล้ว
     getDataBooking("arch", date_arch, timeround);
 
-    setTimeout(() =>
+
+    try{ 
+        document.querySelector('.space-position-arch').closest('.input').querySelector('.prevent-arch-box').remove(); 
+    }catch{}
+
+    setTimeout(() => {
       $('.slide-hover').owlCarousel({
         loop: true,
         margin: 10,
@@ -206,10 +348,48 @@ document.querySelector('.space-timeround-arch').addEventListener('change', funct
         autoplayTimeout: 3000,
         responsiveClass: true,
         items: 1,
-      }), 50
+      });
+      
+      var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+      });
+
+        document.querySelector('.pre-select').style.display = 'none';
+    }, 50
     )
   }
 });
+
+
+// เมื่อลูกค้าคลิกเลือกวันที่ table
+document.querySelector('.date-booking-table').addEventListener('change',function(e){
+    let date_table = e.target.value
+    let timeround = document.querySelector('.space-timeround-table').value
+    
+    if(timeround != ''){
+        // clear position table
+        clearPositionTable()
+    
+        // ดึงข้อมูลซุ้มที่จองไปแล้ว
+        getDataBooking("table", date_table, timeround);
+    
+        $('.slide-hover').owlCarousel({
+          loop: true,
+          margin: 10,
+          nav: false,
+          dots: false,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          responsiveClass: true,
+          items: 1,
+        });
+    
+        var lazyLoadInstance = new LazyLoad({
+          elements_selector: ".lazy"
+        });
+    }
+});
+
 
 // เมื่อลูกค้าทำการเลือก รอบเวลา (โต๊ะ) (time round)
 document.querySelector('.space-timeround-table').addEventListener('change', function (e) {
@@ -217,11 +397,18 @@ document.querySelector('.space-timeround-table').addEventListener('change', func
     let timeround = e.target.value
     let date_table = document.querySelector('.date-booking-table').value.trim()
 
-    // clear position arch
+    // clear position table
     clearPositionTable()
 
     // ดึงข้อมูลซุ้มที่จองไปแล้ว
     getDataBooking("table", date_table, timeround);
+    
+    
+    
+    try{ 
+        document.querySelector('.space-position-table').closest('.input').querySelector('.prevent-table-box').remove(); 
+    }catch{}
+    
 
     $('.slide-hover').owlCarousel({
       loop: true,
@@ -233,6 +420,12 @@ document.querySelector('.space-timeround-table').addEventListener('change', func
       responsiveClass: true,
       items: 1,
     });
+
+    var lazyLoadInstance = new LazyLoad({
+      elements_selector: ".lazy"
+    });
+    
+    document.querySelector('.pre-select').style.display = 'none';
   }
 });
 
@@ -247,15 +440,14 @@ function getDataBooking(type, date_, timeround) {
       let csrf = document.querySelector('#token-csrf-timeround-arch').value
       axios.post('/api/v1.0/positionArchWithTimeround', {
         "date": date_,
-        "timeround": timeround
-      }, {
-        headers: { 'token-csrf': `csrf ${csrf}` },
+        "timeround": timeround,
+        'token_csrf': `csrf ${csrf}`
       }).then(res => {
         if (res.data.status_) {
 
           // วนลูปข้อมูลซุ้มที่ถูกจองไปแล้ว
           res.data.res.forEach(x => {
-            if (x.status == 'pending') {
+            if (x.status == 'pending_payment' || x.status == 'pending') {
               // รอคอนเฟริม
               document.querySelector(`.booking-zone .book-display .display-box figure .arch[data-archid="${x.position_num}"]`).classList.add('confirmA')
               // ซ่อนหมายเลขซุ้มที่ถูกจองไปแล้ว
@@ -283,15 +475,14 @@ function getDataBooking(type, date_, timeround) {
       let csrf = document.querySelector('#token-csrf-timeround-table').value
       axios.post('/api/v1.0/positionTableWithTimeround', {
         "date": date_,
-        "timeround": timeround
-      }, {
-        headers: { 'token-csrf': `csrf ${csrf}` },
+        "timeround": timeround,
+        'token_csrf': `csrf ${csrf}`
       }).then(res => {
         // ถ้า status เป็น true
         if (res.data.status_) {
           // วนลูปข้อมูลโต๊ะที่ถูกจองไปแล้ว
           res.data.res.forEach(x => {
-            if (x.status == 'pending') {
+            if (x.status == 'pending_payment' || x.status == 'pending') {
               // รอคอนเฟริม
               document.querySelector(`.booking-zone .book-display .display-box figure .table[data-tableid="${x.position_num}"]`).classList.add('confirmT')
               // ซ่อนหมายเลขโต๊ะที่ถูกจองไปแล้ว
@@ -315,6 +506,7 @@ function getDataBooking(type, date_, timeround) {
 function handleClickDoBook(e) {
   e.preventDefault();
   let _this = e.target.closest('.item')
+
   if (
     !_this.classList.contains('disableA') &&
     !_this.classList.contains('disableT') &&
@@ -322,19 +514,19 @@ function handleClickDoBook(e) {
     !_this.classList.contains('confirmT')
   ) {
     let Book = new bookingTable(_this);
-
     Book.doBook();
   }
 }
 
 
 // เมื่อลูกค้า กดจอง (click)
+var timeCheckRegisterLine;
 document.querySelector('#booking-button-submit').addEventListener('click', async function () {
   let action = Array.from(document.querySelectorAll('.book-top .formBook .input-zone')).find(ex => ex.getAttribute('data-action') === "active");
   let type = action.getAttribute('data-type');
 
   if (type == "arch") {
-
+  
     let date_arch = document.querySelector('.date-booking-arch').value.trim()
     let time_arch = document.querySelector('.space-timeround-arch').value.trim()
     let time_arch_name = document.querySelector('.space-timeround-arch option:checked').textContent.trim()
@@ -344,6 +536,7 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
     let line_arch = document.querySelector('.line-arch').value.trim()
     let province_arch = document.querySelector('.space-province-arch').value.trim()
     let province_name = document.querySelector('.space-province-arch option:checked').textContent.trim()
+
 
     // ตรวจสอบวันที่
     if (!date_arch) {
@@ -370,7 +563,8 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
     // ตรวจสอบหมายเลขซุ้ม
     let numberArch = Array.from(document.querySelectorAll(`.formBook .Arch .inputBox .input 
           .multi-select-container .multi-select-menu .multi-select-menuitems .multi-select-menuitem input[type=checkbox]`)
-    ).filter(el => el.checked == true).map(x => x.value)
+    ).filter(el => el.checked == true).map(x => x.value && x.value).toString().replace(/^,{1}/, '')
+
     if (!numberArch.length) {
       Swal.fire({
         title: "แจ้งเตือน!!!",
@@ -382,7 +576,7 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
     }
 
     // ตรวจสอบจำนวนคน
-    if (!numpeople_arch) {
+    if (!numpeople_arch || numpeople_arch == 0) {
       Swal.fire({
         title: "แจ้งเตือน!!!",
         text: "กรุณากรอกจำนวนคนด้วยครับ",
@@ -433,15 +627,19 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
       return false;
     }
 
-    // ตรวจสอบไลน์ไอดี
-    if (!line_arch) {
-      Swal.fire({
-        title: "แจ้งเตือน!!!",
-        text: "กรุณากรอกไลน์ไอดีด้วยครับ",
-        icon: "warning",
-        confirmButtonText: "OK"
-      });
-      return false;
+    // ตรวจสอบอีเมล
+    if (line_arch.length > 0) {
+      let _checkmail = await checkEmail(line_arch);
+      console.log(_checkmail)
+      if(!_checkmail){
+        Swal.fire({
+          title: "แจ้งเตือน!!!",
+          text: "กรุณากรอกอีเมลให้ถูกต้องด้วยครับ",
+          icon: "warning",
+          confirmButtonText: "OK"
+        });
+        return false;
+      }
     }
 
     // ตรวจสอบจังหวัด
@@ -473,17 +671,22 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
 
 
     // โชว์ข้อมูลที่ dialog-confirm
-    document.querySelector(`#booking-type`).innerHTML = `${localStorage.getItem('booking-arch-type-name')}`
-    document.querySelector(`#booking-name`).innerHTML = `${localStorage.getItem('booking-arch-name')}`
-    document.querySelector(`#booking-phone`).innerHTML = `${localStorage.getItem('booking-arch-phone')}`
-    document.querySelector(`#booking-line`).innerHTML = `${localStorage.getItem('booking-arch-line')}`
-    document.querySelector(`#booking-province-name`).innerHTML = `${localStorage.getItem('booking-arch-province-name')}`
-    document.querySelector(`#booking-date`).innerHTML = `${localStorage.getItem('booking-arch-date')}`
-    document.querySelector(`#booking-time`).innerHTML = `${localStorage.getItem('booking-arch-time')} ( ${time_arch_name}) `
-    document.querySelector(`#booking-table-name`).innerHTML = `หมายเลขซุ้ม :`
-    document.querySelector(`#booking-table-number`).innerHTML = `${localStorage.getItem('booking-arch-arch')}`
-    document.querySelector(`#booking-people`).innerHTML = `${localStorage.getItem('booking-arch-people')}`
+    document.querySelector(`#booking-type`).innerText = `${localStorage.getItem('booking-arch-type-name')}`
+    document.querySelector(`#booking-name`).innerText = `${localStorage.getItem('booking-arch-name')}`
+    document.querySelector(`#booking-phone`).innerText = `${localStorage.getItem('booking-arch-phone')}`
+    document.querySelector(`#booking-line`).innerText = `${localStorage.getItem('booking-arch-line')}`
+    document.querySelector(`#booking-province-name`).innerText = `${localStorage.getItem('booking-arch-province-name')}`
+    document.querySelector(`#booking-date`).innerText = `${localStorage.getItem('booking-arch-date')}`
+    document.querySelector(`#booking-time`).innerText = `${localStorage.getItem('booking-arch-time')} ( ${time_arch_name}) `
+    document.querySelector(`#booking-table-name`).innerText = `หมายเลขซุ้ม :`
+    document.querySelector(`#booking-table-number`).innerText = `${localStorage.getItem('booking-arch-arch')}`
+    document.querySelector(`#booking-people`).innerText = `${localStorage.getItem('booking-arch-people')}`
 
+    // ตรวจสอบว่า ได้ทำการ register line แล้วหรือยัง
+    checkRegisterLine(localStorage.getItem('booking-arch-phone'))
+    timeCheckRegisterLine = setInterval(() => {
+      checkRegisterLine(localStorage.getItem('booking-arch-phone'))
+    }, 2000);
 
   } else if (type == "table") {
 
@@ -522,7 +725,7 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
     // ตรวจสอบหมายเลขโต๊ะ
     let numberTable = Array.from(document.querySelectorAll(`.formBook .Table .inputBox .input 
           .multi-select-container .multi-select-menu .multi-select-menuitems .multi-select-menuitem input[type=checkbox]`)
-    ).filter(el => el.checked == true).map(x => x.value)
+    ).filter(el => el.checked == true).map(x => x.value).toString().replace(/^,{1}/, '')
     if (!numberTable.length) {
       Swal.fire({
         title: "แจ้งเตือน!!!",
@@ -534,7 +737,7 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
     }
 
     // ตรวจสอบจำนวนคน
-    if (!numpeople_table) {
+    if (!numpeople_table || numpeople_table == 0) {
       Swal.fire({
         title: "แจ้งเตือน!!!",
         text: "กรุณากรอกจำนวนคนด้วยครับ",
@@ -585,15 +788,19 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
       return false;
     }
 
-    // ตรวจสอบไลน์ไอดี
-    if (!line_table) {
-      Swal.fire({
-        title: "แจ้งเตือน!!!",
-        text: "กรุณากรอกไลน์ไอดีด้วยครับ",
-        icon: "warning",
-        confirmButtonText: "OK"
-      });
-      return false;
+    // ตรวจสอบ อีเมล
+    if (line_table.length > 0) {
+      let _checkmail = await checkEmail(line_table);
+      
+      if(!_checkmail){
+        Swal.fire({
+          title: "แจ้งเตือน!!!",
+          text: "กรุณากรอกอีเมลให้ถูกต้องด้วยครับ",
+          icon: "warning",
+          confirmButtonText: "OK"
+        });
+        return false;
+      }
     }
 
     // ตรวจสอบจังหวัด
@@ -625,19 +832,43 @@ document.querySelector('#booking-button-submit').addEventListener('click', async
     localStorage.setItem('booking-table-type-name', 'จองโต๊ะเทอเรส')
 
     // โชว์ข้อมูลที่ dialog-confirm
-    document.querySelector(`#booking-type`).innerHTML = `${localStorage.getItem('booking-table-type-name')}`
-    document.querySelector(`#booking-name`).innerHTML = `${localStorage.getItem('booking-table-name')}`
-    document.querySelector(`#booking-phone`).innerHTML = `${localStorage.getItem('booking-table-phone')}`
-    document.querySelector(`#booking-line`).innerHTML = `${localStorage.getItem('booking-table-line')}`
-    document.querySelector(`#booking-province-name`).innerHTML = `${localStorage.getItem('booking-table-province-name')}`
-    document.querySelector(`#booking-date`).innerHTML = `${localStorage.getItem('booking-table-date')}`
-    document.querySelector(`#booking-time`).innerHTML = `${localStorage.getItem('booking-table-time')} ( ${time_table_name}) `
-    document.querySelector(`#booking-table-name`).innerHTML = `หมายเลขโต๊ะ :`
-    document.querySelector(`#booking-table-number`).innerHTML = `${localStorage.getItem('booking-table-arch')}`
-    document.querySelector(`#booking-people`).innerHTML = `${localStorage.getItem('booking-table-people')}`
+    document.querySelector(`#booking-type`).innerText = `${localStorage.getItem('booking-table-type-name')}`
+    document.querySelector(`#booking-name`).innerText = `${localStorage.getItem('booking-table-name')}`
+    document.querySelector(`#booking-phone`).innerText = `${localStorage.getItem('booking-table-phone')}`
+    document.querySelector(`#booking-line`).innerText = `${localStorage.getItem('booking-table-line')}`
+    document.querySelector(`#booking-province-name`).innerText = `${localStorage.getItem('booking-table-province-name')}`
+    document.querySelector(`#booking-date`).innerText = `${localStorage.getItem('booking-table-date')}`
+    document.querySelector(`#booking-time`).innerText = `${localStorage.getItem('booking-table-time')} ( ${time_table_name}) `
+    document.querySelector(`#booking-table-name`).innerText = `หมายเลขโต๊ะ :`
+    document.querySelector(`#booking-table-number`).innerText = `${localStorage.getItem('booking-table-arch')}`
+    document.querySelector(`#booking-people`).innerText = `${localStorage.getItem('booking-table-people')}`
 
+    // ตรวจสอบว่า ได้ทำการ register line แล้วหรือยัง
+    checkRegisterLine(localStorage.getItem('booking-table-phone'))
+    timeCheckRegisterLine = setInterval(() => {
+      checkRegisterLine(localStorage.getItem('booking-table-phone'))
+    }, 2000);
   }
 });
+
+// ฟังก์ชั่น ตรวจสอบว่า ได้ทำการ register line แล้วหรือยัง
+function checkRegisterLine(phone) {
+  axios.get(`/api/v1.0/checkregister/${phone}/line`).then(res => {
+    if(res.data.status){
+      // ลบ qrcode
+      document.querySelector('.lineAdd').style.display = 'none';
+      clearInterval(timeCheckRegisterLine)
+    }else{
+      document.querySelector('.lineAdd').style.display = 'block';
+    }
+  });
+}
+// ฟังก์ชั่น ตรวจสอบว่า email ถูกต้องหรือไม่
+async function checkEmail(email) {
+  let response = await axios.get(`/api/v1.0/check/${email}/email`);
+  return response.data.status
+}
+
 
 // เมื่อคลิ๊ก ปิด dialog-confirm
 document.querySelector(`.dialog-confirm .dialog .close-button`).addEventListener('click', function (e) {
@@ -687,17 +918,41 @@ document.querySelector(`#confirm`).addEventListener('click', async function (e) 
 async function saveBooking({ ...data }) {
   try {
     let csrf = "";
+    
+    
+    document.body.insertAdjacentHTML('afterbegin',`
+        <div  class="preloadDerr" 
+              style="
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                height: 100vh;
+                position:fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index:9999999;
+                width: 100%;
+                background-color: rgba(0,0,0,0.7);
+                opacity:1;
+              ;
+              "
+        >
+          <div style="display:flex;flex-direction:column;align-items:center;">
+            <img src="https://juad.ktdev.site/img/logo/logo.png">
+            <p style="color:white;text-align:center;font-size:1.5rem;">กำลังบันทึกข้อมูล...</p>
+           </div>
+        </div>
+      `)
+    
     if (data.action == "arch") {
       csrf = document.querySelector(`#token-csrf-booking-arch`).value.trim()
     } else {
       csrf = document.querySelector(`#token-csrf-booking-table`).value.trim()
     }
-    axios.post(`/api/v1.0/booking/${data.action}`, data, {
-      headers: {
-        'Authorization': `Bearer ${csrf}`
-      }
-    }).then(res => {
-
+    let _data = {...data,'token_csrf': `csrf ${csrf}`}
+    axios.post(`/api/v1.0/booking/${data.action}`, _data).then(res => {
+        document.querySelector('.preloadDerr').remove();
       if (!res.data.status_) {
         if (res.data.message == "position_booking") {
           Swal.fire({
@@ -760,7 +1015,7 @@ async function saveBooking({ ...data }) {
           confirmButtonText: "OK"
         }).then(() => {
 
-          window.location = `${res.data.url}`
+          window.location = `${res.data.url}?phone=${data.phone}`
         });
 
       }
