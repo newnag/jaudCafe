@@ -603,3 +603,12 @@ class activeLineBottom {
       behavior: 'smooth'
     });
   }
+
+  ////////////////////////////////////////////////////////////////////////////
+
+let max = document.querySelector('#arch')
+console.log(max[1].value)
+// max.forEach(ele=>{
+//   console.log(ele.options)
+// })
+
